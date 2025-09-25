@@ -44,9 +44,6 @@ export default function HeroSection() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center space-y-8">
             <div className="space-y-4">
-              <Badge variant="secondary" className="w-fit mx-auto" data-testid="badge-new">
-                New: Trinity Pro Platform
-              </Badge>
               <h1 className="text-4xl lg:text-6xl font-bold text-foreground leading-tight max-w-4xl mx-auto">
                 Insight Up 
                 <span className="text-primary"> Solutions</span>
