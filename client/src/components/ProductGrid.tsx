@@ -26,7 +26,7 @@ export default function ProductGrid({
   const products = [
     {
       id: "trinity-pro",
-      name: "Trinity Pro UAV Platform",
+      name: "Quantum Systems Trinity Pro UAV Platform",
       category: "UAV Platform", 
       description: "Next-generation eVTOL fixed-wing mapping drone with Quantum-Skynode autopilot. Future-proof platform with 75,000+ proven flight hours globally.",
       image: productImage1,
