@@ -1,0 +1,181 @@
+Insight Up Solutions Product Requirements Document (PRD)
+1. Goals and Background Context
+
+Goals
+
+Launch the Phase 1 MVP storefront by November 2025 to establish an initial market presence and begin lead generation.
+Position Insight Up Solutions as a premier, solution-oriented partner, distinct from competitors.
+Generate at least 10 qualified leads per month (via quote/demo requests) within six months of launch.
+Validate the e-commerce functionality through initial online sales of accessories.
+Lay the foundation for a Phase 2 release in Q1 2026 that will include the "Interactive Mission Hub."
+Background Context
+
+The current market for high-end UAVs is fragmented, with resellers focusing on transactional sales rather than providing integrated solutions. Professionals in specialized fields like agriculture and surveying lack a trusted resource that combines hardware sales with the necessary workflow context and data validation. This PRD outlines the requirements for a platform that addresses this gap by creating a solution-oriented "mission hub" that builds user confidence and facilitates informed purchasing decisions.
+
+2. Requirements
+
+Functional Requirements
+
+FR1: The system shall display a responsive, multi-page website including a homepage, solution/industry pages, and detailed product pages.
+FR2: Product pages for the Trinity Pro, ILX-LR1, and Qube 640 must display technical specifications, image galleries, and links to downloadable resources.
+FR3: The system shall provide a "Request a Quote" form that captures user contact information and inquiry details.
+FR4: The system shall provide a "Book a Demo" form that captures user contact information and scheduling preferences for the test range.
+FR5: Upon successful submission of a Quote or Demo form, the system shall send an email notification to a designated company address.
+FR6: The system shall provide a shopping cart and a Stripe-powered checkout process for a limited catalog of accessory items.
+Non-Functional Requirements
+
+NFR1: The website must achieve a Google Lighthouse performance score of 90 or higher.
+NFR2: The website must comply with Web Content Accessibility Guidelines (WCAG) 2.1 Level AA standards.
+NFR3: The system must be built using the specified technology stack, including Next.js 14, TypeScript, Tailwind CSS, Prisma, and PostgreSQL.
+NFR4: The Stripe integration must be secure, processing payments without storing sensitive cardholder data on our systems.
+NFR5: The entire application must be deployable and operable on the Vercel platform.
+3. User Interface Design Goals
+
+Overall UX Vision
+
+The user experience will be credible, technical, and clean, designed to build confidence with a professional audience. The interface should feel like a premium, reliable tool, prioritizing clarity and plain-English explanations over marketing hype. The primary goal is to guide users from learning and comparison to a confident inquiry.
+
+Key Interaction Paradigms
+
+The core user journey is educational, allowing users to explore solutions, drill down into technical specifications, and compare products based on real-world data. This exploration should seamlessly lead to a clear call-to-action: requesting a quote or booking a demo. A secondary, more traditional e-commerce paradigm will exist for purchasing accessories.
+
+Core Screens and Views
+
+Homepage (highlighting the Trinity Pro and key payloads)
+Product Family Pages (e.g., for the Trinity Pro platform)
+Detailed Product Pages (with tabs for specs, media, and data samples)
+Solution Pages (showcasing workflows like mapping or agriculture)
+Product Comparison Page
+Demo Booking / Quote Request Forms
+Accessory Shop (simple grid/catalog)
+Shopping Cart and Checkout Flow
+Accessibility
+
+The application must meet WCAG 2.1 Level AA standards to be accessible to all users.
+
+Branding
+
+The visual design should follow a dark text on a light background theme, using a clean grid layout. Imagery should be payload-centric, featuring high-quality photos of the sensors, equipment, and sample data outputs.
+
+Target Device and Platforms
+
+The application will be a Web Responsive site, providing a seamless experience on desktop, tablet, and mobile devices.
+
+4. Technical Assumptions
+
+Repository Structure: Monorepo
+
+To simplify development, dependency management, and type-sharing for a single developer, the project will be structured as a Monorepo.
+
+Service Architecture: Integrated Serverless
+
+The application will use a modern, integrated serverless architecture. Backend logic will be handled directly within the Next.js framework using Route Handlers for API endpoints and Server Actions for data mutations.
+
+Testing Requirements: Full Testing Pyramid
+
+The project will adhere to a comprehensive testing strategy, including Unit, Integration, and End-to-End (E2E) tests to ensure quality and reliability.
+
+Additional Technical Assumptions and Requests
+
+All specific technology and library choices documented in the Project Brief (Next.js 14, TypeScript, Tailwind, shadcn/ui, Prisma, Stripe, NextAuth, Vercel) are confirmed as foundational requirements for the architecture.
+5. Epic List
+
+Epic 1: Foundation & Site Scaffolding
+Goal: Establish the complete project foundation, including the monorepo setup, core dependencies, database connection, styling theme, and a basic, deployable homepage to validate the CI/CD pipeline.
+Epic 2: Product Catalog & Content Display
+Goal: Build out all product and solution pages, allowing users to browse, learn about, and compare the Trinity Pro and its payloads.
+Epic 3: Lead Generation Funnels
+Goal: Implement and activate the core business funnels by creating fully functional "Request a Quote" and "Book a Demo" forms with email notifications.
+Epic 4: Accessory E-commerce & Checkout
+Goal: Enable the complete e-commerce lifecycle for non-enterprise items, from adding accessories to a cart to completing a secure payment via Stripe.
+Epic 1: Foundation & Site Scaffolding
+
+Goal: Establish the complete project foundation, including the monorepo setup, core dependencies, database connection, styling theme, and a basic, deployable homepage to validate the CI/CD pipeline.
+
+Story 1.1: Project Initialization & Repository Setup
+
+As a developer, I want to initialize a new Next.js 14 project within a Monorepo structure, so that I have a clean, version-controlled foundation for development. Acceptance Criteria: 1. A new monorepo is created using npm workspaces. 2. A new Next.js 14 application is scaffolded within an apps/web directory. 3. TypeScript, ESLint, and Prettier are configured for code quality and consistency. 4. The project is initialized as a Git repository and can be pushed to a remote provider.
+
+Story 1.2: Core Dependencies & Styling Foundation
+
+As a developer, I want to install and configure Tailwind CSS and shadcn/ui, so that I have the foundational styling and component system available for all future UI work. Acceptance Criteria: 1. Tailwind CSS is successfully integrated into the Next.js application. 2. shadcn/ui is initialized, and its CLI is configured correctly. 3. A basic Button component imported from shadcn/ui renders correctly on a page to verify the setup. 4. The global CSS file is configured with the base Tailwind directives.
+
+Story 1.3: Database Setup & Prisma Integration
+
+As a developer, I want to set up the Prisma ORM and connect it to a local SQLite database, so that the application has a functional data layer for local development. Acceptance Criteria: 1. Prisma is added as a project dependency. 2. The Prisma schema is initialized with a placeholder model to confirm connectivity. 3. Prisma Client is generated successfully. 4. A server component can successfully query the local SQLite database via Prisma Client without errors.
+
+Story 1.4: Basic Homepage Layout & Components
+
+As a user, I want to see a basic homepage with a header, main content area, and footer, so that the fundamental layout of the site is established. Acceptance Criteria: 1. A reusable Header component is created that displays the company name "Insight Up Solutions". 2. A reusable Footer component is created with placeholder copyright text. 3. The main homepage (/) uses the Header and Footer components to structure the page. 4. The main content area of the homepage displays a simple "Welcome" message.
+
+Story 1.5: Vercel Deployment & CI/CD Pipeline
+
+As a developer, I want to configure and deploy the application to Vercel, so that I have a live preview URL and a validated continuous deployment pipeline. Acceptance Criteria: 1. The project is successfully linked to a new project on Vercel. 2. A push to the main branch automatically triggers a successful production deployment. 3. The deployed homepage from Story 1.4 is publicly accessible and renders correctly at its Vercel URL.
+
+Epic 2: Product Catalog & Content Display
+
+Goal: Build out all product and solution pages, allowing users to browse, learn about, and compare the Trinity Pro and its payloads.
+
+Story 2.1: Reusable Product Card Component
+
+As a developer, I want to create a reusable ProductCard component that displays a product's image, name, and a brief description, so that it can be used consistently on all catalog and feature pages. Acceptance Criteria: 1. The ProductCard component accepts props for an image, name, and summary text. 2. The component styling is clean, professional, and responsive. 3. Clicking anywhere on the card navigates the user to that product's detail page. 4. The card includes a placeholder for a "Learn More" call-to-action.
+
+Story 2.2: Product Catalog Page
+
+As a user, I want to view a catalog page that displays all available products in a clean grid, so that I can easily browse the offerings. Acceptance Criteria: 1. A new page is created at the /shop route. 2. The page displays a responsive grid of ProductCard components using placeholder data. 3. The grid layout adapts cleanly to mobile, tablet, and desktop screen sizes. 4. The page includes a clear heading, such as "Product Catalog."
+
+Story 2.3: Product Detail Page Template
+
+As a user, I want a detailed product page with a clear layout for images, descriptions, and technical data, so that I can thoroughly research a product before making an inquiry. Acceptance Criteria: 1. A dynamic route is created at /shop/[slug]. 2. The page layout includes a main image gallery, product title, long description, and a primary call-to-action button (e.g., "Request a Quote"). 3. A tabbed interface is implemented with sections for "Specifications," "Downloads," and "What's in the Box." 4. The page is populated with placeholder data to validate the layout.
+
+Story 2.4: Populate Core Product Data
+
+As a developer, I want to populate the product detail pages with actual data for the Trinity Pro, Sony ILX-LR1, and Qube 640, so that users can view accurate and compelling information. Acceptance Criteria: 1. A data-fetching mechanism is implemented for the /shop/[slug] route to load product-specific data. 2. The Trinity Pro, Sony ILX-LR1, and Qube 640 pages are populated with their correct images, descriptions, and technical specifications. 3. Links to downloadable PDF spec sheets are functional.
+
+Story 2.5: Solutions Page
+
+As a user, I want to view a "Solutions" page that explains the applications of the products for my industry, so that I can understand how they solve my specific problems. Acceptance Criteria: 1. A new page is created at a /solutions route. 2. The page contains distinct sections for key industries (e.g., "Surveying & Mapping," "Precision Agriculture," "Public Safety"). 3. Each section provides a brief overview of the workflow and links to the relevant product pages. 4. The page is styled consistently with the rest of the site.
+
+Epic 3: Lead Generation Funnels
+
+Goal: Implement and activate the core business funnels by creating fully functional "Request a Quote" and "Book a Demo" forms with email notifications.
+
+Story 3.1: Reusable Inquiry Form Component
+
+As a developer, I want to create a single, reusable form component for user inquiries, so that I can maintain consistency and avoid code duplication for quote and demo requests. Acceptance Criteria: 1. A new InquiryForm component is created using react-hook-form for state management and Zod for validation. 2. The form includes validated, required fields for Name, Email, and a Message. A field for Company is optional. 3. The component accepts props for a title (e.g., "Request a Quote") and a hidden subject line for email routing. 4. The form is built with shadcn/ui input components and is fully responsive.
+
+Story 3.2: Quote Request Page & API Endpoint
+
+As a user browsing a high-value item, I want to fill out and submit a "Request a Quote" form, so that I can receive pricing and follow-up information. Acceptance Criteria: 1. A new page is created at a /quote-request route, displaying the InquiryForm. 2. A Next.js Server Action or Route Handler is created to securely receive the form data. 3. Upon successful submission, the form is cleared and a success message is displayed to the user. 4. If submission fails, a clear error message is displayed without losing the user's input.
+
+Story 3.3: Email Notification Integration
+
+As a business owner, I want to receive an immediate email notification when a quote request is submitted, so that I can provide a timely response to the new lead. Acceptance Criteria: 1. The Resend email service is integrated into the backend. 2. The form submission action from Story 3.2 is updated to trigger a formatted email. 3. The notification email is sent to a configurable address stored in an environment variable. 4. The email's body contains all the data submitted by the user in a clear, readable format.
+
+Story 3.4: Demo Booking Page and Funnel
+
+As a user interested in the test range, I want to fill out and submit a "Book a Demo" form, so that I can schedule a demonstration. Acceptance Criteria: 1. A new page is created at a /book-demo route that reuses the InquiryForm component with the appropriate title. 2. The form submission is handled by the existing backend logic. 3. Upon submission, a notification email with the subject "New Demo Request" is sent to the configured company address. 4. The user receives a clear success confirmation on the page.
+
+Epic 4: Accessory E-commerce & Checkout
+
+Goal: Enable the complete e-commerce lifecycle for non-enterprise items, from adding accessories to a cart to completing a secure payment via Stripe.
+
+Story 4.1: Shopping Cart State Management
+
+As a developer, I want to implement a client-side state management solution for the shopping cart, so that the user's selections can be tracked across their session. Acceptance Criteria: 1. A state management store is created for the cart. 2. Functions are available to add, remove, and update the quantity of items in the cart. 3. The cart's contents persist during page navigation. 4. The total price is automatically calculated and updated when the cart changes.
+
+Story 4.2: "Add to Cart" UI & Functionality
+
+As a user, I want to add accessories to my cart from their product pages, so that I can begin the purchasing process. Acceptance Criteria: 1. An "Add to Cart" button is displayed on product pages for items designated as accessories. 2. Clicking the button adds the item to the cart state. 3. A cart icon in the main site header displays a badge with the current number of items in the cart. 4. Clicking the cart icon navigates the user to the cart page.
+
+Story 4.3: Shopping Cart Review Page
+
+As a user, I want to view and manage the contents of my shopping cart, so that I can review my order before payment. Acceptance Criteria: 1. A new page is created at the /cart route. 2. The page lists all items in the cart, showing their name, quantity, and price. 3. The user can update quantities or remove items from this page. 4. The page displays an order subtotal and a "Proceed to Checkout" button.
+
+Story 4.4: Stripe Checkout Integration
+
+As a user, I want to complete my purchase using a secure, hosted payment page, so that I can pay for my items with confidence. Acceptance Criteria: 1. The Stripe React SDK is integrated into the application. 2. Clicking "Proceed to Checkout" creates a Stripe Checkout Session via a secure backend action. 3. The user is successfully redirected to the Stripe-hosted checkout page. 4. Simple /success and /cancel pages are created to handle the return redirect from Stripe.
+
+Story 4.5: Order Confirmation Notification
+
+As a business owner, I want to receive an email notification for successful orders, so that I can fulfill the order. Acceptance Criteria: 1. A Stripe webhook handler is created to listen for the checkout.session.completed event. 2. The webhook securely validates the event and triggers a notification via Resend. 3. The notification email, sent to a company address, contains the order details. 4. The user's cart is cleared after they are redirected to the /success page.
