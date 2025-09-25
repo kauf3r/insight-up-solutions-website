@@ -43,15 +43,16 @@ export default function ProductGrid({
       id: "ilx-lr1",
       name: "Sony ILX-LR1 for Trinity Pro",
       category: "Trinity Payload",
-      description: "High-resolution 61MP imaging sensor specifically integrated for Trinity Pro platform. Perfect for surveying and mapping missions.",
+      description: "Professional 61MP RGB camera with cutting-edge high-accuracy capabilities. Seamlessly integrates with Trinity Pro for exceptional image quality and streamlined workflows.",
       image: productImage2,
-      price: "$8,500",
+      price: "Contact for Pricing",
       specifications: [
-        "Trinity Pro compatible mount",
-        "Resolution: 61MP full-frame", 
-        "ISO range: 50-102,400",
-        "Video: 4K 60fps",
-        "Weight: 647g optimized for Trinity"
+        "Sensor: 61.0 MP (9504 × 6336 px)",
+        "GSD @100m AGL: 1.57 cm/px", 
+        "Coverage @120m AGL: 491 ha",
+        "Ultra-compact Trinity Pro integration",
+        "Direct camera control capability",
+        "Advanced sensor technology"
       ],
       featured: false
     },
