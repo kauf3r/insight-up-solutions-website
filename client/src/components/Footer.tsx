@@ -65,16 +65,16 @@ export default function Footer() {
             <div className="space-y-3">
               <div className="flex items-center gap-3 text-sm">
                 <Mail className="h-4 w-4 text-muted-foreground" />
-                <span className="text-muted-foreground">info@insightup.com</span>
+                <span className="text-muted-foreground">info@insightupsolutions.com</span>
               </div>
               <div className="flex items-center gap-3 text-sm">
                 <Phone className="h-4 w-4 text-muted-foreground" />
-                <span className="text-muted-foreground">+1 (555) 123-4567</span>
+                <span className="text-muted-foreground">+1 (831) 888-7172</span>
               </div>
               <div className="flex items-center gap-3 text-sm">
                 <MapPin className="h-4 w-4 text-muted-foreground" />
                 <span className="text-muted-foreground">
-                  123 Innovation Drive, Tech City, TC 12345
+                  450 McQuaide Dr La Selva Beach, CA 95076
                 </span>
               </div>
             </div>
