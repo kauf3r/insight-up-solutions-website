@@ -48,13 +48,16 @@ export default function HeroSection() {
                 New: Trinity Pro Platform
               </Badge>
               <h1 className="text-4xl lg:text-6xl font-bold text-foreground leading-tight max-w-4xl mx-auto">
-                Professional UAV Solutions for 
-                <span className="text-primary"> Mission Success</span>
+                Insight Up 
+                <span className="text-primary"> Solutions</span>
               </h1>
+              <h2 className="text-2xl lg:text-3xl font-semibold text-muted-foreground max-w-3xl mx-auto">
+                Professional UAV Solutions for Mission Success
+              </h2>
               <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-                Trusted by professionals in surveying, agriculture, and public safety. 
-                The Trinity Pro platform delivers 90-minute flight times, 700 ha coverage, 
-                and enterprise-grade reliability with cutting-edge payload integration.
+                We're advancing drone adoption industry-wide, partnering with leading UAV and sensor manufacturers 
+                to deploy integrated systems that transform data into actionable intelligence. From precision agriculture 
+                to critical infrastructure monitoring, our solutions deliver enterprise-grade reliability and proven results.
               </p>
             </div>
 
