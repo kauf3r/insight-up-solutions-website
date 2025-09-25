@@ -15,7 +15,7 @@ export default function HeroSection() {
     <>
       {/* Full Width Hero Video */}
       <section className="relative w-full">
-        <div className="relative w-full h-[400px] lg:h-[500px] overflow-hidden">
+        <div className="relative w-full h-[440px] lg:h-[550px] overflow-hidden">
           <video
             autoPlay
             muted
