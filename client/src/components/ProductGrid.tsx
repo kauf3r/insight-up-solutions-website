@@ -57,18 +57,19 @@ export default function ProductGrid({
       featured: false
     },
     {
-      id: "qube-640",
-      name: "Qube 640 for Trinity Pro",
+      id: "phase-one-p5",
+      name: "Phase One P5 for Trinity Pro",
       category: "Trinity Payload",
-      description: "Advanced thermal imaging camera engineered for Trinity Pro integration. Ideal for agriculture monitoring and search & rescue operations.",
+      description: "Revolutionary 128MP medium format survey-grade camera. Delivers 0.5 cm RMS accuracy with electronic global shutter for unparalleled precision mapping.",
       image: productImage3,
-      price: "$12,200",
+      price: "Contact for Pricing",
       specifications: [
-        "Trinity Pro gimbal integration",
-        "Resolution: 640x512 thermal",
-        "Temperature range: -40°C to +550°C", 
-        "Accuracy: ±2°C or ±2%",
-        "Real-time data to Trinity Pro"
+        "Sensor: 128MP medium format CMOS",
+        "Electronic global shutter",
+        "GSD @60m: 0.26 cm/px (80mm lens)",
+        "Coverage @120m: 135 ha (80mm lens)",
+        "Survey-grade 0.5 cm RMS XY/Z accuracy",
+        "Metrically calibrated lens & sensor"
       ],
       featured: false
     }
