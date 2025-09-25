@@ -30,9 +30,9 @@ export default function HeroSection() {
           <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
           <div className="absolute top-8 right-8 w-1/3">
             <div className="bg-white/50 backdrop-blur-sm rounded-lg p-6">
-              <h3 className="text-lg font-semibold text-foreground">Trinity Pro Launch</h3>
+              <h3 className="text-lg font-semibold text-foreground">Insight Up Solutions</h3>
               <p className="text-sm text-muted-foreground mt-2">
-                Professional UAV platform with modular payload system
+                Advancing drone adoption industry-wide, working with UAV and sensor firms to deploy systems turning data into action.
               </p>
             </div>
           </div>
