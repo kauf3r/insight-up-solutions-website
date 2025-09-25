@@ -12,13 +12,15 @@ interface ProductGridProps {
   subtitle?: string;
   showViewAll?: boolean;
   maxProducts?: number;
+  excludeTrinityPro?: boolean;
 }
 
 export default function ProductGrid({ 
   title = "Our Products",
   subtitle = "Professional UAV solutions for every mission",
   showViewAll = true,
-  maxProducts = 4 
+  maxProducts = 4,
+  excludeTrinityPro = false 
 }: ProductGridProps) {
   // TODO: Remove mock data when implementing real product data
   const products = [
@@ -94,7 +96,11 @@ export default function ProductGrid({
     }
   ];
 
-  const displayProducts = products.slice(0, maxProducts);
+  const filteredProducts = excludeTrinityPro 
+    ? products.filter(product => product.id !== "trinity-pro")
+    : products;
+  
+  const displayProducts = filteredProducts.slice(0, maxProducts);
 
   return (
     <section className="py-20" data-testid="section-products">
