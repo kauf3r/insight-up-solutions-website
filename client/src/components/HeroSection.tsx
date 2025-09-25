@@ -28,8 +28,8 @@ export default function HeroSection() {
             Your browser does not support the video tag.
           </video>
           <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-center">
-            <div className="bg-white/90 backdrop-blur-sm rounded-lg p-6 max-w-md">
+          <div className="absolute top-8 right-8 w-1/3">
+            <div className="bg-white/50 backdrop-blur-sm rounded-lg p-6">
               <h3 className="text-lg font-semibold text-foreground">Trinity Pro Launch</h3>
               <p className="text-sm text-muted-foreground mt-2">
                 Professional UAV platform with modular payload system
