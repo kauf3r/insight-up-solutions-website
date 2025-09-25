@@ -104,7 +104,7 @@ export default function SolutionsSection() {
                   variant="outline" 
                   size="sm" 
                   asChild 
-                  className="w-full group-hover:bg-primary group-hover:text-primary-foreground group-hover:border-primary transition-all duration-300 group/btn"
+                  className="w-full transition-all duration-300 group/btn"
                   data-testid={`button-learn-more-${index}`}
                 >
                   <Link href={solution.href}>

@@ -120,12 +120,12 @@ export default function ProductCard({
                 console.log(`Quote requested for ${name}`);
                 onQuoteRequest?.();
               }}
-              className="flex-1 hover:bg-primary hover:text-primary-foreground transition-all duration-200"
+              className="flex-1 transition-all duration-200"
               data-testid={`button-quote-${id}`}
             >
               Request Quote
             </Button>
-            <Button variant="ghost" size="sm" className="hover:bg-primary/10" data-testid={`button-download-${id}`}>
+            <Button variant="ghost" size="sm" data-testid={`button-download-${id}`}>
               <Download className="h-4 w-4" />
             </Button>
           </div>

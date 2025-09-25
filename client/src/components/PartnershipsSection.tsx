@@ -109,7 +109,7 @@ export default function PartnershipsSection() {
                 <Button 
                   variant="ghost" 
                   size="sm" 
-                  className="w-full group-hover:bg-primary/10 group-hover:text-primary transition-all duration-300 group/btn"
+                  className="w-full transition-all duration-300 group/btn"
                   onClick={() => console.log(`Learn more about ${partner.name}`)}
                   data-testid={`button-partner-${index}`}
                 >
