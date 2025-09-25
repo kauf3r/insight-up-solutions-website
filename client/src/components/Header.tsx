@@ -29,7 +29,7 @@ export default function Header({ cartItemCount = 0 }: HeaderProps) {
               <img
                 src={logoImage}
                 alt="Insight Up Solutions"
-                className="h-8 w-auto"
+                className="h-12 w-auto"
                 data-testid="logo-image"
               />
             </Link>
