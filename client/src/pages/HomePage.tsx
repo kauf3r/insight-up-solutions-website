@@ -1,7 +1,9 @@
 import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
+import TrustSignals from "@/components/TrustSignals";
 import ProductGrid from "@/components/ProductGrid";
 import SolutionsSection from "@/components/SolutionsSection";
+import PartnershipsSection from "@/components/PartnershipsSection";
 import Footer from "@/components/Footer";
 
 export default function HomePage() {
@@ -10,12 +12,14 @@ export default function HomePage() {
       <Header cartItemCount={0} />
       <main>
         <HeroSection />
+        <TrustSignals />
         <ProductGrid 
-          title="Featured Products"
-          subtitle="Discover our flagship UAV platform and advanced payload systems trusted by professionals worldwide"
+          title="Professional UAV Systems"
+          subtitle="Precision-engineered platforms and sensors for mission-critical applications across surveying, agriculture, and public safety"
           maxProducts={3}
         />
         <SolutionsSection />
+        <PartnershipsSection />
       </main>
       <Footer />
     </div>

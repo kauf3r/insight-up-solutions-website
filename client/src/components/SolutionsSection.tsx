@@ -30,10 +30,10 @@ export default function SolutionsSection() {
       title: "Precision Agriculture",
       description: "Advanced crop monitoring and agricultural analytics for optimized farming operations.",
       applications: [
-        "Crop health analysis",
-        "Yield prediction",
-        "Irrigation planning",
-        "Pest detection"
+        "Crop health monitoring with multispectral analysis",
+        "Variable rate application mapping",
+        "Livestock monitoring and management", 
+        "Precision irrigation optimization"
       ],
       href: "/solutions/agriculture"
     },
