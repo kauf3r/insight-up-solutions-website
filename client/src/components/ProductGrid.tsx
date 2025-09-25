@@ -25,7 +25,7 @@ export default function ProductGrid({
       id: "trinity-pro",
       name: "Trinity Pro UAV Platform",
       category: "UAV Platform", 
-      description: "Professional-grade UAV platform designed for mission-critical applications in surveying, agriculture, and public safety.",
+      description: "Quantum Systems Trinity Pro - The foundation platform designed for seamless payload integration and mission-critical applications.",
       image: productImage1,
       price: "Contact for Pricing",
       specifications: [
@@ -39,33 +39,33 @@ export default function ProductGrid({
     },
     {
       id: "ilx-lr1",
-      name: "Sony ILX-LR1 Sensor",
-      category: "Payload",
-      description: "High-resolution imaging sensor with advanced low-light capabilities for professional aerial photography and surveying.",
+      name: "Sony ILX-LR1 for Trinity Pro",
+      category: "Trinity Payload",
+      description: "High-resolution 61MP imaging sensor specifically integrated for Trinity Pro platform. Perfect for surveying and mapping missions.",
       image: productImage2,
       price: "$8,500",
       specifications: [
-        "Resolution: 61MP full-frame",
+        "Trinity Pro compatible mount",
+        "Resolution: 61MP full-frame", 
         "ISO range: 50-102,400",
         "Video: 4K 60fps",
-        "Weight: 647g",
-        "Mount: E-mount"
+        "Weight: 647g optimized for Trinity"
       ],
       featured: false
     },
     {
       id: "qube-640",
-      name: "Qube 640 Thermal Camera",
-      category: "Payload",
-      description: "Advanced thermal imaging camera for agriculture monitoring, search & rescue, and infrastructure inspection.",
+      name: "Qube 640 for Trinity Pro",
+      category: "Trinity Payload",
+      description: "Advanced thermal imaging camera engineered for Trinity Pro integration. Ideal for agriculture monitoring and search & rescue operations.",
       image: productImage3,
       price: "$12,200",
       specifications: [
+        "Trinity Pro gimbal integration",
         "Resolution: 640x512 thermal",
-        "Temperature range: -40°C to +550°C",
+        "Temperature range: -40°C to +550°C", 
         "Accuracy: ±2°C or ±2%",
-        "Frame rate: 30Hz",
-        "Weight: 280g"
+        "Real-time data to Trinity Pro"
       ],
       featured: false
     }
