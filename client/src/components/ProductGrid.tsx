@@ -93,6 +93,24 @@ export default function ProductGrid({
         "50% productivity improvement vs Qube 240"
       ],
       featured: false
+    },
+    {
+      id: "oblique-d2m",
+      name: "Oblique D2M for Trinity Pro",
+      category: "Trinity Payload",
+      description: "Advanced five-lens RGB camera system for large-scale 3D photogrammetry. Combines 4 oblique and 1 NADIR camera for complex geometry capture and high-rise 3D mesh generation.",
+      image: productImage2,
+      price: "Contact for Pricing",
+      specifications: [
+        "5-camera system: 1 NADIR + 4 oblique",
+        "Total resolution: 130 MP",
+        "Individual sensors: 26 MP (6252 × 4168 px)",
+        "GSD @100m AGL: 1.50 cm/px",
+        "Trigger interval: ≥ 0.8 seconds",
+        "CMOS sensor technology",
+        "Optimized for 3D mesh generation"
+      ],
+      featured: false
     }
   ];
 

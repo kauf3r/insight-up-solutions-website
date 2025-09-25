@@ -17,7 +17,7 @@ export default function HomePage() {
           title="Trinity Platform Payloads"
           subtitle="Professional payload systems engineered for the Quantum Systems Trinity Pro platform, delivering mission-critical data capture capabilities"
           excludeTrinityPro={true}
-          maxProducts={3}
+          maxProducts={4}
         />
         <SolutionsSection />
         <PartnershipsSection />
