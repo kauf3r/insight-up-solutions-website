@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { Link } from "wouter";
 import productImage1 from '@assets/stock_images/high-tech_industrial_62ae4ce6.jpg';
-import productImage2 from '@assets/stock_images/high-tech_industrial_0d5a74ba.jpg';
+import productImage2 from '@assets/QS_Site_Cameras_Overview_LR1_1758835586515.jpg';
 import productImage3 from '@assets/stock_images/high-tech_industrial_23684b9f.jpg';
 import productImage4 from '@assets/stock_images/lidar_scanner_techno_826b16f4.jpg';
 
