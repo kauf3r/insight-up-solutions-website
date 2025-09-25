@@ -4,7 +4,7 @@ import productImage1 from '@assets/stock_images/high-tech_industrial_62ae4ce6.jp
 export default function TrinityPlatformSection() {
   const trinityPro = {
     id: "trinity-pro",
-    name: "Trinity Pro UAV Platform",
+    name: "Quantum Systems Trinity Pro UAV Platform",
     category: "UAV Platform", 
     description: "Next-generation eVTOL fixed-wing mapping drone with Quantum-Skynode autopilot. Future-proof platform with 75,000+ proven flight hours globally.",
     image: productImage1,
