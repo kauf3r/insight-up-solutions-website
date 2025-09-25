@@ -1,6 +1,5 @@
 import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
-import TrustSignals from "@/components/TrustSignals";
 import ProductGrid from "@/components/ProductGrid";
 import SolutionsSection from "@/components/SolutionsSection";
 import PartnershipsSection from "@/components/PartnershipsSection";
@@ -12,10 +11,9 @@ export default function HomePage() {
       <Header cartItemCount={0} />
       <main>
         <HeroSection />
-        <TrustSignals />
         <ProductGrid 
-          title="Professional UAV Systems"
-          subtitle="Precision-engineered platforms and sensors for mission-critical applications across surveying, agriculture, and public safety"
+          title="Trinity Platform Payloads"
+          subtitle="Professional payload systems engineered for the Quantum Systems Trinity Pro platform, delivering mission-critical data capture capabilities"
           maxProducts={3}
         />
         <SolutionsSection />
