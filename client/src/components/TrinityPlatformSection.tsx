@@ -1,5 +1,5 @@
 import ProductCard from "./ProductCard";
-import productImage1 from '@assets/stock_images/high-tech_industrial_62ae4ce6.jpg';
+import productImage1 from '@assets/Trinity Pro_1758836912459.jpg';
 
 export default function TrinityPlatformSection() {
   const trinityPro = {

@@ -2,7 +2,7 @@ import ProductCard from "./ProductCard";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { Link } from "wouter";
-import productImage1 from '@assets/stock_images/high-tech_industrial_62ae4ce6.jpg';
+import productImage1 from '@assets/Trinity Pro_1758836912459.jpg';
 import productImage2 from '@assets/QS_Site_Cameras_Overview_LR1_1758835586515.jpg';
 import productImage3 from '@assets/QS_Site_Cameras_Overview_P5_1758835926986.jpg';
 import productImage4 from '@assets/QS_Qube640_Feature_Image_Product_Page_1758836005589.jpg';
