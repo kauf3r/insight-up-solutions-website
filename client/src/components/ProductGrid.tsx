@@ -5,6 +5,7 @@ import { Link } from "wouter";
 import productImage1 from '@assets/stock_images/high-tech_industrial_62ae4ce6.jpg';
 import productImage2 from '@assets/stock_images/high-tech_industrial_0d5a74ba.jpg';
 import productImage3 from '@assets/stock_images/high-tech_industrial_23684b9f.jpg';
+import productImage4 from '@assets/stock_images/lidar_scanner_techno_826b16f4.jpg';
 
 interface ProductGridProps {
   title?: string;
@@ -17,7 +18,7 @@ export default function ProductGrid({
   title = "Our Products",
   subtitle = "Professional UAV solutions for every mission",
   showViewAll = true,
-  maxProducts = 3 
+  maxProducts = 4 
 }: ProductGridProps) {
   // TODO: Remove mock data when implementing real product data
   const products = [
@@ -70,6 +71,24 @@ export default function ProductGrid({
         "Coverage @120m: 135 ha (80mm lens)",
         "Survey-grade 0.5 cm RMS XY/Z accuracy",
         "Metrically calibrated lens & sensor"
+      ],
+      featured: false
+    },
+    {
+      id: "qube-640",
+      name: "Qube 640 LiDAR for Trinity Pro",
+      category: "Trinity Payload",
+      description: "Specialized LiDAR scanner co-developed with YellowScan. Features selectable 176° FOV and enables 32km corridor scanning in a single flight.",
+      image: productImage4,
+      price: "Contact for Pricing",
+      specifications: [
+        "Scanner: Hesai XT32M2X",
+        "GNSS: SBG Quanta Micro",
+        "Integrated 8MP RGB camera",
+        "Laser range: 300m",
+        "Precision: 3cm, Accuracy: 2.5cm",
+        "Selectable FOV up to 176°",
+        "50% productivity improvement vs Qube 240"
       ],
       featured: false
     }
