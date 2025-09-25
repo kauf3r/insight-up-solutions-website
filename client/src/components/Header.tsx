@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { ShoppingCart, Menu } from "lucide-react";
 import { Link, useLocation } from "wouter";
 import { useState } from "react";
+import logoImage from '@assets/InsightUpSolutions_BlackLogo (1)_1758828020872.png';
 
 interface HeaderProps {
   cartItemCount?: number;
@@ -24,10 +25,13 @@ export default function Header({ cartItemCount = 0 }: HeaderProps) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
-            <Link href="/" data-testid="link-home">
-              <span className="text-xl font-semibold text-foreground">
-                Insight Up Solutions
-              </span>
+            <Link href="/" data-testid="link-home" className="flex items-center">
+              <img
+                src={logoImage}
+                alt="Insight Up Solutions"
+                className="h-8 w-auto"
+                data-testid="logo-image"
+              />
             </Link>
           </div>
 
