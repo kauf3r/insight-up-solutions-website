@@ -37,15 +37,6 @@ export default function ProductCard({
         </div>
       )}
       
-      {/* Add compliance badges for certain products */}
-      {(id === 'trinity-pro' || id === 'qube-640') && (
-        <div className="absolute -top-3 right-4 z-20">
-          <Badge variant="outline" className="bg-background/95 text-xs border-primary/20 shadow-sm" data-testid={`badge-compliance-${id}`}>
-            NDAA Compliant
-          </Badge>
-        </div>
-      )}
-      
       <CardHeader className="p-0">
         <div className="relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10" />
