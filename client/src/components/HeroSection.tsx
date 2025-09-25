@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ArrowRight, Shield, Target, Zap } from "lucide-react";
 import { Link } from "wouter";
-import heroImage from '@assets/stock_images/high-tech_industrial_62ae4ce6.jpg';
+import trinityVideo from '@assets/0925 Trinity launch _1758826468109.mp4';
 
 export default function HeroSection() {
   const features = [
@@ -13,19 +13,24 @@ export default function HeroSection() {
 
   return (
     <>
-      {/* Full Width Hero Image */}
+      {/* Full Width Hero Video */}
       <section className="relative w-full">
         <div className="relative w-full h-[400px] lg:h-[500px] overflow-hidden">
-          <img
-            src={heroImage}
-            alt="Trinity Pro UAV System"
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
             className="w-full h-full object-cover"
-            data-testid="img-hero"
-          />
+            data-testid="video-hero"
+          >
+            <source src={trinityVideo} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
           <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
           <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-center">
             <div className="bg-white/90 backdrop-blur-sm rounded-lg p-6 max-w-md">
-              <h3 className="text-lg font-semibold text-foreground">Trinity Pro</h3>
+              <h3 className="text-lg font-semibold text-foreground">Trinity Pro Launch</h3>
               <p className="text-sm text-muted-foreground mt-2">
                 Professional UAV platform with modular payload system
               </p>
