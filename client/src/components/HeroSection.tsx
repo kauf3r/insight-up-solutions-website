@@ -78,22 +78,6 @@ export default function HeroSection() {
                 <Link href="/solutions">View Solutions</Link>
               </Button>
             </div>
-
-            <div className="pt-8 border-t border-border max-w-2xl mx-auto">
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <p className="text-sm text-muted-foreground">
-                  Trusted by 500+ organizations worldwide
-                </p>
-                <div className="flex gap-2">
-                  <Badge variant="outline" className="text-xs">
-                    NDAA Compliant
-                  </Badge>
-                  <Badge variant="outline" className="text-xs">
-                    Blue UAS Cleared
-                  </Badge>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </section>
