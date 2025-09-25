@@ -53,8 +53,8 @@ export default function HeroSection() {
               </h1>
               <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
                 Trusted by professionals in surveying, agriculture, and public safety. 
-                The Trinity Pro platform delivers enterprise-grade reliability with 
-                cutting-edge payload integration.
+                The Trinity Pro platform delivers 90-minute flight times, 700 ha coverage, 
+                and enterprise-grade reliability with cutting-edge payload integration.
               </p>
             </div>
 

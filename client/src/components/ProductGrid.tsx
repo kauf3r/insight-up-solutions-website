@@ -25,15 +25,17 @@ export default function ProductGrid({
       id: "trinity-pro",
       name: "Trinity Pro UAV Platform",
       category: "UAV Platform", 
-      description: "Quantum Systems Trinity Pro - The foundation platform designed for seamless payload integration and mission-critical applications.",
+      description: "Next-generation eVTOL fixed-wing mapping drone with Quantum-Skynode autopilot. Future-proof platform with 75,000+ proven flight hours globally.",
       image: productImage1,
       price: "Contact for Pricing",
       specifications: [
-        "Flight time: Up to 45 minutes",
-        "Max payload: 2.5kg", 
-        "Wind resistance: 15 m/s",
-        "Operating temp: -10°C to +50°C",
-        "GPS accuracy: ±2cm RTK"
+        "Flight time: 90 minutes maximum",
+        "Max take-off weight: 5.75kg (12.68 lbs)", 
+        "Wind tolerance: 11 m/s (21.4 kn)",
+        "Max altitude: 5,500m (18,045 ft)",
+        "Area coverage: 700 ha per flight",
+        "IP 55 rated for harsh environments",
+        "PPK included with iBase GNSS station"
       ],
       featured: true
     },
