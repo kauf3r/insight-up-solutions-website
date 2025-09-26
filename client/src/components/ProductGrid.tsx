@@ -45,21 +45,32 @@ export default function ProductGrid({
   categoryFilter = [],
   dataTestIdPrefix = "products"
 }: ProductGridProps) {
-  const { data: apiProducts = [], isLoading } = useQuery<Product[]>({
+  const { data: apiProducts = [], isLoading, error } = useQuery<Product[]>({
     queryKey: ["/api/products"],
   });
 
   // Transform API products to match component interface
-  const products = apiProducts.map(product => ({
-    id: product.id,
-    name: product.name,
-    category: product.category,
-    description: product.description,
-    image: imageMap[product.name] || productImage1,
-    price: product.price || "Contact for Pricing",
-    specifications: product.specifications ? JSON.parse(product.specifications) : [],
-    featured: product.name.includes("Trinity Pro")
-  }));
+  const products = apiProducts.map(product => {
+    let specifications: string[] = [];
+    if (product.specifications) {
+      try {
+        specifications = JSON.parse(product.specifications);
+      } catch {
+        specifications = [];
+      }
+    }
+
+    return {
+      id: product.id,
+      name: product.name,
+      category: product.category,
+      description: product.description,
+      image: imageMap[product.name] || productImage1,
+      price: product.price || "Contact for Pricing",
+      specifications,
+      featured: product.name.includes("Trinity Pro")
+    };
+  });
 
   if (isLoading) {
     return (
@@ -83,11 +94,26 @@ export default function ProductGrid({
     );
   }
 
+  if (error) {
+    return (
+      <section className="py-20" data-testid={`section-${dataTestIdPrefix}`}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center space-y-6">
+            <h2 className="text-3xl lg:text-4xl font-bold text-foreground">{title}</h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              Unable to load products at this time. Please try again later.
+            </p>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
   let filteredProducts = products;
   
   // Filter out Trinity Pro if requested
   if (excludeTrinityPro) {
-    filteredProducts = filteredProducts.filter(product => product.id !== "trinity-pro");
+    filteredProducts = filteredProducts.filter(product => !product.name.includes("Trinity Pro"));
   }
   
   // Filter by category if specified
