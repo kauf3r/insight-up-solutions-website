@@ -64,7 +64,7 @@ export default function SolutionsSection() {
   ];
 
   return (
-    <section className="py-24 bg-gradient-to-b from-accent/5 to-accent/15" data-testid="section-solutions">
+    <section className="py-24 bg-gradient-to-b from-accent/5 to-accent/15 pt-[50px] pb-[50px]" data-testid="section-solutions">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center space-y-6 mb-20">
           <div className="inline-flex items-center px-4 py-2 bg-primary/10 rounded-full">
