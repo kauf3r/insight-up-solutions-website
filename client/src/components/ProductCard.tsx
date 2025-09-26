@@ -30,7 +30,7 @@ export default function ProductCard({
   return (
     <Card className={`group relative overflow-hidden hover-elevate transition-all duration-500 hover:shadow-2xl ${featured ? 'ring-2 ring-primary' : ''}`} data-testid={`card-product-${id}`}>
       {featured && (
-        <div className="absolute -top-3 left-4 z-20">
+        <div className="absolute top-4 left-4 z-20">
           <Badge className="bg-gradient-to-r from-primary to-primary/80 text-primary-foreground shadow-lg" data-testid="badge-featured">
             Featured
           </Badge>
