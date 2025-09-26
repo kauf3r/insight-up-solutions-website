@@ -28,9 +28,7 @@ export default function TrinityPlatformSection() {
           <h2 className="text-3xl lg:text-4xl font-bold text-foreground" data-testid="text-trinity-platform-title">
             Trinity UAV Platform
           </h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto" data-testid="text-trinity-platform-subtitle">
-            The industry-leading Trinity Pro UAV platform engineered by Quantum Systems for professional mapping and surveying missions
-          </p>
+          <p className="text-lg text-muted-foreground max-w-3xl mx-auto" data-testid="text-trinity-platform-subtitle">We feature the industry-leading Trinity Pro UAV platform engineered by Quantum Systems for professional mapping and surveying missions</p>
         </div>
 
         <div className="max-w-4xl mx-auto">
