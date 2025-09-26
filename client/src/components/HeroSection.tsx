@@ -28,13 +28,32 @@ export default function HeroSection() {
             Your browser does not support the video tag.
           </video>
           <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-          <div className="absolute top-8 right-8 w-1/3">
-            <div className="bg-white/50 backdrop-blur-sm rounded-lg p-6">
-              <h3 className="text-lg font-semibold text-foreground">Insight Up Solutions</h3>
-              <h4 className="text-md font-medium text-foreground mt-1">Turn Every Flight Into Mission Success</h4>
-              <p className="text-sm text-muted-foreground mt-2">
-                In just 90 minutes, capture 1,730 acres of survey-grade data. While others provide parts, we deliver complete mission solutions that work flawlessly together.
+          <div className="absolute inset-x-4 bottom-4 md:left-8 md:bottom-8 md:inset-x-auto max-w-sm md:max-w-md">
+            <div className="bg-black/70 backdrop-blur-md rounded-lg p-6 shadow-xl ring-1 ring-white/10">
+              {/* Overline brand badge */}
+              <div className="text-xs uppercase tracking-wide text-white/60 mb-2">Insight Up Solutions</div>
+              
+              {/* Main headline - larger and more prominent */}
+              <h3 className="text-2xl md:text-3xl font-bold text-white mb-3 tracking-tight">
+                Turn Every Flight Into Mission Success
+              </h3>
+              
+              {/* Performance metrics as highlighted pill */}
+              <div className="inline-flex items-center gap-2 bg-white/10 rounded-full px-3 py-1 text-sm text-white/90 mb-4">
+                <span className="font-semibold">1,730 acres</span>
+                <span className="text-white/60">•</span>
+                <span className="font-semibold">90 min</span>
+              </div>
+              
+              {/* Concise body text */}
+              <p className="text-white/80 text-sm leading-relaxed mb-4">
+                Complete mission solutions that work flawlessly together.
               </p>
+              
+              {/* Inline CTA */}
+              <Button variant="outline" size="sm" className="bg-white/10 border-white/20 text-white hover:bg-white/20" data-testid="button-hero-demo">
+                Book Demo
+              </Button>
             </div>
           </div>
         </div>
