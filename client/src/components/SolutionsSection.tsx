@@ -1,6 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Compass, Sprout, Shield, ArrowRight } from "lucide-react";
+import { Compass, Sprout, Shield, Settings, ArrowRight } from "lucide-react";
 import { Link } from "wouter";
 
 interface Solution {
@@ -48,6 +48,18 @@ export default function SolutionsSection() {
         "Traffic monitoring"
       ],
       href: "/solutions/public-safety"
+    },
+    {
+      icon: Settings,
+      title: "Custom Solutions",
+      description: "Tailored UAV systems engineered for specialized applications and unique operational requirements.",
+      applications: [
+        "Custom payload integration",
+        "Mission-specific software development",
+        "Specialized sensor configurations",
+        "Bespoke workflow solutions"
+      ],
+      href: "/solutions/custom"
     }
   ];
 
