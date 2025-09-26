@@ -14,6 +14,7 @@ export default function Header({ cartItemCount = 0 }: HeaderProps) {
 
   const navItems = [
     { label: "Home", href: "/" },
+    { label: "About", href: "/about" },
     { label: "Products", href: "/products" },
     { label: "Training", href: "/training" },
     { label: "Support", href: "/support" },
