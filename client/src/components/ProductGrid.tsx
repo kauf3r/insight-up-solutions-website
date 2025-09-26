@@ -2,6 +2,8 @@ import ProductCard from "./ProductCard";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { Link } from "wouter";
+import { useQuery } from "@tanstack/react-query";
+import type { Product } from "@shared/schema";
 import productImage1 from '@assets/Trinity Pro_1758836912459.jpg';
 import productImage2 from '@assets/QS_Site_Cameras_Overview_LR1_1758835586515.jpg';
 import productImage3 from '@assets/QS_Site_Cameras_Overview_P5_1758835926986.jpg';
@@ -10,6 +12,19 @@ import productImage5 from '@assets/qbase_3d_software.jpg';
 import productImage6 from '@assets/pix4dcatch_app.png';
 import productImage7 from '@assets/pix4dcloud_platform.jpg';
 import productImage8 from '@assets/correlator3d_software.png';
+
+// Image mapping for products
+const imageMap: Record<string, string> = {
+  "Quantum Systems Trinity Pro UAV Platform": productImage1,
+  "Sony ILX-LR1 for Trinity Pro": productImage2,
+  "Phase One P5 for Trinity Pro": productImage3,
+  "Qube 640 LiDAR for Trinity Pro": productImage4,
+  "Oblique D2M for Trinity Pro": productImage4, // Reusing LiDAR image for now
+  "QBase 3D Mission Planning Software": productImage5,
+  "Pix4DCatch Mobile 3D Scanner": productImage6,
+  "PIX4Dcloud Processing Platform": productImage7,
+  "SimActive Correlator3D Photogrammetry Suite": productImage8,
+};
 
 interface ProductGridProps {
   title?: string;
@@ -30,169 +45,43 @@ export default function ProductGrid({
   categoryFilter = [],
   dataTestIdPrefix = "products"
 }: ProductGridProps) {
-  // TODO: Remove mock data when implementing real product data
-  const products = [
-    {
-      id: "trinity-pro",
-      name: "Quantum Systems Trinity Pro UAV Platform",
-      category: "UAV Platform", 
-      description: "Next-generation eVTOL fixed-wing mapping drone with Quantum-Skynode autopilot. Future-proof platform with 75,000+ proven flight hours globally.",
-      image: productImage1,
-      price: "Contact for Pricing",
-      specifications: [
-        "Flight time: 90 minutes maximum",
-        "Max take-off weight: 5.75kg (12.68 lbs)", 
-        "Wind tolerance: 11 m/s (21.4 kn)",
-        "Max altitude: 5,500m (18,045 ft)",
-        "Area coverage: 700 ha per flight",
-        "IP 55 rated for harsh environments",
-        "PPK included with iBase GNSS station"
-      ],
-      featured: true
-    },
-    {
-      id: "ilx-lr1",
-      name: "Sony ILX-LR1 for Trinity Pro",
-      category: "Trinity Payload",
-      description: "Professional 61MP RGB camera with cutting-edge high-accuracy capabilities. Seamlessly integrates with Trinity Pro for exceptional image quality and streamlined workflows.",
-      image: productImage2,
-      price: "Contact for Pricing",
-      specifications: [
-        "Sensor: 61.0 MP (9504 × 6336 px)",
-        "GSD @100m AGL: 1.57 cm/px", 
-        "Coverage @120m AGL: 491 ha",
-        "Ultra-compact Trinity Pro integration",
-        "Direct camera control capability",
-        "Advanced sensor technology"
-      ],
-      featured: false
-    },
-    {
-      id: "phase-one-p5",
-      name: "Phase One P5 for Trinity Pro",
-      category: "Trinity Payload",
-      description: "Revolutionary 128MP medium format survey-grade camera. Delivers 0.5 cm RMS accuracy with electronic global shutter for unparalleled precision mapping.",
-      image: productImage3,
-      price: "Contact for Pricing",
-      specifications: [
-        "Sensor: 128MP medium format CMOS",
-        "Electronic global shutter",
-        "GSD @60m: 0.26 cm/px (80mm lens)",
-        "Coverage @120m: 135 ha (80mm lens)",
-        "Survey-grade 0.5 cm RMS XY/Z accuracy",
-        "Metrically calibrated lens & sensor"
-      ],
-      featured: false
-    },
-    {
-      id: "qube-640",
-      name: "Qube 640 LiDAR for Trinity Pro",
-      category: "Trinity Payload",
-      description: "Specialized LiDAR scanner co-developed with YellowScan. Features selectable 176° FOV and enables 32km corridor scanning in a single flight.",
-      image: productImage4,
-      price: "Contact for Pricing",
-      specifications: [
-        "Scanner: Hesai XT32M2X",
-        "GNSS: SBG Quanta Micro",
-        "Integrated 8MP RGB camera",
-        "Laser range: 300m",
-        "Precision: 3cm, Accuracy: 2.5cm",
-        "Selectable FOV up to 176°",
-        "50% productivity improvement vs Qube 240"
-      ],
-      featured: false
-    },
-    {
-      id: "oblique-d2m",
-      name: "Oblique D2M for Trinity Pro",
-      category: "Trinity Payload",
-      description: "Advanced five-lens RGB camera system for large-scale 3D photogrammetry. Combines 4 oblique and 1 NADIR camera for complex geometry capture and high-rise 3D mesh generation.",
-      image: productImage2,
-      price: "Contact for Pricing",
-      specifications: [
-        "5-camera system: 1 NADIR + 4 oblique",
-        "Total resolution: 130 MP",
-        "Individual sensors: 26 MP (6252 × 4168 px)",
-        "GSD @100m AGL: 1.50 cm/px",
-        "Trigger interval: ≥ 0.8 seconds",
-        "CMOS sensor technology",
-        "Optimized for 3D mesh generation"
-      ],
-      featured: false
-    },
-    {
-      id: "qbase-3d",
-      name: "QBase 3D Mission Planning Software",
-      category: "Trinity Software",
-      description: "All-in-one mission planning and monitoring software for Trinity Pro. Plan, execute and monitor aerial surveying missions with confidence using integrated 3D mission viewing and automated flight path generation.",
-      image: productImage5,
-      price: "Included with Trinity Pro",
-      specifications: [
-        "Integrated imagery and Digital Terrain Modeling",
-        "3D mission viewing and planning interface",
-        "Live monitoring of mission progress",
-        "Automated safe flight path generation",
-        "Advanced Terrain Following capability",
-        "Integrated data post-processing tools",
-        "Mission synchronization across devices"
-      ],
-      featured: false
-    },
-    {
-      id: "pix4dcatch",
-      name: "Pix4DCatch Mobile 3D Scanner",
-      category: "Software",
-      description: "Professional mobile 3D scanning app with AR features and RTK compatibility. Transform your smartphone into a precise 3D scanning device for georeferenced data capture with centimeter-level accuracy.",
-      image: productImage6,
-      price: "Free Discovery / Professional License Available",
-      specifications: [
-        "Georeferenced 3D scanning with LiDAR",
-        "Augmented Reality (AR) features",
-        "RTK compatibility for centimeter accuracy",
-        "Automatic GCP and tie point detection",
-        "Real-time scan coverage feedback",
-        "Direct upload to PIX4Dcloud",
-        "Export to PIX4Dmatic and PIX4Dmapper"
-      ],
-      featured: false
-    },
-    {
-      id: "pix4dcloud",
-      name: "PIX4Dcloud Processing Platform",
-      category: "Software",
-      description: "Cloud-based photogrammetry platform for processing drone and terrestrial imagery. Generate accurate orthomosaics, 3D models, and point clouds with collaborative tools for project tracking and documentation.",
-      image: productImage7,
-      price: "Subscription Plans Available",
-      specifications: [
-        "Automatic cloud-based processing",
-        "Timeline analysis and progress tracking",
-        "Volume calculation and comparison",
-        "CAD/BIM file overlay capabilities",
-        "Collaborative sharing and annotations",
-        "Virtual inspection tools",
-        "Trimble Connect integration"
-      ],
-      featured: false
-    },
-    {
-      id: "correlator3d",
-      name: "SimActive Correlator3D",
-      category: "Software",
-      description: "High-end photogrammetry suite for satellite, aerial, and drone imagery. GPU-accelerated processing delivers survey-grade accuracy for large datasets with aerial triangulation, DSM/DTM generation, and 3D modeling.",
-      image: productImage8,
-      price: "Enterprise License Required",
-      specifications: [
-        "GPU and multi-core CPU acceleration",
-        "Unlimited number of images",
-        "Survey-grade accuracy reporting",
-        "Universal sensor support (drone/aircraft/satellite)",
-        "Advanced 3D feature extraction",
-        "Seamless LiDAR integration",
-        "Command line and script automation"
-      ],
-      featured: false
-    }
-  ];
+  const { data: apiProducts = [], isLoading } = useQuery<Product[]>({
+    queryKey: ["/api/products"],
+  });
+
+  // Transform API products to match component interface
+  const products = apiProducts.map(product => ({
+    id: product.id,
+    name: product.name,
+    category: product.category,
+    description: product.description,
+    image: imageMap[product.name] || productImage1,
+    price: product.price || "Contact for Pricing",
+    specifications: product.specifications ? JSON.parse(product.specifications) : [],
+    featured: product.name.includes("Trinity Pro")
+  }));
+
+  if (isLoading) {
+    return (
+      <section className="py-20" data-testid={`section-${dataTestIdPrefix}`}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center space-y-6 mb-12">
+            <h2 className="text-3xl lg:text-4xl font-bold text-foreground">{title}</h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">{subtitle}</p>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+            {[...Array(maxProducts || 4)].map((_, index) => (
+              <div key={index} className="bg-card rounded-lg p-6 animate-pulse">
+                <div className="w-full h-48 bg-muted rounded-lg mb-4"></div>
+                <div className="h-4 bg-muted rounded w-3/4 mb-2"></div>
+                <div className="h-3 bg-muted rounded w-1/2"></div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   let filteredProducts = products;
   
