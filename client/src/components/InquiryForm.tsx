@@ -78,7 +78,6 @@ export default function InquiryForm({
           {description || defaultDescription}
         </p>
       </CardHeader>
-
       <CardContent className="space-y-6">
         <Form {...form}>
           <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-6">
@@ -241,7 +240,8 @@ export default function InquiryForm({
         <div className="text-center text-sm text-muted-foreground">
           <p>
             We'll respond within 24 hours. For urgent inquiries, call{" "}
-            <span className="font-medium text-foreground">+1 (555) 123-4567</span>
+            <span className="font-medium text-foreground">+1 (831) 888-7172
+</span>
           </p>
         </div>
       </CardContent>
