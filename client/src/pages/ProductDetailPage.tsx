@@ -34,7 +34,21 @@ const imageMap: Record<string, string> = {
 };
 
 export default function ProductDetailPage() {
-  const { id } = useParams<{ id: string }>();
+  const { id: urlId } = useParams<{ id: string }>();
+  
+  // Handle friendly URLs by mapping them to actual UUIDs
+  const getProductId = (inputId: string) => {
+    const friendlyUrlMap: Record<string, string> = {
+      'trinity-pro': '46278773-9c53-4b47-b9f4-1c0a2b003ce1',
+      'sony-ilx-lr1': '03762537-a154-4265-9bab-a78a54235ac0',
+      'phase-one-p5': '8e751853-6c57-40c2-a0e1-913256dba830',
+      'qube-640-lidar': '86112e35-7e93-4f93-9675-6c3ef925f245',
+      'oblique-d2m': '85d29b3b-64d2-4ad7-84e1-c7b12b72223e'
+    };
+    return friendlyUrlMap[inputId] || inputId;
+  };
+  
+  const id = urlId ? getProductId(urlId) : undefined;
 
   const { data: product, isLoading, error } = useQuery<Product>({
     queryKey: ["/api/products", id],
