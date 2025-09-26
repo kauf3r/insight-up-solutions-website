@@ -6,6 +6,11 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import HomePage from "@/pages/HomePage";
 import AboutPage from "@/pages/AboutPage";
 import TrainingPage from "@/pages/TrainingPage";
+import SolutionsPage from "@/pages/SolutionsPage";
+import SurveyingSolutionPage from "@/pages/SurveyingSolutionPage";
+import AgricultureSolutionPage from "@/pages/AgricultureSolutionPage";
+import PublicSafetySolutionPage from "@/pages/PublicSafetySolutionPage";
+import CustomSolutionPage from "@/pages/CustomSolutionPage";
 import QuotePage from "@/pages/QuotePage";
 import DemoPage from "@/pages/DemoPage";
 import ProductsPage from "@/pages/ProductsPage";
@@ -18,6 +23,11 @@ function Router() {
       <Route path="/" component={HomePage} />
       <Route path="/about" component={AboutPage} />
       <Route path="/training" component={TrainingPage} />
+      <Route path="/solutions" component={SolutionsPage} />
+      <Route path="/solutions/surveying" component={SurveyingSolutionPage} />
+      <Route path="/solutions/agriculture" component={AgricultureSolutionPage} />
+      <Route path="/solutions/public-safety" component={PublicSafetySolutionPage} />
+      <Route path="/solutions/custom" component={CustomSolutionPage} />
       <Route path="/quote" component={QuotePage} />
       <Route path="/demo" component={DemoPage} />
       <Route path="/products" component={ProductsPage} />
