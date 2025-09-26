@@ -17,6 +17,8 @@ interface ProductGridProps {
   showViewAll?: boolean;
   maxProducts?: number;
   excludeTrinityPro?: boolean;
+  categoryFilter?: string[];
+  dataTestIdPrefix?: string;
 }
 
 export default function ProductGrid({ 
@@ -24,7 +26,9 @@ export default function ProductGrid({
   subtitle = "Professional UAV solutions for every mission",
   showViewAll = true,
   maxProducts = 4,
-  excludeTrinityPro = false 
+  excludeTrinityPro = false,
+  categoryFilter = [],
+  dataTestIdPrefix = "products"
 }: ProductGridProps) {
   // TODO: Remove mock data when implementing real product data
   const products = [
@@ -190,20 +194,30 @@ export default function ProductGrid({
     }
   ];
 
-  const filteredProducts = excludeTrinityPro 
-    ? products.filter(product => product.id !== "trinity-pro")
-    : products;
+  let filteredProducts = products;
+  
+  // Filter out Trinity Pro if requested
+  if (excludeTrinityPro) {
+    filteredProducts = filteredProducts.filter(product => product.id !== "trinity-pro");
+  }
+  
+  // Filter by category if specified
+  if (categoryFilter.length > 0) {
+    filteredProducts = filteredProducts.filter(product => 
+      categoryFilter.includes(product.category)
+    );
+  }
   
   const displayProducts = filteredProducts.slice(0, maxProducts);
 
   return (
-    <section className="py-20" data-testid="section-products">
+    <section className="py-20" data-testid={`section-${dataTestIdPrefix}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center space-y-4 mb-16">
-          <h2 className="text-3xl lg:text-4xl font-bold text-foreground" data-testid="text-products-title">
+          <h2 className="text-3xl lg:text-4xl font-bold text-foreground" data-testid={`text-${dataTestIdPrefix}-title`}>
             {title}
           </h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto" data-testid="text-products-subtitle">
+          <p className="text-lg text-muted-foreground max-w-3xl mx-auto" data-testid={`text-${dataTestIdPrefix}-subtitle`}>
             {subtitle}
           </p>
         </div>
@@ -220,7 +234,7 @@ export default function ProductGrid({
 
         {showViewAll && (
           <div className="text-center">
-            <Button size="lg" asChild data-testid="button-view-all-products">
+            <Button size="lg" asChild data-testid={`button-view-all-${dataTestIdPrefix}`}>
               <Link href="/products">
                 View All Products
                 <ArrowRight className="ml-2 h-4 w-4" />
