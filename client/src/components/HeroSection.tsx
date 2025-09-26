@@ -51,8 +51,8 @@ export default function HeroSection() {
               </p>
               
               {/* Inline CTA */}
-              <Button variant="outline" size="sm" className="bg-white/10 border-white/20 text-white hover:bg-white/20" data-testid="button-hero-demo">
-                Book Demo
+              <Button variant="outline" size="sm" className="bg-white/10 border-white/20 text-white hover:bg-white/20" asChild data-testid="button-hero-demo">
+                <Link href="/demo">Book Demo</Link>
               </Button>
             </div>
           </div>
@@ -85,8 +85,8 @@ export default function HeroSection() {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" asChild data-testid="button-explore-trinity">
-                <Link href="/products/trinity-pro">
+              <Button size="lg" asChild data-testid="button-book-demo-call">
+                <Link href="/demo">
                   Book Your Demo Call
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
