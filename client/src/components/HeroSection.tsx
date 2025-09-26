@@ -58,7 +58,6 @@ export default function HeroSection() {
           </div>
         </div>
       </section>
-
       {/* Content Section */}
       <section className="relative bg-gradient-to-br from-background to-accent/20 py-20 lg:py-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -70,9 +69,7 @@ export default function HeroSection() {
               <h2 className="text-2xl lg:text-3xl font-semibold text-muted-foreground max-w-3xl mx-auto">
                 Integrated. Reliable. Mission-Critical.
               </h2>
-              <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-                While others sell components, we deliver complete mission solutions. Our Trinity Pro platform integrates seamlessly with premium Sony, Phase One, and Qube sensors—giving you unmatched versatility and reliability in a single system. Experience the difference integrated engineering makes.
-              </p>
+              <p className="text-lg text-muted-foreground max-w-3xl mx-auto">While others sell components, we deliver complete mission solutions. Our offerings include the Quantum Systems Trinity Pro platform, which integrates seamlessly with premium Sony, Phase One, and Qube sensors; giving you unmatched versatility and reliability in a single system. Experience the difference integrated engineering makes.</p>
             </div>
 
             <div className="flex flex-wrap justify-center gap-6">
