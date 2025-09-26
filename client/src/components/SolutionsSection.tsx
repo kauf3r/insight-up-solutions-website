@@ -133,11 +133,11 @@ export default function SolutionsSection() {
 
         <div className="text-center mt-20">
           <div className="inline-flex flex-col items-center space-y-4">
-            <p className="text-muted-foreground">Ready to discuss your specific requirements?</p>
-            <Button size="lg" className="px-8 py-3 shadow-lg group" asChild data-testid="button-book-call">
-              <Link href="/quote">
+            <p className="text-muted-foreground">Ready to explore all applications?</p>
+            <Button size="lg" className="px-8 py-3 shadow-lg group" asChild data-testid="button-view-all-solutions">
+              <Link href="/solutions">
                 <span className="group-hover:translate-x-1 transition-transform duration-200">
-                  Book a Call
+                  View All Solutions
                 </span>
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-200" />
               </Link>
