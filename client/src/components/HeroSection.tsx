@@ -35,19 +35,19 @@ export default function HeroSection() {
               
               {/* Main headline - larger and more prominent */}
               <h3 className="text-2xl md:text-3xl font-bold text-white mb-3 tracking-tight">
-                Turn Every Flight Into Mission Success
+                Advance Your Mission with Proven UAS Solutions
               </h3>
               
               {/* Performance metrics as highlighted pill */}
               <div className="inline-flex items-center gap-2 bg-white/10 rounded-full px-3 py-1 text-sm text-white/90 mb-4">
-                <span className="font-semibold text-[#ffffffe6] bg-[transparent]">1,700+ acres</span>
+                <span className="font-semibold text-[#ffffffe6] bg-[transparent]">Multi-industry</span>
                 <span className="text-white/60">•</span>
-                <span className="font-semibold">90 min</span>
+                <span className="font-semibold">Scalable solutions</span>
               </div>
               
               {/* Concise body text */}
               <p className="text-white/80 text-sm leading-relaxed mb-4">
-                Complete mission solutions that work flawlessly together.
+                Professional UAS systems deliver precision data collection, enhanced safety, and operational efficiency across industries.
               </p>
               
               {/* Inline CTA */}
