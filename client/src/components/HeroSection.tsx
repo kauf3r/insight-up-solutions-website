@@ -31,9 +31,9 @@ export default function HeroSection() {
           <div className="absolute top-8 right-8 w-1/3">
             <div className="bg-white/50 backdrop-blur-sm rounded-lg p-6">
               <h3 className="text-lg font-semibold text-foreground">Insight Up Solutions</h3>
-              <h4 className="text-md font-medium text-foreground mt-1">Professional UAV Solutions for Mission Success</h4>
+              <h4 className="text-md font-medium text-foreground mt-1">Turn Every Flight Into Mission Success</h4>
               <p className="text-sm text-muted-foreground mt-2">
-                We're advancing drone adoption industry-wide, partnering with leading UAV and sensor manufacturers to deploy integrated systems that transform data into actionable intelligence. From precision agriculture to critical infrastructure monitoring, our solutions deliver enterprise-grade reliability and proven results.
+                In just 90 minutes, capture 1,730 acres of survey-grade data. While others provide parts, we deliver complete mission solutions that work flawlessly together.
               </p>
             </div>
           </div>
