@@ -46,16 +46,13 @@ export default function HeroSection() {
           <div className="text-center space-y-8">
             <div className="space-y-4">
               <h1 className="text-4xl lg:text-6xl font-bold text-foreground leading-tight max-w-4xl mx-auto">
-                Insight Up 
-                <span className="text-primary"> Solutions</span>
+                Why Industry Leaders Choose <span className="text-primary">Insight Up Solutions</span>
               </h1>
               <h2 className="text-2xl lg:text-3xl font-semibold text-muted-foreground max-w-3xl mx-auto">
-                Professional UAV Solutions for Mission Success
+                Integrated. Reliable. Mission-Critical.
               </h2>
               <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-                We're advancing drone adoption industry-wide, partnering with leading UAV and sensor manufacturers 
-                to deploy integrated systems that transform data into actionable intelligence. From precision agriculture 
-                to critical infrastructure monitoring, our solutions deliver enterprise-grade reliability and proven results.
+                While others sell components, we deliver complete mission solutions. Our Trinity Pro platform integrates seamlessly with premium Sony, Phase One, and Qube sensors—giving you unmatched versatility and reliability in a single system. Experience the difference integrated engineering makes.
               </p>
             </div>
 
@@ -71,12 +68,12 @@ export default function HeroSection() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" asChild data-testid="button-explore-trinity">
                 <Link href="/products/trinity-pro">
-                  Book a Call
+                  Book Your Demo Call
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
               <Button variant="outline" size="lg" asChild data-testid="button-view-solutions">
-                <Link href="/solutions">View Solutions</Link>
+                <Link href="/solutions">Compare Solutions</Link>
               </Button>
             </div>
           </div>
