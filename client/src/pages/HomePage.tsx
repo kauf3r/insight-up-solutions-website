@@ -3,7 +3,6 @@ import HeroSection from "@/components/HeroSection";
 import TrinityPlatformSection from "@/components/TrinityPlatformSection";
 import ProductGrid from "@/components/ProductGrid";
 import SolutionsSection from "@/components/SolutionsSection";
-import PartnershipsSection from "@/components/PartnershipsSection";
 import Footer from "@/components/Footer";
 
 export default function HomePage() {
@@ -32,7 +31,6 @@ export default function HomePage() {
           dataTestIdPrefix="software"
         />
         <SolutionsSection />
-        <PartnershipsSection />
       </main>
       <Footer />
     </div>
