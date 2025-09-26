@@ -66,9 +66,7 @@ export default function HeroSection() {
               <h1 className="text-4xl lg:text-6xl font-bold text-foreground leading-tight max-w-4xl mx-auto">
                 Why Industry Leaders Choose <span className="text-primary">Insight Up Solutions</span>
               </h1>
-              <h2 className="text-2xl lg:text-3xl font-semibold text-muted-foreground max-w-3xl mx-auto">
-                Integrated. Reliable. Mission-Critical.
-              </h2>
+              <h2 className="text-2xl lg:text-3xl font-semibold text-muted-foreground max-w-3xl mx-auto">Integrated. Reliable. Mission Critical. Collaboration.</h2>
               <p className="text-lg text-muted-foreground max-w-3xl mx-auto">While others sell components, we deliver complete mission solutions. Our offerings include the Quantum Systems Trinity Pro platform, which integrates seamlessly with premium Sony, Phase One, and Qube sensors; giving you unmatched versatility and reliability in a single system. Experience the difference integrated engineering makes.</p>
             </div>
 
