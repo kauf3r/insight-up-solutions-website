@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { SEO } from "@/components/SEO";
 import { Card, CardContent } from "@/components/ui/card";
 import { Users, Target, Award, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -8,6 +9,12 @@ import { Link } from "wouter";
 export default function AboutPage() {
   return (
     <div className="min-h-screen bg-background">
+      <SEO 
+        title="About Insight Up Solutions - Professional UAV Technology Leaders"
+        description="Founded by Chris Bley in 2017, Insight Up Solutions partners with leading UAV manufacturers to deliver proven UAS solutions for automated inspections and data collection across industries."
+        ogTitle="About Insight Up Solutions - UAV Technology Experts"
+        ogDescription="Learn about our founder's vision and mission to advance drone adoption industry-wide through strategic partnerships and innovative UAS solutions."
+      />
       <Header cartItemCount={0} />
       
       <main>

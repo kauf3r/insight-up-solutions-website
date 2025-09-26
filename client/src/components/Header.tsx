@@ -17,7 +17,6 @@ export default function Header({ cartItemCount = 0 }: HeaderProps) {
     { label: "About", href: "/about" },
     { label: "Products", href: "/products" },
     { label: "Training", href: "/training" },
-    { label: "Support", href: "/support" },
   ];
 
   return (
