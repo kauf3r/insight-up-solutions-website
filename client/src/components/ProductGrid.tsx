@@ -111,9 +111,11 @@ export default function ProductGrid({
 
   let filteredProducts = products;
   
-  // Filter out Trinity Pro if requested
+  // Filter out Trinity Pro UAV Platform if requested
   if (excludeTrinityPro) {
-    filteredProducts = filteredProducts.filter(product => !product.name.includes("Trinity Pro"));
+    filteredProducts = filteredProducts.filter(product => 
+      product.category !== "UAV Platform" || !product.name.includes("Trinity Pro")
+    );
   }
   
   // Filter by category if specified
