@@ -17,7 +17,19 @@ export default function HomePage() {
           title="Trinity Platform Payloads"
           subtitle="Professional payload systems engineered for the Quantum Systems Trinity Pro platform, delivering mission-critical data capture capabilities"
           excludeTrinityPro={true}
-          maxProducts={4}
+          categoryFilter={["Trinity Payload"]}
+          maxProducts={6}
+          showViewAll={false}
+          dataTestIdPrefix="hardware"
+        />
+        <ProductGrid 
+          title="Software Solutions"
+          subtitle="Advanced processing and mission planning software to maximize your Trinity Pro platform capabilities and streamline your UAV operations"
+          excludeTrinityPro={true}
+          categoryFilter={["Trinity Software", "Software"]}
+          maxProducts={6}
+          showViewAll={false}
+          dataTestIdPrefix="software"
         />
         <SolutionsSection />
         <PartnershipsSection />
