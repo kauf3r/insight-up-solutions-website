@@ -6,6 +6,7 @@ import productImage1 from '@assets/Trinity Pro_1758836912459.jpg';
 import productImage2 from '@assets/QS_Site_Cameras_Overview_LR1_1758835586515.jpg';
 import productImage3 from '@assets/QS_Site_Cameras_Overview_P5_1758835926986.jpg';
 import productImage4 from '@assets/QS_Qube640_Feature_Image_Product_Page_1758836005589.jpg';
+import productImage5 from '@assets/qbase_3d_software.jpg';
 
 interface ProductGridProps {
   title?: string;
@@ -109,6 +110,24 @@ export default function ProductGrid({
         "Trigger interval: ≥ 0.8 seconds",
         "CMOS sensor technology",
         "Optimized for 3D mesh generation"
+      ],
+      featured: false
+    },
+    {
+      id: "qbase-3d",
+      name: "QBase 3D Mission Planning Software",
+      category: "Trinity Software",
+      description: "All-in-one mission planning and monitoring software for Trinity Pro. Plan, execute and monitor aerial surveying missions with confidence using integrated 3D mission viewing and automated flight path generation.",
+      image: productImage5,
+      price: "Included with Trinity Pro",
+      specifications: [
+        "Integrated imagery and Digital Terrain Modeling",
+        "3D mission viewing and planning interface",
+        "Live monitoring of mission progress",
+        "Automated safe flight path generation",
+        "Advanced Terrain Following capability",
+        "Integrated data post-processing tools",
+        "Mission synchronization across devices"
       ],
       featured: false
     }
