@@ -23,7 +23,7 @@ export default function HomePage() {
         />
         <ProductGrid 
           title="Software Solutions"
-          subtitle="Advanced processing and mission planning software to maximize your Trinity Pro platform capabilities and streamline your UAV operations"
+          subtitle="Advanced processing and mission planning software to maximize your UAS platform capabilities and streamline your UAV operations"
           excludeTrinityPro={true}
           categoryFilter={["Trinity Software", "Software"]}
           maxProducts={6}
