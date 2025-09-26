@@ -7,6 +7,9 @@ import productImage2 from '@assets/QS_Site_Cameras_Overview_LR1_1758835586515.jp
 import productImage3 from '@assets/QS_Site_Cameras_Overview_P5_1758835926986.jpg';
 import productImage4 from '@assets/QS_Qube640_Feature_Image_Product_Page_1758836005589.jpg';
 import productImage5 from '@assets/qbase_3d_software.jpg';
+import productImage6 from '@assets/pix4dcatch_app.png';
+import productImage7 from '@assets/pix4dcloud_platform.jpg';
+import productImage8 from '@assets/correlator3d_software.png';
 
 interface ProductGridProps {
   title?: string;
@@ -128,6 +131,60 @@ export default function ProductGrid({
         "Advanced Terrain Following capability",
         "Integrated data post-processing tools",
         "Mission synchronization across devices"
+      ],
+      featured: false
+    },
+    {
+      id: "pix4dcatch",
+      name: "Pix4DCatch Mobile 3D Scanner",
+      category: "Software",
+      description: "Professional mobile 3D scanning app with AR features and RTK compatibility. Transform your smartphone into a precise 3D scanning device for georeferenced data capture with centimeter-level accuracy.",
+      image: productImage6,
+      price: "Free Discovery / Professional License Available",
+      specifications: [
+        "Georeferenced 3D scanning with LiDAR",
+        "Augmented Reality (AR) features",
+        "RTK compatibility for centimeter accuracy",
+        "Automatic GCP and tie point detection",
+        "Real-time scan coverage feedback",
+        "Direct upload to PIX4Dcloud",
+        "Export to PIX4Dmatic and PIX4Dmapper"
+      ],
+      featured: false
+    },
+    {
+      id: "pix4dcloud",
+      name: "PIX4Dcloud Processing Platform",
+      category: "Software",
+      description: "Cloud-based photogrammetry platform for processing drone and terrestrial imagery. Generate accurate orthomosaics, 3D models, and point clouds with collaborative tools for project tracking and documentation.",
+      image: productImage7,
+      price: "Subscription Plans Available",
+      specifications: [
+        "Automatic cloud-based processing",
+        "Timeline analysis and progress tracking",
+        "Volume calculation and comparison",
+        "CAD/BIM file overlay capabilities",
+        "Collaborative sharing and annotations",
+        "Virtual inspection tools",
+        "Trimble Connect integration"
+      ],
+      featured: false
+    },
+    {
+      id: "correlator3d",
+      name: "SimActive Correlator3D",
+      category: "Software",
+      description: "High-end photogrammetry suite for satellite, aerial, and drone imagery. GPU-accelerated processing delivers survey-grade accuracy for large datasets with aerial triangulation, DSM/DTM generation, and 3D modeling.",
+      image: productImage8,
+      price: "Enterprise License Required",
+      specifications: [
+        "GPU and multi-core CPU acceleration",
+        "Unlimited number of images",
+        "Survey-grade accuracy reporting",
+        "Universal sensor support (drone/aircraft/satellite)",
+        "Advanced 3D feature extraction",
+        "Seamless LiDAR integration",
+        "Command line and script automation"
       ],
       featured: false
     }
