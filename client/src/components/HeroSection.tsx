@@ -40,7 +40,7 @@ export default function HeroSection() {
               
               {/* Performance metrics as highlighted pill */}
               <div className="inline-flex items-center gap-2 bg-white/10 rounded-full px-3 py-1 text-sm text-white/90 mb-4">
-                <span className="font-semibold">1,730 acres</span>
+                <span className="font-semibold text-[#ffffffe6] bg-[transparent]">1,700+ acres</span>
                 <span className="text-white/60">•</span>
                 <span className="font-semibold">90 min</span>
               </div>
