@@ -180,19 +180,6 @@ export default function ProductDetailPage() {
                 </Button>
               </div>
 
-              <div className="bg-muted/50 rounded-lg p-6">
-                <h3 className="font-semibold text-foreground mb-4">Need help with this product?</h3>
-                <div className="space-y-2">
-                  <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                    <Phone className="h-4 w-4" />
-                    <span>+1 (831) 888-7172</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                    <Mail className="h-4 w-4" />
-                    <span>info@insightupsolutions.com</span>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
 
