@@ -28,7 +28,7 @@ export default function HeroSection() {
             Your browser does not support the video tag.
           </video>
           <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-          <div className="absolute inset-x-4 bottom-4 md:left-8 md:bottom-8 md:inset-x-auto max-w-sm md:max-w-md">
+          <div className="absolute top-8 right-4 w-1/3 min-w-80 max-w-md">
             <div className="bg-black/70 backdrop-blur-md rounded-lg p-6 shadow-xl ring-1 ring-white/10">
               {/* Overline brand badge */}
               <div className="text-xs uppercase tracking-wide text-white/60 mb-2">Insight Up Solutions</div>
