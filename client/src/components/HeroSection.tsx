@@ -87,7 +87,7 @@ export default function HeroSection() {
                 </Link>
               </Button>
               <Button variant="outline" size="lg" asChild data-testid="button-view-solutions">
-                <Link href="/solutions">Compare Solutions</Link>
+                <Link href="/solutions">Compare Products</Link>
               </Button>
             </div>
           </div>
