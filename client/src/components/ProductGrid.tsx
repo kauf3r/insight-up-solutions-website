@@ -12,6 +12,9 @@ import productImage5 from '@assets/qbase_3d_software.jpg';
 import productImage6 from '@assets/pix4dcatch_app.png';
 import productImage7 from '@assets/pix4dcloud_platform.jpg';
 import productImage8 from '@assets/correlator3d_software.png';
+import emlidReachRX from '@assets/emlid_reach_rx.png';
+import emlidReachRS3 from '@assets/emlid_reach_rs3.webp';
+import emlidScanningKit from '@assets/emlid_scanning_kit.webp';
 
 // Image mapping for products
 const imageMap: Record<string, string> = {
@@ -24,9 +27,9 @@ const imageMap: Record<string, string> = {
   "Pix4DCatch Mobile 3D Scanner": productImage6,
   "PIX4Dcloud Processing Platform": productImage7,
   "SimActive Correlator3D Photogrammetry Suite": productImage8,
-  "Pix4D & Emlid Scanning Kit": productImage6,
-  "Emlid Reach RS3": productImage4,
-  "Emlid Reach RX": productImage4,
+  "Pix4D & Emlid Scanning Kit": emlidScanningKit,
+  "Emlid Reach RS3": emlidReachRS3,
+  "Emlid Reach RX": emlidReachRX,
 };
 
 interface ProductGridProps {
