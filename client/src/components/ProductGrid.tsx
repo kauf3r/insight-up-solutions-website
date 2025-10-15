@@ -19,11 +19,14 @@ const imageMap: Record<string, string> = {
   "Sony ILX-LR1 for Trinity Pro": productImage2,
   "Phase One P5 for Trinity Pro": productImage3,
   "Qube 640 LiDAR for Trinity Pro": productImage4,
-  "Oblique D2M for Trinity Pro": productImage4, // Reusing LiDAR image for now
+  "Oblique D2M for Trinity Pro": productImage4,
   "QBase 3D Mission Planning Software": productImage5,
   "Pix4DCatch Mobile 3D Scanner": productImage6,
   "PIX4Dcloud Processing Platform": productImage7,
   "SimActive Correlator3D Photogrammetry Suite": productImage8,
+  "Pix4D & Emlid Scanning Kit": productImage6,
+  "Emlid Reach RS3": productImage4,
+  "Emlid Reach RX": productImage4,
 };
 
 interface ProductGridProps {
