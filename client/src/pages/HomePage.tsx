@@ -30,6 +30,15 @@ export default function HomePage() {
           showViewAll={false}
           dataTestIdPrefix="software"
         />
+        <ProductGrid 
+          title="Ground Control & GNSS"
+          subtitle="Professional RTK GNSS receivers and ground control solutions for survey-grade positioning accuracy in UAV operations"
+          excludeTrinityPro={true}
+          categoryFilter={["GNSS Equipment"]}
+          maxProducts={6}
+          showViewAll={false}
+          dataTestIdPrefix="gnss"
+        />
         <SolutionsSection />
       </main>
       <Footer />
