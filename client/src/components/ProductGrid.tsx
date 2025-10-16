@@ -15,6 +15,8 @@ import productImage8 from '@assets/correlator3d_software.png';
 import emlidReachRX from '@assets/emlid_reach_rx.png';
 import emlidReachRS3 from '@assets/emlid_reach_rs3.webp';
 import emlidScanningKit from '@assets/emlid_scanning_kit.webp';
+import dragonfishStandard from '@assets/stock_images/autel_dragonfish_uav_43757464.jpg';
+import dragonfishPro from '@assets/stock_images/autel_dragonfish_uav_49fa43f2.jpg';
 
 // Image mapping for products
 const imageMap: Record<string, string> = {
@@ -30,6 +32,8 @@ const imageMap: Record<string, string> = {
   "Pix4D & Emlid Scanning Kit": emlidScanningKit,
   "Emlid Reach RS3": emlidReachRS3,
   "Emlid Reach RX": emlidReachRX,
+  "Autel Dragonfish Standard": dragonfishStandard,
+  "Autel Dragonfish Pro": dragonfishPro,
 };
 
 interface ProductGridProps {
