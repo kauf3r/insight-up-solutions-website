@@ -64,7 +64,21 @@ export default function ProductGrid({
     let specifications: string[] = [];
     if (product.specifications) {
       try {
-        specifications = JSON.parse(product.specifications);
+        const parsed = JSON.parse(product.specifications);
+        
+        // Handle both array format and object format
+        if (Array.isArray(parsed)) {
+          specifications = parsed;
+        } else if (typeof parsed === 'object' && parsed !== null) {
+          // Convert object to array of "key: value" strings
+          specifications = Object.entries(parsed).map(([key, value]) => {
+            // Format key names nicely (camelCase to Title Case)
+            const formattedKey = key
+              .replace(/([A-Z])/g, ' $1')
+              .replace(/^./, str => str.toUpperCase());
+            return `${formattedKey}: ${value}`;
+          });
+        }
       } catch {
         specifications = [];
       }
