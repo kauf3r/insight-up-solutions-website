@@ -42,7 +42,7 @@ export default function HeroSection() {
               
               {/* Inline CTA */}
               <Button variant="outline" size="xl" className="bg-white/10 border-white/20 text-white hover:bg-white/20 w-full" asChild data-testid="button-hero-demo">
-                <Link href="/demo">Book Demo</Link>
+                <Link href="/demo">Book Call</Link>
               </Button>
             </div>
           </div>
@@ -67,12 +67,12 @@ export default function HeroSection() {
               
               {/* Concise body text */}
               <p className="text-white/80 text-sm leading-relaxed mb-4">
-                Professional UAS systems deliver precision data collection, enhanced safety, and operational efficiency across industries.
+                Learn more about our UAV systems first-hand.
               </p>
               
               {/* Inline CTA */}
               <Button variant="outline" size="xl" className="bg-white/10 border-white/20 text-white hover:bg-white/20" asChild data-testid="button-hero-demo">
-                <Link href="/demo">Book Demo</Link>
+                <Link href="/demo">Book Call</Link>
               </Button>
             </div>
           </div>
@@ -102,7 +102,7 @@ export default function HeroSection() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="xl" asChild data-testid="button-book-demo-call">
                 <Link href="/demo">
-                  Book Your Demo Call
+                  Book Your Call
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
