@@ -199,10 +199,10 @@ export default function ProductDetailPage() {
               </div>
 
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
-                <Button size="lg" onClick={() => document.getElementById('quote-form')?.scrollIntoView({ behavior: 'smooth' })} data-testid="button-request-quote">
+                <Button size="xl" onClick={() => document.getElementById('quote-form')?.scrollIntoView({ behavior: 'smooth' })} data-testid="button-request-quote">
                   Request Quote
                 </Button>
-                <Button variant="outline" size="lg" data-testid="button-download-specs">
+                <Button variant="outline" size="xl" data-testid="button-download-specs">
                   <Download className="h-4 w-4 mr-2" />
                   Download Specs
                 </Button>
