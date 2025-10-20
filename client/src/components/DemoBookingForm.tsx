@@ -17,8 +17,8 @@ interface DemoBookingFormProps {
 }
 
 export default function DemoBookingForm({ 
-  title = "Schedule Your Demo",
-  description = "Visit our test range and see our UAV systems perform live flight demonstrations"
+  title = "Schedule Your Call",
+  description = "Connect with our team to discuss your specific requirements and learn how our UAV systems can meet your needs"
 }: DemoBookingFormProps) {
   const { toast } = useToast();
   const queryClient = useQueryClient();
@@ -201,7 +201,7 @@ export default function DemoBookingForm({
               disabled={createDemoBookingMutation.isPending}
               data-testid="button-submit-demo"
             >
-              {createDemoBookingMutation.isPending ? "Submitting..." : "Schedule Demo"}
+              {createDemoBookingMutation.isPending ? "Submitting..." : "Schedule Call"}
             </Button>
           </form>
         </Form>
