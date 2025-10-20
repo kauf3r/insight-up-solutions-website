@@ -58,7 +58,7 @@ export default function Header({ cartItemCount = 0 }: HeaderProps) {
                 <Link href="/quote">Request Quote</Link>
               </Button>
               <Button size="sm" asChild data-testid="button-book-demo">
-                <Link href="/demo">Book Demo</Link>
+                <Link href="/demo">Book Call</Link>
               </Button>
               <Button variant="ghost" size="icon" className="relative" data-testid="button-cart">
                 <ShoppingCart className="h-5 w-5" />
@@ -110,7 +110,7 @@ export default function Header({ cartItemCount = 0 }: HeaderProps) {
                   <Link href="/quote" onClick={() => setIsMobileMenuOpen(false)}>Request Quote</Link>
                 </Button>
                 <Button size="xl" className="w-full" asChild data-testid="button-mobile-book-demo">
-                  <Link href="/demo" onClick={() => setIsMobileMenuOpen(false)}>Book Demo</Link>
+                  <Link href="/demo" onClick={() => setIsMobileMenuOpen(false)}>Book Call</Link>
                 </Button>
               </div>
             </nav>
