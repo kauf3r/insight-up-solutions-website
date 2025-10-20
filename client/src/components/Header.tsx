@@ -51,21 +51,24 @@ export default function Header({ cartItemCount = 0 }: HeaderProps) {
           </nav>
 
           {/* Actions */}
-          <div className="flex items-center space-x-4">
-            <Button variant="outline" size="sm" asChild data-testid="button-request-quote">
-              <Link href="/quote">Request Quote</Link>
-            </Button>
-            <Button size="sm" asChild data-testid="button-book-demo">
-              <Link href="/demo">Book Demo</Link>
-            </Button>
-            <Button variant="ghost" size="icon" className="relative" data-testid="button-cart">
-              <ShoppingCart className="h-5 w-5" />
-              {cartItemCount > 0 && (
-                <span className="absolute -top-1 -right-1 bg-primary text-primary-foreground text-xs rounded-full h-5 w-5 flex items-center justify-center">
-                  {cartItemCount}
-                </span>
-              )}
-            </Button>
+          <div className="flex items-center space-x-2 sm:space-x-4">
+            {/* Desktop Actions */}
+            <div className="hidden sm:flex items-center space-x-4">
+              <Button variant="outline" size="sm" asChild data-testid="button-request-quote">
+                <Link href="/quote">Request Quote</Link>
+              </Button>
+              <Button size="sm" asChild data-testid="button-book-demo">
+                <Link href="/demo">Book Demo</Link>
+              </Button>
+              <Button variant="ghost" size="icon" className="relative" data-testid="button-cart">
+                <ShoppingCart className="h-5 w-5" />
+                {cartItemCount > 0 && (
+                  <span className="absolute -top-1 -right-1 bg-primary text-primary-foreground text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                    {cartItemCount}
+                  </span>
+                )}
+              </Button>
+            </div>
 
             {/* Mobile menu button */}
             <Button
@@ -100,6 +103,16 @@ export default function Header({ cartItemCount = 0 }: HeaderProps) {
                   </span>
                 </Link>
               ))}
+              
+              {/* Mobile Action Buttons */}
+              <div className="pt-4 space-y-3 border-t border-border">
+                <Button variant="outline" size="sm" className="w-full" asChild data-testid="button-mobile-request-quote">
+                  <Link href="/quote" onClick={() => setIsMobileMenuOpen(false)}>Request Quote</Link>
+                </Button>
+                <Button size="sm" className="w-full" asChild data-testid="button-mobile-book-demo">
+                  <Link href="/demo" onClick={() => setIsMobileMenuOpen(false)}>Book Demo</Link>
+                </Button>
+              </div>
             </nav>
           </div>
         )}

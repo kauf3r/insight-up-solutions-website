@@ -152,10 +152,10 @@ export default function ProductDetailPage() {
     <div className="min-h-screen bg-background">
       <Header />
       
-      <main className="py-12">
+      <main className="py-6 sm:py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Breadcrumb */}
-          <div className="flex items-center gap-2 mb-8">
+          <div className="flex items-center gap-2 mb-6 sm:mb-8">
             <Button variant="ghost" size="sm" asChild data-testid="button-back">
               <Link href="/">
                 <ArrowLeft className="h-4 w-4 mr-2" />
@@ -164,14 +164,14 @@ export default function ProductDetailPage() {
             </Button>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-12 mb-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 mb-12 sm:mb-16">
             {/* Product Image */}
             <div className="space-y-4">
               <div className="relative overflow-hidden rounded-lg bg-gray-100">
                 <img
                   src={productImage}
                   alt={product.name}
-                  className="w-full h-[500px] object-cover"
+                  className="w-full h-[300px] sm:h-[400px] lg:h-[500px] object-cover"
                   data-testid="img-product-detail"
                 />
                 <div className="absolute top-4 left-4">
@@ -183,22 +183,22 @@ export default function ProductDetailPage() {
             </div>
 
             {/* Product Info */}
-            <div className="space-y-6">
-              <div className="space-y-4">
-                <h1 className="text-3xl lg:text-4xl font-bold text-foreground" data-testid="text-product-name">
+            <div className="space-y-4 sm:space-y-6">
+              <div className="space-y-3 sm:space-y-4">
+                <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground" data-testid="text-product-name">
                   {product.name}
                 </h1>
                 
-                <div className="text-2xl font-bold text-primary" data-testid="text-product-price">
+                <div className="text-xl sm:text-2xl font-bold text-primary" data-testid="text-product-price">
                   {product.price || "Contact for Pricing"}
                 </div>
 
-                <p className="text-lg text-muted-foreground leading-relaxed" data-testid="text-product-description">
+                <p className="text-base sm:text-lg text-muted-foreground leading-relaxed" data-testid="text-product-description">
                   {product.description}
                 </p>
               </div>
 
-              <div className="flex gap-4">
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
                 <Button size="lg" onClick={() => document.getElementById('quote-form')?.scrollIntoView({ behavior: 'smooth' })} data-testid="button-request-quote">
                   Request Quote
                 </Button>
@@ -213,12 +213,12 @@ export default function ProductDetailPage() {
 
           {/* Specifications */}
           {specifications.length > 0 && (
-            <Card className="mb-16">
+            <Card className="mb-12 sm:mb-16">
               <CardHeader>
-                <CardTitle className="text-2xl">Technical Specifications</CardTitle>
+                <CardTitle className="text-xl sm:text-2xl">Technical Specifications</CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="grid md:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
                   {specifications.map((spec: string, index: number) => (
                     <div key={index} className="flex items-center gap-3 p-3 rounded-lg bg-muted/30">
                       <CheckCircle className="h-5 w-5 text-primary flex-shrink-0" />
@@ -233,12 +233,12 @@ export default function ProductDetailPage() {
           )}
 
           {/* Features & Benefits */}
-          <Card className="mb-16">
+          <Card className="mb-12 sm:mb-16">
             <CardHeader>
-              <CardTitle className="text-2xl">Why Choose This Solution?</CardTitle>
+              <CardTitle className="text-xl sm:text-2xl">Why Choose This Solution?</CardTitle>
             </CardHeader>
             <CardContent className="space-y-6">
-              <div className="grid md:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                 <div className="text-center space-y-2">
                   <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto">
                     <CheckCircle className="h-6 w-6 text-primary" />
@@ -272,11 +272,11 @@ export default function ProductDetailPage() {
 
           {/* Quote Request Form */}
           <div id="quote-form" className="scroll-mt-20">
-            <div className="text-center mb-8">
-              <h2 className="text-3xl font-bold text-foreground mb-4">
+            <div className="text-center mb-6 sm:mb-8">
+              <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-3 sm:mb-4">
                 Get a Custom Quote
               </h2>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
                 Interested in {product.name}? Get a personalized quote tailored to your specific requirements.
               </p>
             </div>

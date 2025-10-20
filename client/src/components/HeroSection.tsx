@@ -15,7 +15,7 @@ export default function HeroSection() {
     <>
       {/* Full Width Hero Video */}
       <section className="relative w-full">
-        <div className="relative w-full h-[440px] lg:h-[550px] overflow-hidden">
+        <div className="relative w-full h-[350px] sm:h-[440px] lg:h-[550px] overflow-hidden">
           <video
             autoPlay
             muted
@@ -28,7 +28,27 @@ export default function HeroSection() {
             Your browser does not support the video tag.
           </video>
           <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-          <div className="absolute top-8 right-4 w-1/3 min-w-80 max-w-md">
+          
+          {/* Mobile: Full width overlay at bottom */}
+          <div className="absolute bottom-0 left-0 right-0 sm:hidden px-4 pb-4">
+            <div className="bg-black/70 backdrop-blur-md rounded-lg p-4 shadow-xl ring-1 ring-white/10">
+              {/* Overline brand badge */}
+              <div className="text-xs uppercase tracking-wide text-white/60 mb-2">Insight Up Solutions</div>
+              
+              {/* Main headline - mobile optimized */}
+              <h3 className="text-xl font-bold text-white mb-2 tracking-tight">
+                Advance Your Mission with Proven UAS Solutions
+              </h3>
+              
+              {/* Inline CTA */}
+              <Button variant="outline" size="sm" className="bg-white/10 border-white/20 text-white hover:bg-white/20 w-full" asChild data-testid="button-hero-demo">
+                <Link href="/demo">Book Demo</Link>
+              </Button>
+            </div>
+          </div>
+
+          {/* Desktop/Tablet: Side overlay */}
+          <div className="absolute top-8 right-4 w-1/3 min-w-80 max-w-md hidden sm:block">
             <div className="bg-black/70 backdrop-blur-md rounded-lg p-6 shadow-xl ring-1 ring-white/10">
               {/* Overline brand badge */}
               <div className="text-xs uppercase tracking-wide text-white/60 mb-2">Insight Up Solutions</div>
@@ -59,15 +79,15 @@ export default function HeroSection() {
         </div>
       </section>
       {/* Content Section */}
-      <section className="relative bg-gradient-to-br from-background to-accent/20 py-20 lg:py-32">
+      <section className="relative bg-gradient-to-br from-background to-accent/20 py-12 sm:py-20 lg:py-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center space-y-8">
-            <div className="space-y-4">
-              <h1 className="text-4xl lg:text-6xl font-bold text-foreground leading-tight max-w-4xl mx-auto">
+          <div className="text-center space-y-6 sm:space-y-8">
+            <div className="space-y-3 sm:space-y-4">
+              <h1 className="text-2xl sm:text-4xl lg:text-6xl font-bold text-foreground leading-tight max-w-4xl mx-auto">
                 Why Industry Leaders Choose <span className="text-primary">Insight Up Solutions</span>
               </h1>
-              <h2 className="text-2xl lg:text-3xl font-semibold text-muted-foreground max-w-3xl mx-auto">Integrated. Reliable. Mission Critical. Collaboration.</h2>
-              <p className="text-lg text-muted-foreground max-w-3xl mx-auto">While others sell components, we deliver complete mission solutions. Our offerings include the Quantum Systems Trinity Pro platform, which integrates seamlessly with premium Sony, Phase One, and Qube sensors; giving you unmatched versatility and reliability in a single system. Experience the difference integrated engineering makes.</p>
+              <h2 className="text-lg sm:text-2xl lg:text-3xl font-semibold text-muted-foreground max-w-3xl mx-auto">Integrated. Reliable. Mission Critical. Collaboration.</h2>
+              <p className="text-base sm:text-lg text-muted-foreground max-w-3xl mx-auto">While others sell components, we deliver complete mission solutions. Our offerings include the Quantum Systems Trinity Pro platform, which integrates seamlessly with premium Sony, Phase One, and Qube sensors; giving you unmatched versatility and reliability in a single system. Experience the difference integrated engineering makes.</p>
             </div>
 
             <div className="flex flex-wrap justify-center gap-6">
