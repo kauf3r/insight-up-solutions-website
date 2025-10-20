@@ -20,6 +20,11 @@ import productImage5 from '@assets/qbase_3d_software.jpg';
 import productImage6 from '@assets/pix4dcatch_app.png';
 import productImage7 from '@assets/pix4dcloud_platform.jpg';
 import productImage8 from '@assets/correlator3d_software.png';
+import emlidReachRX from '@assets/emlid_reach_rx.png';
+import emlidReachRS3 from '@assets/emlid_reach_rs3.webp';
+import emlidScanningKit from '@assets/emlid_scanning_kit.webp';
+import dragonfishStandard from '@assets/stock_images/autel_dragonfish_uav_43757464.jpg';
+import dragonfishPro from '@assets/stock_images/autel_dragonfish_uav_49fa43f2.jpg';
 
 const imageMap: Record<string, string> = {
   "Quantum Systems Trinity Pro UAV Platform": productImage1,
@@ -31,6 +36,11 @@ const imageMap: Record<string, string> = {
   "Pix4DCatch Mobile 3D Scanner": productImage6,
   "PIX4Dcloud Processing Platform": productImage7,
   "SimActive Correlator3D Photogrammetry Suite": productImage8,
+  "Pix4D & Emlid Scanning Kit": emlidScanningKit,
+  "Emlid Reach RS3": emlidReachRS3,
+  "Emlid Reach RX": emlidReachRX,
+  "Autel Dragonfish Standard": dragonfishStandard,
+  "Autel Dragonfish Pro": dragonfishPro,
 };
 
 export default function ProductDetailPage() {
@@ -111,10 +121,30 @@ export default function ProductDetailPage() {
     );
   }
 
-  const specifications = product.specifications ? 
-    (typeof product.specifications === 'string' ? 
-      JSON.parse(product.specifications) : 
-      product.specifications) : [];
+  let specifications: string[] = [];
+  if (product.specifications) {
+    try {
+      const parsed = typeof product.specifications === 'string' ? 
+        JSON.parse(product.specifications) : 
+        product.specifications;
+      
+      // Handle both array format and object format
+      if (Array.isArray(parsed)) {
+        specifications = parsed;
+      } else if (typeof parsed === 'object' && parsed !== null) {
+        // Convert object to array of "key: value" strings
+        specifications = Object.entries(parsed).map(([key, value]) => {
+          // Format key names nicely (camelCase to Title Case)
+          const formattedKey = key
+            .replace(/([A-Z])/g, ' $1')
+            .replace(/^./, str => str.toUpperCase());
+          return `${formattedKey}: ${value}`;
+        });
+      }
+    } catch {
+      specifications = [];
+    }
+  }
 
   const productImage = imageMap[product.name] || productImage1;
 
@@ -159,11 +189,9 @@ export default function ProductDetailPage() {
                   {product.name}
                 </h1>
                 
-                {product.price && (
-                  <div className="text-2xl font-bold text-primary" data-testid="text-product-price">
-                    {product.price}
-                  </div>
-                )}
+                <div className="text-2xl font-bold text-primary" data-testid="text-product-price">
+                  {product.price || "Contact for Pricing"}
+                </div>
 
                 <p className="text-lg text-muted-foreground leading-relaxed" data-testid="text-product-description">
                   {product.description}
