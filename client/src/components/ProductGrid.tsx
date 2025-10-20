@@ -104,7 +104,7 @@ export default function ProductGrid({
             <h2 className="text-3xl lg:text-4xl font-bold text-foreground">{title}</h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">{subtitle}</p>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {[...Array(maxProducts || 4)].map((_, index) => (
               <div key={index} className="bg-card rounded-lg p-6 animate-pulse">
                 <div className="w-full h-48 bg-muted rounded-lg mb-4"></div>
@@ -163,7 +163,7 @@ export default function ProductGrid({
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-12">
           {displayProducts.map((product) => (
             <ProductCard
               key={product.id}
