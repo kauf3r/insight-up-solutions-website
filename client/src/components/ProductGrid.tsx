@@ -175,7 +175,7 @@ export default function ProductGrid({
 
         {showViewAll && (
           <div className="text-center">
-            <Button size="lg" asChild data-testid={`button-view-all-${dataTestIdPrefix}`}>
+            <Button size="xl" asChild data-testid={`button-view-all-${dataTestIdPrefix}`}>
               <Link href="/products">
                 View All Products
                 <ArrowRight className="ml-2 h-4 w-4" />

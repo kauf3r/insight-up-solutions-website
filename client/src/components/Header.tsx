@@ -73,7 +73,7 @@ export default function Header({ cartItemCount = 0 }: HeaderProps) {
             {/* Mobile menu button */}
             <Button
               variant="ghost"
-              size="icon"
+              size="icon-xl"
               className="md:hidden"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               data-testid="button-mobile-menu"
@@ -86,7 +86,7 @@ export default function Header({ cartItemCount = 0 }: HeaderProps) {
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
           <div className="md:hidden border-t border-border py-4">
-            <nav className="flex flex-col space-y-4">
+            <nav className="flex flex-col">
               {navItems.map((item) => (
                 <Link 
                   key={item.href} 
@@ -95,7 +95,7 @@ export default function Header({ cartItemCount = 0 }: HeaderProps) {
                   data-testid={`mobile-link-${item.label.toLowerCase()}`}
                 >
                   <span
-                    className={`text-sm font-medium ${
+                    className={`block py-3 px-2 text-sm font-medium ${
                       location === item.href ? "text-primary" : "text-muted-foreground"
                     }`}
                   >
@@ -106,10 +106,10 @@ export default function Header({ cartItemCount = 0 }: HeaderProps) {
               
               {/* Mobile Action Buttons */}
               <div className="pt-4 space-y-3 border-t border-border">
-                <Button variant="outline" size="sm" className="w-full" asChild data-testid="button-mobile-request-quote">
+                <Button variant="outline" size="xl" className="w-full" asChild data-testid="button-mobile-request-quote">
                   <Link href="/quote" onClick={() => setIsMobileMenuOpen(false)}>Request Quote</Link>
                 </Button>
-                <Button size="sm" className="w-full" asChild data-testid="button-mobile-book-demo">
+                <Button size="xl" className="w-full" asChild data-testid="button-mobile-book-demo">
                   <Link href="/demo" onClick={() => setIsMobileMenuOpen(false)}>Book Demo</Link>
                 </Button>
               </div>
