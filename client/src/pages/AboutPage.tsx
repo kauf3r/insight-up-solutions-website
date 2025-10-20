@@ -157,7 +157,7 @@ export default function AboutPage() {
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button size="lg" asChild data-testid="button-contact-sales">
                   <Link href="/demo">
-                    Book a Demo
+                    Book a Call
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
                 </Button>

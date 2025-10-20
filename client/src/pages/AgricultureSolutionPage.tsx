@@ -119,7 +119,7 @@ export default function AgricultureSolutionPage() {
                   </Button>
                   <Button variant="outline" size="lg" asChild data-testid="button-book-demo">
                     <Link href="/demo">
-                      Book Demo
+                      Book Call
                     </Link>
                   </Button>
                 </div>
