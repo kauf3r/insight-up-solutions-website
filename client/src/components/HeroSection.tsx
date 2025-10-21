@@ -3,7 +3,7 @@ import { Badge } from "@/components/ui/badge";
 import { ArrowRight, Shield, Target, Zap } from "lucide-react";
 import { Link } from "wouter";
 
-const trinityVideo = '/0925 Trinity launch _1758826468109.mp4';
+const trinityVideo = '/0925_Trinity_launch__1758826468109.mp4';
 
 export default function HeroSection() {
   const features = [
