@@ -1,5 +1,6 @@
 import ProductCard from '../ProductCard';
-import productImage from '@assets/stock_images/high-tech_industrial_0d5a74ba.jpg';
+
+const productImage = '/stock_images/high-tech_industrial_0d5a74ba.jpg';
 
 export default function ProductCardExample() {
   return (
