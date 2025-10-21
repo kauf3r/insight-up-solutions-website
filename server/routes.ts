@@ -120,6 +120,17 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Contact form route (alias for inquiries)
+  app.post("/api/contact", async (req, res) => {
+    try {
+      const validatedData = insertInquirySchema.parse(req.body);
+      const inquiry = await storage.createInquiry(validatedData);
+      res.status(201).json(inquiry);
+    } catch (error) {
+      res.status(400).json({ error: "Invalid contact form data" });
+    }
+  });
+
   const httpServer = createServer(app);
 
   return httpServer;
