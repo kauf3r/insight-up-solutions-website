@@ -50,9 +50,10 @@ Preferred communication style: Simple, everyday language.
 
 ### Asset Management
 - **Static Asset Integration**: Video and image assets served through custom streaming middleware
-- **Hero Video**: 82MB Trinity launch video with chunked streaming support (range requests)
+- **Hero Video**: 1.7MB web-optimized Trinity launch video (1080p, compressed from 82MB 4K original) with chunked streaming support (range requests)
 - **Product Imagery**: High-quality payload and platform images for professional presentation
 - **Brand Assets**: Logo and marketing materials with production-optimized filenames (no spaces)
+- **Deployment Size**: 16MB total (optimized for Autoscale deployment)
 - **Important**: All asset filenames use underscores/dashes (no spaces) for Express static serving compatibility
 
 ## External Dependencies
