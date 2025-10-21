@@ -3,7 +3,7 @@ import { ShoppingCart, Menu } from "lucide-react";
 import { Link, useLocation } from "wouter";
 import { useState } from "react";
 
-const logoImage = '/InsightUpSolutions_BlackLogo (1)_1758828020872.png';
+const logoImage = '/InsightUpSolutions_BlackLogo_(1)_1758828020872.png';
 
 interface HeaderProps {
   cartItemCount?: number;
