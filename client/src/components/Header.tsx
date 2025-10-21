@@ -70,7 +70,7 @@ export default function Header({ cartItemCount = 0 }: HeaderProps) {
             {/* Desktop Actions */}
             <div className="hidden sm:flex items-center space-x-4">
               <Button variant="outline" size="sm" asChild data-testid="button-request-quote">
-                <Link href="/quote">Request Quote</Link>
+                <a href="https://insightupsolutions.com/quote" target="_blank" rel="noopener noreferrer">Request Quote</a>
               </Button>
               <Button size="sm" asChild data-testid="button-book-call">
                 <Link href="/demo">Book a Call</Link>
@@ -137,7 +137,7 @@ export default function Header({ cartItemCount = 0 }: HeaderProps) {
               {/* Mobile Action Buttons */}
               <div className="pt-4 space-y-3 border-t border-border">
                 <Button variant="outline" size="xl" className="w-full" asChild data-testid="button-mobile-request-quote">
-                  <Link href="/quote" onClick={() => setIsMobileMenuOpen(false)}>Request Quote</Link>
+                  <a href="https://insightupsolutions.com/quote" target="_blank" rel="noopener noreferrer" onClick={() => setIsMobileMenuOpen(false)}>Request Quote</a>
                 </Button>
                 <Button size="xl" className="w-full" asChild data-testid="button-mobile-book-call">
                   <Link href="/demo" onClick={() => setIsMobileMenuOpen(false)}>Book a Call</Link>
