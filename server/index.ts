@@ -12,16 +12,11 @@ app.use(express.urlencoded({ extended: false }));
 // Video streaming middleware with range request support
 // Must be registered before other static file serving
 app.get('*.mp4', (req, res) => {
-  console.log(`[VIDEO] Request for: ${req.path}`);
   const videoPath = app.get("env") === "development"
     ? path.join(process.cwd(), 'client', 'public', req.path)
     : path.join(import.meta.dirname, 'public', req.path);
   
-  console.log(`[VIDEO] Resolved path: ${videoPath}`);
-  console.log(`[VIDEO] File exists: ${fs.existsSync(videoPath)}`);
-  
   if (!fs.existsSync(videoPath)) {
-    console.log(`[VIDEO] 404 - Video not found at ${videoPath}`);
     return res.status(404).send('Video not found');
   }
 
