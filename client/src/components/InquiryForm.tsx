@@ -38,10 +38,10 @@ export default function InquiryForm({
 }: InquiryFormProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   
-  const defaultTitle = type === "quote" ? "Request a Quote" : "Book a Demo";
+  const defaultTitle = type === "quote" ? "Request a Quote" : "Book a Call";
   const defaultDescription = type === "quote" 
     ? "Get a custom quote for your UAV solution needs"
-    : "Schedule a live demonstration of our UAV systems";
+    : "Learn more about our UAV systems first-hand";
 
   const form = useForm<InquiryFormData>({
     resolver: zodResolver(inquirySchema),
@@ -230,7 +230,7 @@ export default function InquiryForm({
               ) : (
                 <>
                   <MessageSquare className="mr-2 h-4 w-4" />
-                  {type === "quote" ? "Request Quote" : "Book Demo"}
+                  {type === "quote" ? "Request Quote" : "Book a Call"}
                 </>
               )}
             </Button>

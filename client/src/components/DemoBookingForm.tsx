@@ -201,7 +201,7 @@ export default function DemoBookingForm({
               disabled={createDemoBookingMutation.isPending}
               data-testid="button-submit-demo"
             >
-              {createDemoBookingMutation.isPending ? "Submitting..." : "Schedule Demo"}
+              {createDemoBookingMutation.isPending ? "Submitting..." : "Schedule Call"}
             </Button>
           </form>
         </Form>
