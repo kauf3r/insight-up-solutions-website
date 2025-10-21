@@ -5,7 +5,7 @@ import { Link } from "wouter";
 import { useQuery } from "@tanstack/react-query";
 import type { Product } from "@shared/schema";
 
-const productImage1 = '/Trinity Pro_1758836912459.jpg';
+const productImage1 = '/Trinity_Pro_1758836912459.jpg';
 const productImage2 = '/QS_Site_Cameras_Overview_LR1_1758835586515.jpg';
 const productImage3 = '/QS_Site_Cameras_Overview_P5_1758835926986.jpg';
 const productImage4 = '/QS_Qube640_Feature_Image_Product_Page_1758836005589.jpg';
