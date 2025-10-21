@@ -3,10 +3,10 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ArrowRight, Download } from "lucide-react";
 import { Link } from "wouter";
-import { getProductUrl } from "@/lib/productUrls";
 
 interface ProductCardProps {
   id: string;
+  slug: string;
   name: string;
   category: string;
   description: string;
@@ -19,6 +19,7 @@ interface ProductCardProps {
 
 export default function ProductCard({
   id,
+  slug,
   name,
   category,
   description,
@@ -96,7 +97,7 @@ export default function ProductCard({
 
         <div className="flex flex-col gap-3 pt-2">
           <Button asChild className="w-full group/btn" data-testid={`button-learn-more-${id}`}>
-            <Link href={`/products/${getProductUrl(id)}`}>
+            <Link href={`/products/${slug}`}>
               <span className="group-hover/btn:translate-x-1 transition-transform duration-200">
                 Learn More
               </span>

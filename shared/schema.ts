@@ -12,6 +12,7 @@ export const users = pgTable("users", {
 export const products = pgTable("products", {
   id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
   name: text("name").notNull(),
+  slug: text("slug").notNull().unique(),
   description: text("description").notNull(),
   category: text("category").notNull(),
   price: decimal("price", { precision: 10, scale: 2 }),

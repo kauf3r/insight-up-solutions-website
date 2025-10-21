@@ -4,6 +4,7 @@ import type { InsertProduct } from "@shared/schema";
 const seedProducts: InsertProduct[] = [
   {
     name: "Quantum Systems Trinity Pro UAV Platform",
+    slug: "trinity-pro",
     description: "Next-generation eVTOL fixed-wing mapping drone with Quantum-Skynode autopilot. Future-proof platform with 75,000+ proven flight hours globally.",
     category: "UAV Platform",
     price: null,
@@ -27,6 +28,7 @@ const seedProducts: InsertProduct[] = [
   },
   {
     name: "Sony ILX-LR1 for Trinity Pro",
+    slug: "sony-ilx-lr1",
     description: "Professional 61MP RGB camera with cutting-edge high-accuracy capabilities. Seamlessly integrates with Trinity Pro for exceptional image quality and streamlined workflows.",
     category: "Trinity Payload",
     price: null,
@@ -49,6 +51,7 @@ const seedProducts: InsertProduct[] = [
   },
   {
     name: "Phase One P5 for Trinity Pro",
+    slug: "phase-one-p5",
     description: "Revolutionary 128MP medium format survey-grade camera. Delivers 0.5 cm RMS accuracy with electronic global shutter for unparalleled precision mapping.",
     category: "Trinity Payload",
     price: null,
@@ -71,6 +74,7 @@ const seedProducts: InsertProduct[] = [
   },
   {
     name: "Qube 640 LiDAR for Trinity Pro",
+    slug: "qube-640-lidar",
     description: "Specialized LiDAR scanner co-developed with YellowScan. Features selectable 176° FOV and enables 32km corridor scanning in a single flight.",
     category: "Trinity Payload", 
     price: null,
@@ -94,6 +98,7 @@ const seedProducts: InsertProduct[] = [
   },
   {
     name: "Oblique D2M for Trinity Pro",
+    slug: "oblique-d2m",
     description: "High-precision oblique camera system designed for comprehensive 3D mapping and urban modeling applications.",
     category: "Trinity Payload",
     price: null,
@@ -116,6 +121,7 @@ const seedProducts: InsertProduct[] = [
   },
   {
     name: "QBase 3D Mission Planning Software",
+    slug: "qbase-3d",
     description: "Professional mission planning software for optimized UAV operations. Plan, execute, and monitor flights with precision and efficiency.",
     category: "Trinity Software",
     price: null,
@@ -138,6 +144,7 @@ const seedProducts: InsertProduct[] = [
   },
   {
     name: "Pix4DCatch Mobile 3D Scanner",
+    slug: "pix4dcatch",
     description: "Mobile photogrammetry application for quick and easy 3D scanning using smartphones and tablets.",
     category: "Software",
     price: null,
@@ -160,6 +167,7 @@ const seedProducts: InsertProduct[] = [
   },
   {
     name: "PIX4Dcloud Processing Platform",
+    slug: "pix4dcloud",
     description: "Cloud-based photogrammetry processing platform for professional mapping and surveying applications.",
     category: "Software", 
     price: null,
@@ -182,6 +190,7 @@ const seedProducts: InsertProduct[] = [
   },
   {
     name: "SimActive Correlator3D Photogrammetry Suite",
+    slug: "correlator3d",
     description: "Advanced photogrammetry software suite for high-precision mapping and 3D modeling applications.",
     category: "Software",
     price: null,
@@ -204,6 +213,7 @@ const seedProducts: InsertProduct[] = [
   },
   {
     name: "Emlid Reach RS3",
+    slug: "emlid-reach-rs3",
     description: "Multi-band RTK GNSS receiver with IMU tilt compensation. Survey grade precision even in hard-to-reach spots. Acts as a base or rover. Professional-grade receiver for demanding applications.",
     category: "GNSS Equipment",
     price: null,
@@ -230,6 +240,7 @@ const seedProducts: InsertProduct[] = [
   },
   {
     name: "Emlid Reach RX",
+    slug: "emlid-reach-rx",
     description: "Lightweight and easy-to-use multi-band RTK GNSS receiver designed specifically for work with NTRIP corrections. Compact 250g rover perfect for GIS data collection and surveying.",
     category: "GNSS Equipment",
     price: null,
@@ -257,6 +268,7 @@ const seedProducts: InsertProduct[] = [
   },
   {
     name: "Pix4D & Emlid Scanning Kit",
+    slug: "emlid-scanning-kit",
     description: "Mobile terrestrial scanning solution with RTK accuracy. Integrated Emlid and Pix4D solution to get digital model in minutes with survey-grade accuracy. Scan your assets with your mobile phone, store online, annotate, measure and share with your stakeholders.",
     category: "GNSS Equipment",
     price: null,
@@ -281,6 +293,7 @@ const seedProducts: InsertProduct[] = [
   },
   {
     name: "Autel Dragonfish Standard",
+    slug: "dragonfish-standard",
     description: "Next-generation multi-mission eVTOL UAV platform delivering up to 179 minutes of flight time with vertical takeoff and landing capability. Runway independent, ultraportable, and assembles within 5 minutes from case to takeoff. Perfect for ISR, surveillance, and reconnaissance missions with class-leading endurance and silent flight operations.",
     category: "UAV Platform",
     price: null,
@@ -315,6 +328,7 @@ const seedProducts: InsertProduct[] = [
   },
   {
     name: "Autel Dragonfish Pro",
+    slug: "dragonfish-pro",
     description: "Professional-grade eVTOL UAV platform with extended capabilities, delivering up to 179 minutes of flight time with enhanced payload capacity. Features larger wingspan for improved stability and endurance. Ideal for demanding ISR operations, long-range surveillance, and complex reconnaissance missions requiring maximum performance.",
     category: "UAV Platform",
     price: null,
