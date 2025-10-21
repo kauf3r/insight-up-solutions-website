@@ -117,9 +117,9 @@ export default function AgricultureSolutionPage() {
                       <ArrowRight className="ml-2 h-4 w-4" />
                     </Link>
                   </Button>
-                  <Button variant="outline" size="lg" asChild data-testid="button-book-demo">
+                  <Button variant="outline" size="lg" asChild data-testid="button-book-call">
                     <Link href="/demo">
-                      Book Demo
+                      Book a Call
                     </Link>
                   </Button>
                 </div>
