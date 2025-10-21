@@ -25,7 +25,7 @@ Preferred communication style: Simple, everyday language.
 - **Express.js**: Minimal REST API server with middleware for request logging and video streaming
 - **TypeScript**: Full type safety across server-side code
 - **Video Streaming**: Custom middleware with HTTP range request support for efficient large file delivery (82MB hero video)
-- **Auto-Seeding**: Database automatically populates with all 14 products on startup if empty
+- **Auto-Seeding**: Database automatically populates with all 14 products on startup; intelligently adds any missing products based on slug
 - **Modular Route System**: Centralized route registration with separation of concerns
 - **PostgreSQL Storage**: Production database with Drizzle ORM
 - **Session Management**: Ready for user authentication and session handling
