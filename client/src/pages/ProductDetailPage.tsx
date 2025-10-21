@@ -12,19 +12,19 @@ import type { Product } from "@shared/schema";
 import InquiryForm from "@/components/InquiryForm";
 
 // Image mapping for products
-import productImage1 from '@assets/Trinity Pro_1758836912459.jpg';
-import productImage2 from '@assets/QS_Site_Cameras_Overview_LR1_1758835586515.jpg';
-import productImage3 from '@assets/QS_Site_Cameras_Overview_P5_1758835926986.jpg';
-import productImage4 from '@assets/QS_Qube640_Feature_Image_Product_Page_1758836005589.jpg';
-import productImage5 from '@assets/qbase_3d_software.jpg';
-import productImage6 from '@assets/pix4dcatch_app.png';
-import productImage7 from '@assets/pix4dcloud_platform.jpg';
-import productImage8 from '@assets/correlator3d_software.png';
-import emlidReachRX from '@assets/emlid_reach_rx.png';
-import emlidReachRS3 from '@assets/emlid_reach_rs3.webp';
-import emlidScanningKit from '@assets/emlid_scanning_kit.webp';
-import dragonfishStandard from '@assets/stock_images/autel_dragonfish_uav_43757464.jpg';
-import dragonfishPro from '@assets/stock_images/autel_dragonfish_uav_49fa43f2.jpg';
+const productImage1 = '/Trinity Pro_1758836912459.jpg';
+const productImage2 = '/QS_Site_Cameras_Overview_LR1_1758835586515.jpg';
+const productImage3 = '/QS_Site_Cameras_Overview_P5_1758835926986.jpg';
+const productImage4 = '/QS_Qube640_Feature_Image_Product_Page_1758836005589.jpg';
+const productImage5 = '/qbase_3d_software.jpg';
+const productImage6 = '/pix4dcatch_app.png';
+const productImage7 = '/pix4dcloud_platform.jpg';
+const productImage8 = '/correlator3d_software.png';
+const emlidReachRX = '/emlid_reach_rx.png';
+const emlidReachRS3 = '/emlid_reach_rs3.webp';
+const emlidScanningKit = '/emlid_scanning_kit.webp';
+const dragonfishStandard = '/stock_images/autel_dragonfish_uav_43757464.jpg';
+const dragonfishPro = '/stock_images/autel_dragonfish_uav_49fa43f2.jpg';
 
 const imageMap: Record<string, string> = {
   "Quantum Systems Trinity Pro UAV Platform": productImage1,

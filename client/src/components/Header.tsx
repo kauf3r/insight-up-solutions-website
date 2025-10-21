@@ -2,7 +2,8 @@ import { Button } from "@/components/ui/button";
 import { ShoppingCart, Menu } from "lucide-react";
 import { Link, useLocation } from "wouter";
 import { useState } from "react";
-import logoImage from '@assets/InsightUpSolutions_BlackLogo (1)_1758828020872.png';
+
+const logoImage = '/InsightUpSolutions_BlackLogo (1)_1758828020872.png';
 
 interface HeaderProps {
   cartItemCount?: number;
@@ -57,8 +58,8 @@ export default function Header({ cartItemCount = 0 }: HeaderProps) {
               <Button variant="outline" size="sm" asChild data-testid="button-request-quote">
                 <Link href="/quote">Request Quote</Link>
               </Button>
-              <Button size="sm" asChild data-testid="button-book-demo">
-                <Link href="/demo">Book Demo</Link>
+              <Button size="sm" asChild data-testid="button-book-call">
+                <Link href="/demo">Book Call</Link>
               </Button>
               <Button variant="ghost" size="icon" className="relative" data-testid="button-cart">
                 <ShoppingCart className="h-5 w-5" />
@@ -109,8 +110,8 @@ export default function Header({ cartItemCount = 0 }: HeaderProps) {
                 <Button variant="outline" size="xl" className="w-full" asChild data-testid="button-mobile-request-quote">
                   <Link href="/quote" onClick={() => setIsMobileMenuOpen(false)}>Request Quote</Link>
                 </Button>
-                <Button size="xl" className="w-full" asChild data-testid="button-mobile-book-demo">
-                  <Link href="/demo" onClick={() => setIsMobileMenuOpen(false)}>Book Demo</Link>
+                <Button size="xl" className="w-full" asChild data-testid="button-mobile-book-call">
+                  <Link href="/demo" onClick={() => setIsMobileMenuOpen(false)}>Book Call</Link>
                 </Button>
               </div>
             </nav>

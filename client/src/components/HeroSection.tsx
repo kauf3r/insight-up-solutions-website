@@ -2,7 +2,8 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ArrowRight, Shield, Target, Zap } from "lucide-react";
 import { Link } from "wouter";
-import trinityVideo from '@assets/0925 Trinity launch _1758826468109.mp4';
+
+const trinityVideo = '/0925 Trinity launch _1758826468109.mp4';
 
 export default function HeroSection() {
   const features = [
@@ -41,8 +42,8 @@ export default function HeroSection() {
               </h3>
               
               {/* Inline CTA */}
-              <Button variant="outline" size="xl" className="bg-white/10 border-white/20 text-white hover:bg-white/20 w-full" asChild data-testid="button-hero-demo">
-                <Link href="/demo">Book Demo</Link>
+              <Button variant="outline" size="xl" className="bg-white/10 border-white/20 text-white hover:bg-white/20 w-full" asChild data-testid="button-hero-call">
+                <Link href="/demo">Book Call</Link>
               </Button>
             </div>
           </div>
@@ -71,8 +72,8 @@ export default function HeroSection() {
               </p>
               
               {/* Inline CTA */}
-              <Button variant="outline" size="xl" className="bg-white/10 border-white/20 text-white hover:bg-white/20" asChild data-testid="button-hero-demo">
-                <Link href="/demo">Book Demo</Link>
+              <Button variant="outline" size="xl" className="bg-white/10 border-white/20 text-white hover:bg-white/20" asChild data-testid="button-hero-call">
+                <Link href="/demo">Book Call</Link>
               </Button>
             </div>
           </div>
@@ -100,9 +101,9 @@ export default function HeroSection() {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="xl" asChild data-testid="button-book-demo-call">
+              <Button size="xl" asChild data-testid="button-book-call">
                 <Link href="/demo">
-                  Book Your Demo Call
+                  Book Call
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
