@@ -15,6 +15,7 @@ Preferred communication style: Simple, everyday language.
 ### Frontend Architecture
 - **React 18 with TypeScript**: Modern component-based architecture using functional components and hooks
 - **Wouter**: Lightweight client-side routing instead of React Router for minimal bundle size
+- **Friendly URLs**: All products use SEO-friendly slugs instead of UUIDs (e.g., `/products/sony-ilx-lr1` instead of `/products/03762537...`)
 - **Tailwind CSS**: Utility-first CSS framework with custom design system based on technical/professional aesthetics
 - **shadcn/ui Components**: Pre-built, accessible UI components based on Radix UI primitives
 - **Vite**: Fast development build tool with Hot Module Replacement

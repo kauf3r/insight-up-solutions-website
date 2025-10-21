@@ -17,10 +17,10 @@ export default function Footer() {
     {
       title: "Software Solutions",
       links: [
-        { label: "QBase 3D", href: "/products/cb3b3d5c-4d55-41cd-a6e0-321bc3a82fed" },
-        { label: "Pix4DCatch", href: "/products/fa2876eb-eaee-4355-a8d1-2fac3f7c4ce6" },
-        { label: "PIX4Dcloud", href: "/products/2631e896-c5f9-47f9-8c4b-478295c68a09" },
-        { label: "Correlator3D", href: "/products/1f8350ee-bd62-44c8-af85-3e8ba6f6be24" },
+        { label: "QBase 3D", href: "/products/qbase-3d" },
+        { label: "Pix4DCatch", href: "/products/pix4dcatch" },
+        { label: "PIX4Dcloud", href: "/products/pix4dcloud" },
+        { label: "Correlator3D", href: "/products/correlator3d" },
       ]
     },
     {
