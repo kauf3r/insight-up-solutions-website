@@ -1,6 +1,6 @@
 import ProductCard from "./ProductCard";
 
-const productImage1 = '/Trinity Pro_1758836912459.jpg';
+const productImage1 = '/Trinity_Pro_1758836912459.jpg';
 
 export default function TrinityPlatformSection() {
   const trinityPro = {
