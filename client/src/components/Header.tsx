@@ -14,11 +14,7 @@ export default function Header({ cartItemCount = 0 }: HeaderProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const navItems = [
-    { label: "Home", href: "/" },
-    { label: "About", href: "/about" },
-    { label: "Solutions", href: "/solutions" },
-    { label: "Products", href: "/products" },
-    { label: "Training", href: "/training" },
+    { label: "Training", href: "https://insightupsolutions.com/training", external: true },
   ];
 
   return (
@@ -39,15 +35,29 @@ export default function Header({ cartItemCount = 0 }: HeaderProps) {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
-              <Link key={item.href} href={item.href} data-testid={`link-${item.label.toLowerCase()}`}>
-                <span
-                  className={`text-sm font-medium transition-colors hover:text-primary ${
-                    location === item.href ? "text-primary" : "text-muted-foreground"
-                  }`}
+              item.external ? (
+                <a 
+                  key={item.href} 
+                  href={item.href} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  data-testid={`link-${item.label.toLowerCase()}`}
                 >
-                  {item.label}
-                </span>
-              </Link>
+                  <span className="text-sm font-medium transition-colors hover:text-primary text-muted-foreground">
+                    {item.label}
+                  </span>
+                </a>
+              ) : (
+                <Link key={item.href} href={item.href} data-testid={`link-${item.label.toLowerCase()}`}>
+                  <span
+                    className={`text-sm font-medium transition-colors hover:text-primary ${
+                      location === item.href ? "text-primary" : "text-muted-foreground"
+                    }`}
+                  >
+                    {item.label}
+                  </span>
+                </Link>
+              )
             ))}
           </nav>
 
@@ -89,20 +99,35 @@ export default function Header({ cartItemCount = 0 }: HeaderProps) {
           <div className="md:hidden border-t border-border py-4">
             <nav className="flex flex-col">
               {navItems.map((item) => (
-                <Link 
-                  key={item.href} 
-                  href={item.href} 
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  data-testid={`mobile-link-${item.label.toLowerCase()}`}
-                >
-                  <span
-                    className={`block py-3 px-2 text-sm font-medium ${
-                      location === item.href ? "text-primary" : "text-muted-foreground"
-                    }`}
+                item.external ? (
+                  <a 
+                    key={item.href} 
+                    href={item.href} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    data-testid={`mobile-link-${item.label.toLowerCase()}`}
                   >
-                    {item.label}
-                  </span>
-                </Link>
+                    <span className="block py-3 px-2 text-sm font-medium text-muted-foreground">
+                      {item.label}
+                    </span>
+                  </a>
+                ) : (
+                  <Link 
+                    key={item.href} 
+                    href={item.href} 
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    data-testid={`mobile-link-${item.label.toLowerCase()}`}
+                  >
+                    <span
+                      className={`block py-3 px-2 text-sm font-medium ${
+                        location === item.href ? "text-primary" : "text-muted-foreground"
+                      }`}
+                    >
+                      {item.label}
+                    </span>
+                  </Link>
+                )
               ))}
               
               {/* Mobile Action Buttons */}
