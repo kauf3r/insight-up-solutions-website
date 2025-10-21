@@ -201,6 +201,152 @@ const seedProducts: InsertProduct[] = [
       "Enterprise processing"
     ],
     isAvailable: "true"
+  },
+  {
+    name: "Emlid Reach RS3",
+    description: "Multi-band RTK GNSS receiver with IMU tilt compensation. Survey grade precision even in hard-to-reach spots. Acts as a base or rover. Professional-grade receiver for demanding applications.",
+    category: "GNSS Equipment",
+    price: null,
+    imageUrl: null,
+    specifications: JSON.stringify([
+      "RTK Accuracy: H: 7mm + 1ppm | V: 14mm + 1ppm",
+      "PPK Accuracy: H: 5mm + 0.5ppm | V: 10mm + 1ppm",
+      "Tilt compensation: RTK + 2mm + 0.3mm/°",
+      "Battery: 18hrs with tilt, 22hrs logging",
+      "GNSS: GPS/QZSS L1C/A, L2C, GLONASS, BeiDou, Galileo",
+      "Dual-band radio: 868/915 MHz LoRa",
+      "UHF radio 410-470 MHz",
+      "LTE and Wi-Fi connectivity",
+      "IP67 rated, 950g weight"
+    ]),
+    features: [
+      "IMU tilt compensation",
+      "Multi-band RTK/PPK",
+      "Base and rover modes",
+      "Calibration-free operation",
+      "LTE & Wi-Fi connectivity"
+    ],
+    isAvailable: "true"
+  },
+  {
+    name: "Emlid Reach RX",
+    description: "Lightweight and easy-to-use multi-band RTK GNSS receiver designed specifically for work with NTRIP corrections. Compact 250g rover perfect for GIS data collection and surveying.",
+    category: "GNSS Equipment",
+    price: null,
+    imageUrl: null,
+    specifications: JSON.stringify([
+      "RTK Accuracy: H: 7mm + 1ppm | V: 14mm + 1ppm",
+      "Weight: 250g (8.81 oz)",
+      "Battery: Up to 16 hours",
+      "GNSS: GPS/QZSS L1C/A, L2C, GLONASS, BeiDou, Galileo",
+      "Connectivity: Bluetooth 4.2, MFi-certified",
+      "IP68 rated",
+      "Update rate: 5 Hz",
+      "USB Type-C charging",
+      "NTRIP corrections via smartphone"
+    ]),
+    features: [
+      "Ultra-lightweight 250g",
+      "Multi-band RTK",
+      "NTRIP corrections",
+      "16 hour battery",
+      "Bluetooth connectivity",
+      "IP68 waterproof"
+    ],
+    isAvailable: "true"
+  },
+  {
+    name: "Pix4D & Emlid Scanning Kit",
+    description: "Mobile terrestrial scanning solution with RTK accuracy. Integrated Emlid and Pix4D solution to get digital model in minutes with survey-grade accuracy. Scan your assets with your mobile phone, store online, annotate, measure and share with your stakeholders.",
+    category: "GNSS Equipment",
+    price: null,
+    imageUrl: null,
+    specifications: JSON.stringify([
+      "Reach RX2 multi-band RTK receiver",
+      "PIX4Dcatch software (1 year license)",
+      "500 credits cloud processing",
+      "Emlid Scanning handle & case",
+      "Less than 5cm absolute accuracy",
+      "RTK-enabled photogrammetry",
+      "iPhone LiDAR integration",
+      "Survey-grade precision"
+    ]),
+    features: [
+      "RTK scanning solution",
+      "PIX4Dcatch software included",
+      "Survey-grade accuracy",
+      "Mobile 3D reconstruction"
+    ],
+    isAvailable: "true"
+  },
+  {
+    name: "Autel Dragonfish Standard",
+    description: "Next-generation multi-mission eVTOL UAV platform delivering up to 179 minutes of flight time with vertical takeoff and landing capability. Runway independent, ultraportable, and assembles within 5 minutes from case to takeoff. Perfect for ISR, surveillance, and reconnaissance missions with class-leading endurance and silent flight operations.",
+    category: "UAV Platform",
+    price: null,
+    imageUrl: null,
+    specifications: JSON.stringify({
+      flightTime: "Up to 179 minutes",
+      range: "45km (extendable with repeaters)",
+      maxSpeed: "108 km/h",
+      weight: "7.5 kg (16.53 lb)",
+      wingspan: "2.49 m",
+      assemblyTime: "5 minutes",
+      payload: "DG-L20T Multi-Sensor (12MP wide-angle, 8MP 20x zoom, thermal 640x512, laser rangefinder)",
+      windResistance: "Level 6 (fixed-wing mode)",
+      operatingTemp: "-20°C to 40°C",
+      transmission: "45km with superior anti-interference",
+      portability: "1-2 person portable with IP-rated case"
+    }),
+    features: [
+      "eVTOL - Vertical Takeoff and Landing",
+      "5-minute rapid deployment from case to flight",
+      "Silent flight - barely audible above 120m",
+      "DG-L20T multi-sensor payload with thermal imaging",
+      "20x optical zoom camera with laser rangefinder",
+      "Superior anti-interference transmission",
+      "Single operator capable with minimal training",
+      "AI target recognition and intelligent tracking",
+      "Terrain avoidance and mobile platform landing",
+      "Multiple redundancies for mission safety",
+      "Automatic return-to-home and emergency override"
+    ],
+    isAvailable: "true"
+  },
+  {
+    name: "Autel Dragonfish Pro",
+    description: "Professional-grade eVTOL UAV platform with extended capabilities, delivering up to 179 minutes of flight time with enhanced payload capacity. Features larger wingspan for improved stability and endurance. Ideal for demanding ISR operations, long-range surveillance, and complex reconnaissance missions requiring maximum performance.",
+    category: "UAV Platform",
+    price: null,
+    imageUrl: null,
+    specifications: JSON.stringify({
+      flightTime: "Up to 179 minutes",
+      range: "45km (extendable with repeaters)",
+      maxSpeed: "108 km/h",
+      weight: "14.5 kg (31.97 lb)",
+      wingspan: "3.29 m",
+      assemblyTime: "5 minutes",
+      payload: "DG-L20T Multi-Sensor (12MP wide-angle, 8MP 20x zoom, thermal 640x512, laser rangefinder)",
+      windResistance: "Level 6 (fixed-wing mode)",
+      operatingTemp: "-20°C to 40°C",
+      transmission: "45km with superior anti-interference",
+      portability: "1-2 person portable with IP-rated case"
+    }),
+    features: [
+      "eVTOL - Vertical Takeoff and Landing",
+      "Enhanced payload capacity and stability",
+      "Extended 3.29m wingspan for superior performance",
+      "5-minute rapid deployment from case to flight",
+      "Silent flight - barely audible above 120m",
+      "DG-L20T multi-sensor payload with thermal imaging",
+      "20x optical zoom camera with laser rangefinder",
+      "Superior anti-interference transmission",
+      "Single operator capable with minimal training",
+      "AI target recognition and intelligent tracking",
+      "Terrain avoidance and mobile platform landing",
+      "Multiple redundancies for mission safety"
+    ],
+    isAvailable: "true"
   }
 ];
 
