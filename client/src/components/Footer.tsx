@@ -1,6 +1,5 @@
-import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import { Mail, Phone, MapPin, Linkedin, Twitter } from "lucide-react";
+import { Mail, Phone, MapPin } from "lucide-react";
 import { Link } from "wouter";
 
 export default function Footer() {
@@ -77,15 +76,6 @@ export default function Footer() {
                   450 McQuaide Dr La Selva Beach, CA 95076
                 </span>
               </div>
-            </div>
-
-            <div className="flex gap-3">
-              <Button variant="ghost" size="icon" data-testid="button-linkedin">
-                <Linkedin className="h-4 w-4" />
-              </Button>
-              <Button variant="ghost" size="icon" data-testid="button-twitter">
-                <Twitter className="h-4 w-4" />
-              </Button>
             </div>
           </div>
 
