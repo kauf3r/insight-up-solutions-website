@@ -368,20 +368,25 @@ async function seedDatabase() {
   console.log("Starting database seeding...");
   
   try {
-    // Check if products already exist
+    // Get existing products
     const existingProducts = await storage.getAllProducts();
-    if (existingProducts.length > 0) {
-      console.log("Products already exist in database. Skipping seed.");
-      return;
-    }
-
-    // Create all products
+    const existingSlugs = new Set(existingProducts.map(p => p.slug));
+    
+    // Add missing products
+    let addedCount = 0;
     for (const productData of seedProducts) {
-      const product = await storage.createProduct(productData);
-      console.log(`Created product: ${product.name}`);
+      if (!existingSlugs.has(productData.slug)) {
+        const product = await storage.createProduct(productData);
+        console.log(`Created product: ${product.name}`);
+        addedCount++;
+      }
     }
 
-    console.log("Database seeding completed successfully!");
+    if (addedCount === 0) {
+      console.log("All products already exist in database. No seeding needed.");
+    } else {
+      console.log(`Database seeding completed! Added ${addedCount} new product(s).`);
+    }
     
   } catch (error) {
     console.error("Error seeding database:", error);
