@@ -35,18 +35,13 @@ export default function Footer() {
     {
       title: "Support",
       links: [
-        { label: "Documentation", href: "/support/docs" },
         { label: "Training", href: "/support/training" },
-        { label: "Technical Support", href: "/support/technical" },
-        { label: "Warranty", href: "/support/warranty" },
       ]
     },
     {
       title: "Company",
       links: [
         { label: "About Us", href: "/about" },
-        { label: "Careers", href: "/careers" },
-        { label: "News", href: "/news" },
         { label: "Contact", href: "/contact" },
       ]
     }
