@@ -35,6 +35,7 @@ Preferred communication style: Simple, everyday language.
 - **PostgreSQL**: Production-ready relational database (via Neon serverless)
 - **Schema-First Design**: Shared TypeScript schemas between client and server
 - **Migration System**: Version-controlled database schema changes
+- **SEO-Friendly URLs**: Products table includes unique `slug` field for friendly URLs (e.g., `sony-ilx-lr1` instead of UUIDs)
 
 ### Design System
 - **Professional UAV Theme**: Clean, technical design focused on credibility and trust

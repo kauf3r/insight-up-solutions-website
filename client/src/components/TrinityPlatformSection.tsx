@@ -4,7 +4,8 @@ const productImage1 = '/Trinity_Pro_1758836912459.jpg';
 
 export default function TrinityPlatformSection() {
   const trinityPro = {
-    id: "trinity-pro",
+    id: "46278773-9c53-4b47-b9f4-1c0a2b003ce1",
+    slug: "trinity-pro",
     name: "Quantum Systems Trinity Pro UAV Platform",
     category: "UAV Platform", 
     description: "Next-generation eVTOL fixed-wing mapping drone with Quantum-Skynode autopilot. Future-proof platform with 75,000+ proven flight hours globally.",

@@ -10,7 +10,6 @@ import { ArrowLeft, Download, CheckCircle, Phone, Mail } from "lucide-react";
 import { Link } from "wouter";
 import type { Product } from "@shared/schema";
 import InquiryForm from "@/components/InquiryForm";
-import { getProductId } from "@/lib/productUrls";
 
 // Image mapping for products
 const productImage1 = '/Trinity_Pro_1758836912459.jpg';
@@ -45,10 +44,7 @@ const imageMap: Record<string, string> = {
 };
 
 export default function ProductDetailPage() {
-  const { id: urlId } = useParams<{ id: string }>();
-  
-  // Handle friendly URLs by mapping them to actual UUIDs
-  const id = urlId ? getProductId(urlId) : undefined;
+  const { id } = useParams<{ id: string }>();
 
   const { data: product, isLoading, error } = useQuery<Product>({
     queryKey: ["/api/products", id],
