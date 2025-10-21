@@ -64,7 +64,13 @@ export default function Footer() {
             <div className="space-y-3">
               <div className="flex items-center gap-3 text-sm">
                 <Mail className="h-4 w-4 text-muted-foreground" />
-                <span className="text-muted-foreground">info@insightupsolutions.com</span>
+                <a 
+                  href="mailto:info@insightupsolutions.com"
+                  className="text-muted-foreground hover:text-foreground transition-colors"
+                  data-testid="link-email"
+                >
+                  info@insightupsolutions.com
+                </a>
               </div>
               <div className="flex items-center gap-3 text-sm">
                 <Phone className="h-4 w-4 text-muted-foreground" />
