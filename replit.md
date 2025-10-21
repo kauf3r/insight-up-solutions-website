@@ -2,7 +2,9 @@
 
 ## Overview
 
-This is a professional UAV e-commerce platform for Insight Up Solutions, specializing in high-end UAV systems and payloads. The application serves as a Phase 1 MVP storefront focused on showcasing the Trinity Pro platform, advanced sensor payloads, and software solutions for surveying, agriculture, and public safety applications. The platform emphasizes credibility and technical expertise while providing quote requests, demo booking capabilities, and limited e-commerce functionality for accessories.
+This is a professional UAV e-commerce platform for Insight Up Solutions, specializing in high-end UAV systems and payloads. The application serves as a Phase 1 MVP storefront focused on showcasing the Trinity Pro platform, Autel Dragonfish variants, advanced sensor payloads, GNSS equipment, and software solutions for surveying, agriculture, and public safety applications. The platform emphasizes credibility and technical expertise while providing quote requests, demo booking capabilities, and limited e-commerce functionality for accessories.
+
+**Production URL:** insightupsolutions.com (deployed via Replit Autoscale)
 
 ## User Preferences
 
@@ -19,10 +21,12 @@ Preferred communication style: Simple, everyday language.
 - **React Hook Form + Zod**: Form validation and management with TypeScript-first schema validation
 
 ### Backend Architecture
-- **Express.js**: Minimal REST API server with middleware for request logging
+- **Express.js**: Minimal REST API server with middleware for request logging and video streaming
 - **TypeScript**: Full type safety across server-side code
+- **Video Streaming**: Custom middleware with HTTP range request support for efficient large file delivery (82MB hero video)
+- **Auto-Seeding**: Database automatically populates with all 14 products on startup if empty
 - **Modular Route System**: Centralized route registration with separation of concerns
-- **In-Memory Storage Interface**: Abstracted storage layer with future database integration capability
+- **PostgreSQL Storage**: Production database with Drizzle ORM
 - **Session Management**: Ready for user authentication and session handling
 
 ### Database Layer
@@ -45,9 +49,11 @@ Preferred communication style: Simple, everyday language.
 - **Type-Safe Validation**: Zod schemas ensure data integrity
 
 ### Asset Management
-- **Static Asset Integration**: Video and image assets served through Vite's asset pipeline
+- **Static Asset Integration**: Video and image assets served through custom streaming middleware
+- **Hero Video**: 82MB Trinity launch video with chunked streaming support (range requests)
 - **Product Imagery**: High-quality payload and platform images for professional presentation
-- **Brand Assets**: Logo and marketing materials properly integrated
+- **Brand Assets**: Logo and marketing materials with production-optimized filenames (no spaces)
+- **Important**: All asset filenames use underscores/dashes (no spaces) for Express static serving compatibility
 
 ## External Dependencies
 
