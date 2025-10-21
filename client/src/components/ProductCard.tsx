@@ -109,14 +109,13 @@ export default function ProductCard({
             <Button 
               variant="outline" 
               size="sm" 
-              onClick={() => {
-                console.log(`Quote requested for ${name}`);
-                onQuoteRequest?.();
-              }}
+              asChild
               className="flex-1 transition-all duration-200"
               data-testid={`button-quote-${id}`}
             >
-              Request Quote
+              <a href="https://insightupsolutions.com/quote" target="_blank" rel="noopener noreferrer">
+                Request Quote
+              </a>
             </Button>
             <Button variant="ghost" size="sm" data-testid={`button-download-${id}`}>
               <Download className="h-4 w-4" />
