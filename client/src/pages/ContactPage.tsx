@@ -141,13 +141,13 @@ export default function ContactPage() {
                     <div>
                       <h3 className="font-semibold text-foreground mb-1">Address</h3>
                       <a 
-                        href="https://www.google.com/maps/place/450+McQuaide+Dr,+La+Selva+Beach,+CA+95076/@36.9076861,-121.8413683,1692m/data=!3m2!1e3!4b1!4m6!3m5!1s0x808e105ed1871c3f:0x6969832499923bfd!8m2!3d36.9076861!4d-121.8387934!16s%2Fg%2F11c4zhsznm!5m1!1e1?entry=ttu&g_ep=EgoyMDI1MTAxNC4wIKXMDSoASAFQAw%3D%3D"
+                        href="https://maps.app.goo.gl/Fofgx3SXEasvamEZ8"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-muted-foreground hover:text-primary transition-colors"
                         data-testid="link-address"
                       >
-                        450 McQuaide Dr<br />
+                        681 Beach Dr.<br />
                         La Selva Beach, CA 95076
                       </a>
                     </div>

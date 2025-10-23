@@ -210,7 +210,7 @@ export default function DemoBookingForm({
           <p className="mb-2">
             <strong>Visit our test facility:</strong>
           </p>
-          <p>450 McQuaide Dr, La Selva Beach, CA 95076</p>
+          <p>681 Beach Dr. La Selva Beach, CA 95076</p>
           <p className="mt-2">
             <span className="font-medium text-foreground">info@insightupsolutions.com</span> | 
             <span className="font-medium text-foreground"> +1 (831) 888-7172</span>
