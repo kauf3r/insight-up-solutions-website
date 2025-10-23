@@ -35,7 +35,7 @@ export default function Footer() {
     {
       title: "Support",
       links: [
-        { label: "Training", href: "/support/training" },
+        { label: "Training", href: "https://9eb54bfc-10d0-41ab-8050-7b8ff1f7c5b8-00-308d0snza2pv9.janeway.replit.dev/training", external: true },
       ]
     },
     {
@@ -109,11 +109,24 @@ export default function Footer() {
               <ul className="space-y-3">
                 {section.links.map((link, linkIndex) => (
                   <li key={linkIndex}>
-                    <Link href={link.href} data-testid={`link-${section.title.toLowerCase()}-${linkIndex}`}>
-                      <span className="text-muted-foreground hover:text-foreground transition-colors text-sm">
-                        {link.label}
-                      </span>
-                    </Link>
+                    {'external' in link && link.external ? (
+                      <a 
+                        href={link.href} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        data-testid={`link-${section.title.toLowerCase()}-${linkIndex}`}
+                      >
+                        <span className="text-muted-foreground hover:text-foreground transition-colors text-sm">
+                          {link.label}
+                        </span>
+                      </a>
+                    ) : (
+                      <Link href={link.href} data-testid={`link-${section.title.toLowerCase()}-${linkIndex}`}>
+                        <span className="text-muted-foreground hover:text-foreground transition-colors text-sm">
+                          {link.label}
+                        </span>
+                      </Link>
+                    )}
                   </li>
                 ))}
               </ul>
