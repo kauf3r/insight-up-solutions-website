@@ -35,7 +35,7 @@ export default function Footer() {
     {
       title: "Support",
       links: [
-        { label: "Training", href: "/support/training" },
+        { label: "Training", href: "/training" },
       ]
     },
     {
