@@ -88,7 +88,11 @@ export default function HeroSection() {
                 Why Industry Leaders Choose <span className="text-primary">Insight Up Solutions</span>
               </h1>
               <h2 className="text-lg sm:text-2xl lg:text-3xl font-semibold text-muted-foreground max-w-3xl mx-auto">Integrated. Reliable. Mission Critical. Collaboration.</h2>
-              <p className="text-base sm:text-lg text-muted-foreground max-w-3xl mx-auto">While others sell components, we deliver complete mission solutions. Our offerings include the Quantum Systems Trinity Pro platform, which integrates seamlessly with premium Sony, Phase One, and Qube sensors; giving you unmatched versatility and reliability in a single system. Experience the difference integrated engineering makes.</p>
+              <p className="text-base sm:text-lg text-muted-foreground max-w-3xl mx-auto">While others sell components, we deliver complete mission solutions.
+              <br /><br />
+              Our team integrates aircraft, sensors, and software ecosystems into unified workflows that fit the mission. From aerial mapping and inspection to precision robotics and automation, we partner with leading manufacturers and emerging innovators to deliver reliable, ready-to-fly systems tailored to real-world use.
+              <br /><br />
+              Experience the difference integrated engineering makes.</p>
             </div>
 
             <div className="flex flex-wrap justify-center gap-6">
