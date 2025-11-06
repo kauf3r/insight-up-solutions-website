@@ -49,6 +49,17 @@ export const inquiries = pgTable("inquiries", {
   createdAt: timestamp("created_at").defaultNow(),
 });
 
+export const bundleLeads = pgTable("bundle_leads", {
+  id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
+  name: text("name").notNull(),
+  email: text("email").notNull(),
+  company: text("company"),
+  phone: text("phone"),
+  interestArea: text("interest_area"), // surveying, agriculture, infrastructure, etc.
+  source: text("source").notNull().default("trinity-lr1-special"), // which landing page
+  createdAt: timestamp("created_at").defaultNow(),
+});
+
 // Insert Schemas
 export const insertUserSchema = createInsertSchema(users).pick({
   username: true,
@@ -72,6 +83,11 @@ export const insertInquirySchema = createInsertSchema(inquiries).omit({
   status: true,
 });
 
+export const insertBundleLeadSchema = createInsertSchema(bundleLeads).omit({
+  id: true,
+  createdAt: true,
+});
+
 // Types
 export type InsertUser = z.infer<typeof insertUserSchema>;
 export type User = typeof users.$inferSelect;
@@ -84,3 +100,6 @@ export type DemoBooking = typeof demoBookings.$inferSelect;
 
 export type InsertInquiry = z.infer<typeof insertInquirySchema>;
 export type Inquiry = typeof inquiries.$inferSelect;
+
+export type InsertBundleLead = z.infer<typeof insertBundleLeadSchema>;
+export type BundleLead = typeof bundleLeads.$inferSelect;
