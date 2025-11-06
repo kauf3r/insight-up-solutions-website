@@ -14,47 +14,6 @@ import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
 import { insertBundleLeadSchema, type InsertBundleLead } from "@shared/schema";
 
-// ============================================
-// TEMPLATE DATA - EASILY REPLACEABLE
-// Update these values with your Chile or Seascape Golf Club mission data
-// ============================================
-const CASE_STUDY_TEMPLATE = {
-  title: "City Infrastructure Inspection",
-  location: "Municipal District, USA",
-  client: "Metropolitan Public Works",
-  projectType: "Infrastructure Mapping & Inspection",
-  
-  // Mission Stats - REPLACE THESE
-  stats: {
-    areaCovered: "500 acres",
-    flightTime: "3 hours",
-    accuracy: "2cm GSD",
-    imagesCaptured: "1,200+",
-    deliverableType: "Orthomosaic & 3D Point Cloud"
-  },
-  
-  // Project Details - REPLACE THESE
-  challenge: "The city needed detailed infrastructure assessment for aging roadways, bridges, and drainage systems before budget planning for the fiscal year. Traditional surveying methods would take weeks and disrupt traffic.",
-  
-  solution: "Using the Trinity Pro platform with the Sony ILX-LR1 61MP sensor, our team completed the entire survey in a single day. The VTOL capability allowed us to cover large areas quickly while maintaining centimeter-level accuracy.",
-  
-  results: [
-    "Completed full survey in 1 day vs. 2 weeks traditional methods",
-    "Achieved 2cm ground sampling distance across entire area",
-    "Delivered actionable data 48 hours after flight",
-    "Saved the city $75,000 in surveying costs"
-  ],
-  
-  clientQuote: "The Trinity Pro system gave us data quality we never thought possible from a UAV. The speed and accuracy completely changed our infrastructure planning process.",
-  clientName: "Director of Public Works",
-  
-  // Image paths - REPLACE WITH YOUR ACTUAL IMAGE PATHS
-  images: {
-    hero: "/placeholder-trinity-mission.jpg", // Replace with your Chile or golf course aerial
-    results: "/placeholder-orthomosaic.jpg"  // Replace with your actual data output
-  }
-};
-
 export default function TrinityLR1SpecialPage() {
   const { toast } = useToast();
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -275,91 +234,6 @@ export default function TrinityLR1SpecialPage() {
                 <a href="#lead-form">Get Your Quote</a>
               </Button>
             </div>
-          </div>
-        </section>
-
-        {/* Case Study Section */}
-        <section className="py-16 bg-accent/20">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold mb-4" data-testid="text-case-study-title">
-                Real-World Results
-              </h2>
-              <p className="text-lg text-muted-foreground">
-                See how the Trinity Pro + LR1 delivers mission-critical data
-              </p>
-            </div>
-
-            <Card className="max-w-5xl mx-auto" data-testid="card-case-study">
-              <CardHeader>
-                <div className="space-y-2">
-                  <Badge variant="outline">{CASE_STUDY_TEMPLATE.projectType}</Badge>
-                  <CardTitle className="text-2xl">{CASE_STUDY_TEMPLATE.title}</CardTitle>
-                  <p className="text-muted-foreground">
-                    {CASE_STUDY_TEMPLATE.location} • {CASE_STUDY_TEMPLATE.client}
-                  </p>
-                </div>
-              </CardHeader>
-              
-              <CardContent className="space-y-8">
-                {/* Stats Grid */}
-                <div className="grid grid-cols-2 md:grid-cols-5 gap-4 py-6 border-y">
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-primary">{CASE_STUDY_TEMPLATE.stats.areaCovered}</div>
-                    <div className="text-xs text-muted-foreground mt-1">Area Covered</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-primary">{CASE_STUDY_TEMPLATE.stats.flightTime}</div>
-                    <div className="text-xs text-muted-foreground mt-1">Flight Time</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-primary">{CASE_STUDY_TEMPLATE.stats.accuracy}</div>
-                    <div className="text-xs text-muted-foreground mt-1">Accuracy</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-primary">{CASE_STUDY_TEMPLATE.stats.imagesCaptured}</div>
-                    <div className="text-xs text-muted-foreground mt-1">Images</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-primary">48hrs</div>
-                    <div className="text-xs text-muted-foreground mt-1">Turnaround</div>
-                  </div>
-                </div>
-
-                {/* Challenge */}
-                <div>
-                  <h3 className="font-semibold text-lg mb-3">The Challenge</h3>
-                  <p className="text-muted-foreground">{CASE_STUDY_TEMPLATE.challenge}</p>
-                </div>
-
-                {/* Solution */}
-                <div>
-                  <h3 className="font-semibold text-lg mb-3">The Solution</h3>
-                  <p className="text-muted-foreground">{CASE_STUDY_TEMPLATE.solution}</p>
-                </div>
-
-                {/* Results */}
-                <div>
-                  <h3 className="font-semibold text-lg mb-3">Results Delivered</h3>
-                  <ul className="space-y-2">
-                    {CASE_STUDY_TEMPLATE.results.map((result, index) => (
-                      <li key={index} className="flex items-start gap-2">
-                        <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-                        <span>{result}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                {/* Client Quote */}
-                <div className="bg-primary/5 rounded-lg p-6 border-l-4 border-primary">
-                  <p className="italic text-foreground mb-3">"{CASE_STUDY_TEMPLATE.clientQuote}"</p>
-                  <p className="text-sm text-muted-foreground">
-                    — {CASE_STUDY_TEMPLATE.clientName}, {CASE_STUDY_TEMPLATE.client}
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
           </div>
         </section>
 
