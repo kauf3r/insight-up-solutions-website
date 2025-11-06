@@ -124,15 +124,15 @@ export default function TrinityLR1SpecialPage() {
             <div className="text-center space-y-6">
               <Badge variant="default" className="mb-4" data-testid="badge-limited-time">
                 <Clock className="h-3 w-3 mr-1" />
-                Limited Time Q4 Special
+                LIMITED TIME OFFER
               </Badge>
               
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground" data-testid="text-hero-title">
-                Trinity Pro + LR1 Bundle
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-6" data-testid="text-hero-title">
+                Save Big on the Quantum Systems Trinity Pro
               </h1>
               
               <p className="text-xl sm:text-2xl text-muted-foreground max-w-3xl mx-auto" data-testid="text-hero-subtitle">
-                Save up to 10% on the industry's most versatile VTOL platform with professional-grade 61MP imaging
+                Purchase Trinity Pro with any payload and unlock exclusive end-of-year savings through December 31, 2025
               </p>
 
               {/* Countdown */}
@@ -167,10 +167,8 @@ export default function TrinityLR1SpecialPage() {
                   <CardTitle className="text-xl">Sony ILX-LR1</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
-                  <div className="space-y-1">
-                    <p className="text-sm text-muted-foreground line-through">$9,200</p>
-                    <p className="text-3xl font-bold text-primary">$8,740</p>
-                    <p className="text-sm font-semibold text-green-600">Save $460</p>
+                  <div className="text-center py-2">
+                    <p className="text-4xl font-bold text-primary">Save $460</p>
                   </div>
                   <p className="text-sm text-muted-foreground">
                     Professional 61MP full-frame sensor for photogrammetry
@@ -199,10 +197,8 @@ export default function TrinityLR1SpecialPage() {
                   <CardTitle className="text-2xl">Trinity Pro Platform</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
-                  <div className="space-y-1">
-                    <p className="text-sm text-muted-foreground line-through">$21,260</p>
-                    <p className="text-4xl font-bold text-primary">$19,134</p>
-                    <p className="text-base font-semibold text-green-600">Save $2,126</p>
+                  <div className="text-center py-2">
+                    <p className="text-5xl font-bold text-primary">Save $2,126</p>
                   </div>
                   <p className="text-sm text-muted-foreground font-medium">
                     NDAA-compliant VTOL platform engineered for survey-grade operations
@@ -235,10 +231,8 @@ export default function TrinityLR1SpecialPage() {
                   <CardTitle className="text-lg">TPT Backpack</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-3">
-                  <div className="space-y-1">
-                    <p className="text-xs text-muted-foreground line-through">$1,750</p>
-                    <p className="text-2xl font-bold text-primary">$1,610</p>
-                    <p className="text-xs font-semibold text-green-600">Save $140</p>
+                  <div className="text-center py-2">
+                    <p className="text-3xl font-bold text-primary">Save $140</p>
                   </div>
                   <p className="text-xs text-muted-foreground">
                     Professional transport case for complete system protection
@@ -263,15 +257,16 @@ export default function TrinityLR1SpecialPage() {
 
             {/* Total Savings Callout */}
             <div className="bg-gradient-to-r from-primary/10 via-primary/5 to-primary/10 rounded-lg p-6 border border-primary/20" data-testid="total-savings">
-              <div className="text-center space-y-2">
+              <div className="text-center space-y-3">
                 <p className="text-sm font-medium text-muted-foreground">Complete Bundle Package</p>
                 <div className="flex items-center justify-center gap-3">
                   <p className="text-2xl font-bold text-foreground">Total Savings:</p>
                   <p className="text-4xl font-bold text-primary">$2,726</p>
                 </div>
-                <p className="text-sm text-muted-foreground">
-                  Valid only when purchasing Trinity Pro + LR1 together • Offer ends December 31, 2025
-                </p>
+                <div className="text-sm text-muted-foreground space-y-1">
+                  <p>Offer valid only when purchasing Trinity Pro aircraft and payload together</p>
+                  <p className="font-medium">Systems must be delivered before December 31, 2025</p>
+                </div>
               </div>
             </div>
 

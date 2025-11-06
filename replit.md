@@ -52,14 +52,18 @@ Preferred communication style: Simple, everyday language.
 - **Type-Safe Validation**: Zod schemas ensure data integrity
 
 ### Marketing and Promotions
-- **Q4 Bundle Special Landing Page** (`/trinity-lr1-special`): Dedicated promotional landing page system for seasonal campaigns
+- **Q4 Bundle Special Landing Page** (`/trinity-lr1-special`): Dedicated promotional landing page system for seasonal campaigns (aligned with official Quantum Systems flyer)
   - Real-time countdown timer to December 31, 2025 deadline
-  - Bundle pricing breakdown (Trinity Pro 10% off, Sony ILX-LR1 5% off, TPT Backpack 8% off)
+  - **Savings-Focused Pricing**: Displays only savings amounts (Save $2,126, Save $460, Save $140) without showing original/discounted prices per flyer design
+  - Bundle discount tiers: Trinity Pro 10% off, Sony ILX-LR1 5% off, TPT Backpack 8% off
+  - **Qualifying Requirements**: "Offer valid only when purchasing Trinity Pro aircraft and payload together" + "Systems must be delivered before December 31, 2025"
+  - Hero headline: "Save Big on the Quantum Systems Trinity Pro" matching official flyer messaging
   - Template-based case study section with clearly marked placeholder data for easy content updates
   - Email lead capture form with Resend integration for automated confirmation emails
   - Trust indicators (NDAA compliance, tax benefits, year-end budget messaging)
   - Dismissible homepage banner component with localStorage persistence
 - **Email Integration**: Resend API for automated lead confirmation emails (requires RESEND_API_KEY secret)
+- **Product Pricing**: Trinity Pro ($21,260), Sony ILX-LR1 ($9,200), TPT Backpack ($1,750) - regular retail prices displayed on /products page
 
 ### Asset Management
 - **Static Asset Integration**: Video and image assets served through custom streaming middleware
