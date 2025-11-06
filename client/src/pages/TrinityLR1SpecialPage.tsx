@@ -159,43 +159,21 @@ export default function TrinityLR1SpecialPage() {
               What's Included in This Bundle
             </h2>
             
-            <div className="grid md:grid-cols-3 gap-8">
-              {/* Trinity Pro Card */}
-              <Card className="hover-elevate" data-testid="card-trinity-pro">
-                <CardHeader>
-                  <Badge variant="secondary" className="w-fit mb-2">10% OFF</Badge>
-                  <CardTitle>Trinity Pro Platform</CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <p className="text-muted-foreground">
-                    VTOL fixed-wing with 90-minute flight time and survey-grade accuracy
-                  </p>
-                  <ul className="space-y-2 text-sm">
-                    <li className="flex items-start gap-2">
-                      <CheckCircle2 className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
-                      <span>90+ minute flight endurance</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle2 className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
-                      <span>NDAA compliant</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle2 className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
-                      <span>Fully autonomous operations</span>
-                    </li>
-                  </ul>
-                </CardContent>
-              </Card>
-
-              {/* LR1 Card */}
-              <Card className="hover-elevate border-primary" data-testid="card-lr1">
+            <div className="grid md:grid-cols-12 gap-6 mb-8 items-start">
+              {/* LR1 Card - Left, Featured */}
+              <Card className="hover-elevate md:col-span-4" data-testid="card-lr1">
                 <CardHeader>
                   <Badge variant="secondary" className="w-fit mb-2">5% OFF</Badge>
-                  <CardTitle>Sony ILX-LR1</CardTitle>
+                  <CardTitle className="text-xl">Sony ILX-LR1</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
-                  <p className="text-muted-foreground">
-                    Professional 61MP full-frame sensor for ultimate image quality
+                  <div className="space-y-1">
+                    <p className="text-sm text-muted-foreground line-through">$9,200</p>
+                    <p className="text-3xl font-bold text-primary">$8,740</p>
+                    <p className="text-sm font-semibold text-green-600">Save $460</p>
+                  </div>
+                  <p className="text-sm text-muted-foreground">
+                    Professional 61MP full-frame sensor for photogrammetry
                   </p>
                   <ul className="space-y-2 text-sm">
                     <li className="flex items-start gap-2">
@@ -214,27 +192,71 @@ export default function TrinityLR1SpecialPage() {
                 </CardContent>
               </Card>
 
-              {/* TPT Backpack Card */}
-              <Card className="hover-elevate" data-testid="card-tpt-backpack">
-                <CardHeader>
-                  <Badge variant="secondary" className="w-fit mb-2">8% OFF</Badge>
-                  <CardTitle>TPT Backpack</CardTitle>
+              {/* Trinity Pro Card - Center, FEATURED */}
+              <Card className="hover-elevate md:col-span-4 border-2 border-primary shadow-lg relative" data-testid="card-trinity-pro">
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+                  <Badge variant="default" className="bg-primary text-primary-foreground">FEATURED</Badge>
+                </div>
+                <CardHeader className="pt-6">
+                  <Badge variant="secondary" className="w-fit mb-2">10% OFF</Badge>
+                  <CardTitle className="text-2xl">Trinity Pro Platform</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
-                  <p className="text-muted-foreground">
-                    Professional transport case for complete system protection
+                  <div className="space-y-1">
+                    <p className="text-sm text-muted-foreground line-through">$21,260</p>
+                    <p className="text-4xl font-bold text-primary">$19,134</p>
+                    <p className="text-base font-semibold text-green-600">Save $2,126</p>
+                  </div>
+                  <p className="text-sm text-muted-foreground font-medium">
+                    NDAA-compliant VTOL platform engineered for survey-grade operations
                   </p>
                   <ul className="space-y-2 text-sm">
                     <li className="flex items-start gap-2">
                       <CheckCircle2 className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
+                      <span>90+ minute flight endurance</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle2 className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
+                      <span>NDAA compliant platform</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle2 className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
+                      <span>Fully autonomous operations</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle2 className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
+                      <span>Professional-grade reliability</span>
+                    </li>
+                  </ul>
+                </CardContent>
+              </Card>
+
+              {/* TPT Backpack Card - Right, Accessory */}
+              <Card className="hover-elevate md:col-span-4 bg-accent/5" data-testid="card-tpt-backpack">
+                <CardHeader>
+                  <Badge variant="outline" className="w-fit mb-2 text-xs">ACCESSORY • 8% OFF</Badge>
+                  <CardTitle className="text-lg">TPT Backpack</CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-3">
+                  <div className="space-y-1">
+                    <p className="text-xs text-muted-foreground line-through">$1,750</p>
+                    <p className="text-2xl font-bold text-primary">$1,610</p>
+                    <p className="text-xs font-semibold text-green-600">Save $140</p>
+                  </div>
+                  <p className="text-xs text-muted-foreground">
+                    Professional transport case for complete system protection
+                  </p>
+                  <ul className="space-y-1.5 text-xs">
+                    <li className="flex items-start gap-2">
+                      <CheckCircle2 className="h-3 w-3 text-primary mt-0.5 flex-shrink-0" />
                       <span>Military-grade protection</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <CheckCircle2 className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
+                      <CheckCircle2 className="h-3 w-3 text-primary mt-0.5 flex-shrink-0" />
                       <span>Airline carry-on approved</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <CheckCircle2 className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
+                      <CheckCircle2 className="h-3 w-3 text-primary mt-0.5 flex-shrink-0" />
                       <span>Complete system storage</span>
                     </li>
                   </ul>
@@ -242,8 +264,22 @@ export default function TrinityLR1SpecialPage() {
               </Card>
             </div>
 
-            <div className="text-center mt-12">
-              <Button size="xl" asChild data-testid="button-get-bundle">
+            {/* Total Savings Callout */}
+            <div className="bg-gradient-to-r from-primary/10 via-primary/5 to-primary/10 rounded-lg p-6 border border-primary/20" data-testid="total-savings">
+              <div className="text-center space-y-2">
+                <p className="text-sm font-medium text-muted-foreground">Complete Bundle Package</p>
+                <div className="flex items-center justify-center gap-3">
+                  <p className="text-2xl font-bold text-foreground">Total Savings:</p>
+                  <p className="text-4xl font-bold text-primary">$2,726</p>
+                </div>
+                <p className="text-sm text-muted-foreground">
+                  Valid only when purchasing Trinity Pro + LR1 together • Offer ends December 31, 2025
+                </p>
+              </div>
+            </div>
+
+            <div className="text-center mt-8">
+              <Button size="lg" asChild data-testid="button-get-bundle">
                 <a href="#lead-form">Get Your Quote</a>
               </Button>
             </div>
