@@ -7,10 +7,13 @@ import {
   type InsertDemoBooking,
   type Inquiry,
   type InsertInquiry,
+  type BundleLead,
+  type InsertBundleLead,
   users,
   products,
   demoBookings,
-  inquiries
+  inquiries,
+  bundleLeads
 } from "@shared/schema";
 import { neon } from "@neondatabase/serverless";
 import { drizzle } from "drizzle-orm/neon-http";
@@ -46,6 +49,11 @@ export interface IStorage {
   getInquiry(id: string): Promise<Inquiry | undefined>;
   createInquiry(inquiry: InsertInquiry): Promise<Inquiry>;
   updateInquiryStatus(id: string, status: string): Promise<Inquiry | undefined>;
+  
+  // Bundle lead methods
+  getAllBundleLeads(): Promise<BundleLead[]>;
+  getBundleLead(id: string): Promise<BundleLead | undefined>;
+  createBundleLead(lead: InsertBundleLead): Promise<BundleLead>;
 }
 
 export class DatabaseStorage implements IStorage {
@@ -136,6 +144,21 @@ export class DatabaseStorage implements IStorage {
 
   async updateInquiryStatus(id: string, status: string): Promise<Inquiry | undefined> {
     const result = await db.update(inquiries).set({ status }).where(eq(inquiries.id, status)).returning();
+    return result[0];
+  }
+
+  // Bundle lead methods
+  async getAllBundleLeads(): Promise<BundleLead[]> {
+    return await db.select().from(bundleLeads);
+  }
+
+  async getBundleLead(id: string): Promise<BundleLead | undefined> {
+    const result = await db.select().from(bundleLeads).where(eq(bundleLeads.id, id));
+    return result[0];
+  }
+
+  async createBundleLead(lead: InsertBundleLead): Promise<BundleLead> {
+    const result = await db.insert(bundleLeads).values(lead).returning();
     return result[0];
   }
 }
