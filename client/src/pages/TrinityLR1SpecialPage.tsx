@@ -114,10 +114,10 @@ export default function TrinityLR1SpecialPage() {
             {/* Countdown - Pushed to bottom */}
             <div className="flex flex-col items-center gap-4 mt-auto pt-8">
               <div className="bg-primary/10 rounded-lg p-6 inline-block">
-                <div className="text-5xl font-bold text-primary" data-testid="text-countdown">
+                <div className="text-5xl font-bold text-primary text-center" data-testid="text-countdown">
                   {daysLeft}
                 </div>
-                <div className="text-sm text-muted-foreground mt-1">Days Until Offer Ends</div>
+                <div className="text-sm text-muted-foreground mt-1 text-center">Days Until Offer Ends</div>
               </div>
               <p className="text-sm text-muted-foreground">
                 <Calendar className="inline h-4 w-4 mr-1" />
