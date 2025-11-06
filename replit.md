@@ -48,7 +48,18 @@ Preferred communication style: Simple, everyday language.
 - **Quote Request System**: Structured forms for lead generation with validation
 - **Demo Booking**: Scheduling system for test facility visits
 - **Contact Information Capture**: Professional inquiry handling with email notifications
+- **Bundle Lead Capture**: Q4 promotional landing page with email capture and automated confirmation emails
 - **Type-Safe Validation**: Zod schemas ensure data integrity
+
+### Marketing and Promotions
+- **Q4 Bundle Special Landing Page** (`/trinity-lr1-special`): Dedicated promotional landing page system for seasonal campaigns
+  - Real-time countdown timer to December 31, 2025 deadline
+  - Bundle pricing breakdown (Trinity Pro 10% off, Sony ILX-LR1 5% off, TPT Backpack 8% off)
+  - Template-based case study section with clearly marked placeholder data for easy content updates
+  - Email lead capture form with Resend integration for automated confirmation emails
+  - Trust indicators (NDAA compliance, tax benefits, year-end budget messaging)
+  - Dismissible homepage banner component with localStorage persistence
+- **Email Integration**: Resend API for automated lead confirmation emails (requires RESEND_API_KEY secret)
 
 ### Asset Management
 - **Static Asset Integration**: Video and image assets served through custom streaming middleware
@@ -83,3 +94,7 @@ Preferred communication style: Simple, everyday language.
 - **React Hook Form**: Performant form library with minimal re-renders
 - **Zod**: Runtime validation and TypeScript schema generation
 - **Date-fns**: Date manipulation utilities for scheduling features
+
+### Email Services
+- **Resend**: Transactional email service for lead confirmation and automated communications
+- **Email Templates**: HTML email templates for bundle special confirmations
