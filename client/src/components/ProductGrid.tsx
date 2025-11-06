@@ -35,7 +35,16 @@ const imageMap: Record<string, string> = {
   "Emlid Reach RX": emlidReachRX,
   "Autel Dragonfish Standard": dragonfishStandard,
   "Autel Dragonfish Pro": dragonfishPro,
+  "TPT Backpack - Trinity Pro Transport Case": productImage1,
 };
+
+// Format price as currency
+function formatPrice(price: string | null): string {
+  if (!price) return "Request Quote";
+  const numPrice = parseFloat(price);
+  if (isNaN(numPrice)) return "Request Quote";
+  return `$${numPrice.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}`;
+}
 
 interface ProductGridProps {
   title?: string;
@@ -92,7 +101,7 @@ export default function ProductGrid({
       category: product.category,
       description: product.description,
       image: imageMap[product.name] || productImage1,
-      price: product.price || "Contact for Pricing",
+      price: formatPrice(product.price),
       specifications,
       featured: product.name.includes("Trinity Pro")
     };
