@@ -16,6 +16,7 @@ import DemoPage from "@/pages/DemoPage";
 import ProductsPage from "@/pages/ProductsPage";
 import ProductDetailPage from "@/pages/ProductDetailPage";
 import ContactPage from "@/pages/ContactPage";
+import TrinityLR1SpecialPage from "@/pages/TrinityLR1SpecialPage";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -34,6 +35,7 @@ function Router() {
       <Route path="/products" component={ProductsPage} />
       <Route path="/products/:id" component={ProductDetailPage} />
       <Route path="/contact" component={ContactPage} />
+      <Route path="/trinity-lr1-special" component={TrinityLR1SpecialPage} />
       {/* Fallback to 404 */}
       <Route component={NotFound} />
     </Switch>

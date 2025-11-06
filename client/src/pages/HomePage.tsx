@@ -4,10 +4,12 @@ import TrinityPlatformSection from "@/components/TrinityPlatformSection";
 import ProductGrid from "@/components/ProductGrid";
 import SolutionsSection from "@/components/SolutionsSection";
 import Footer from "@/components/Footer";
+import Q4BundleBanner from "@/components/Q4BundleBanner";
 
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-background">
+      <Q4BundleBanner />
       <Header cartItemCount={0} />
       <main>
         <HeroSection />
