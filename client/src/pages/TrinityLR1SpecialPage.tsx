@@ -78,7 +78,8 @@ export default function TrinityLR1SpecialPage() {
           {/* Gradient overlay for better text readability */}
           <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-primary/10 z-0" />
           
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-16">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col min-h-[500px] sm:min-h-[600px]">
+            {/* Top Section: Badge + Headline */}
             <div className="text-center space-y-6">
               <Badge variant="default" className="mb-4" data-testid="badge-limited-time">
                 <Clock className="h-3 w-3 mr-1" />
@@ -88,7 +89,10 @@ export default function TrinityLR1SpecialPage() {
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-6" data-testid="text-hero-title">
                 Save Big on the Quantum Systems Trinity Pro
               </h1>
-              
+            </div>
+
+            {/* Bottom Section: Subtitle */}
+            <div className="text-center mt-auto pt-8">
               <p className="text-xl sm:text-2xl text-muted-foreground max-w-3xl mx-auto" data-testid="text-hero-subtitle">
                 Purchase Trinity Pro with any payload and unlock exclusive end-of-year savings through December 31, 2025
               </p>
