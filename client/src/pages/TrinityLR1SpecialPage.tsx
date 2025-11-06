@@ -94,7 +94,8 @@ export default function TrinityLR1SpecialPage() {
           {/* Gradient overlay for better text readability */}
           <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-primary/10 z-0" />
           
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col min-h-[500px] sm:min-h-[600px]">
+            {/* Top Content */}
             <div className="text-center space-y-6">
               <Badge variant="default" className="mb-4" data-testid="badge-limited-time">
                 <Clock className="h-3 w-3 mr-1" />
@@ -108,20 +109,20 @@ export default function TrinityLR1SpecialPage() {
               <p className="text-xl sm:text-2xl text-muted-foreground max-w-3xl mx-auto" data-testid="text-hero-subtitle">
                 Purchase Trinity Pro with any payload and unlock exclusive end-of-year savings through December 31, 2025
               </p>
+            </div>
 
-              {/* Countdown */}
-              <div className="flex flex-col items-center gap-4 pt-4">
-                <div className="bg-primary/10 rounded-lg p-6 inline-block">
-                  <div className="text-5xl font-bold text-primary" data-testid="text-countdown">
-                    {daysLeft}
-                  </div>
-                  <div className="text-sm text-muted-foreground mt-1">Days Until Offer Ends</div>
+            {/* Countdown - Pushed to bottom */}
+            <div className="flex flex-col items-center gap-4 mt-auto pt-8">
+              <div className="bg-primary/10 rounded-lg p-6 inline-block">
+                <div className="text-5xl font-bold text-primary" data-testid="text-countdown">
+                  {daysLeft}
                 </div>
-                <p className="text-sm text-muted-foreground">
-                  <Calendar className="inline h-4 w-4 mr-1" />
-                  Offer valid through December 31, 2025
-                </p>
+                <div className="text-sm text-muted-foreground mt-1">Days Until Offer Ends</div>
               </div>
+              <p className="text-sm text-muted-foreground">
+                <Calendar className="inline h-4 w-4 mr-1" />
+                Offer valid through December 31, 2025
+              </p>
             </div>
           </div>
         </section>
