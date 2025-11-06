@@ -13,6 +13,7 @@ import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
 import { insertBundleLeadSchema, type InsertBundleLead } from "@shared/schema";
+import trinityProBgImage from "@assets/Trinity Pro_1758836912459.jpg";
 
 export default function TrinityLR1SpecialPage() {
   const { toast } = useToast();
@@ -78,8 +79,22 @@ export default function TrinityLR1SpecialPage() {
       
       <main>
         {/* Hero Section with Countdown */}
-        <section className="relative bg-gradient-to-br from-primary/5 to-primary/10 py-16 sm:py-24">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="relative py-16 sm:py-24 overflow-hidden">
+          {/* Background Image with 40% opacity */}
+          <div 
+            className="absolute inset-0 z-0"
+            style={{
+              backgroundImage: `url(${trinityProBgImage})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              opacity: 0.4
+            }}
+          />
+          
+          {/* Gradient overlay for better text readability */}
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-primary/10 z-0" />
+          
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="text-center space-y-6">
               <Badge variant="default" className="mb-4" data-testid="badge-limited-time">
                 <Clock className="h-3 w-3 mr-1" />
