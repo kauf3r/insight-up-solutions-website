@@ -7,7 +7,7 @@ const seedProducts: InsertProduct[] = [
     slug: "trinity-pro",
     description: "Next-generation eVTOL fixed-wing mapping drone with Quantum-Skynode autopilot. Future-proof platform with 75,000+ proven flight hours globally.",
     category: "UAV Platform",
-    price: null,
+    price: "21260.00",
     imageUrl: null,
     specifications: JSON.stringify([
       "Flight time: 90 minutes maximum",
@@ -31,7 +31,7 @@ const seedProducts: InsertProduct[] = [
     slug: "sony-ilx-lr1",
     description: "Professional 61MP RGB camera with cutting-edge high-accuracy capabilities. Seamlessly integrates with Trinity Pro for exceptional image quality and streamlined workflows.",
     category: "Trinity Payload",
-    price: null,
+    price: "9200.00",
     imageUrl: null,
     specifications: JSON.stringify([
       "Sensor: 61.0 MP (9504 × 6336 px)",
@@ -359,6 +359,31 @@ const seedProducts: InsertProduct[] = [
       "AI target recognition and intelligent tracking",
       "Terrain avoidance and mobile platform landing",
       "Multiple redundancies for mission safety"
+    ],
+    isAvailable: "true"
+  },
+  {
+    name: "TPT Backpack - Trinity Pro Transport Case",
+    slug: "tpt-backpack",
+    description: "Military-grade protective transport backpack specifically designed for the Quantum Systems Trinity Pro platform. Airline carry-on approved for maximum portability and convenience.",
+    category: "Trinity Accessory",
+    price: "1750.00",
+    imageUrl: null,
+    specifications: JSON.stringify([
+      "Airline carry-on compliant dimensions",
+      "Military-grade protective foam insert",
+      "Weather-resistant exterior shell",
+      "Complete Trinity Pro system storage",
+      "Secure compartments for payloads and accessories",
+      "Padded shoulder straps for comfort",
+      "Durable construction for field use"
+    ]),
+    features: [
+      "Military-grade protection",
+      "Airline carry-on approved",
+      "Complete system storage",
+      "Weather-resistant shell",
+      "Secure payload compartments"
     ],
     isAvailable: "true"
   }
