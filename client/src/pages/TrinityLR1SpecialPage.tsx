@@ -194,10 +194,7 @@ export default function TrinityLR1SpecialPage() {
 
               {/* Trinity Pro Card - Center, FEATURED */}
               <Card className="hover-elevate md:col-span-4 border-2 border-primary shadow-lg relative" data-testid="card-trinity-pro">
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                  <Badge variant="default" className="bg-primary text-primary-foreground">FEATURED</Badge>
-                </div>
-                <CardHeader className="pt-6">
+                <CardHeader>
                   <Badge variant="secondary" className="w-fit mb-2">10% OFF</Badge>
                   <CardTitle className="text-2xl">Trinity Pro Platform</CardTitle>
                 </CardHeader>
