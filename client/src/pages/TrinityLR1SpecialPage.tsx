@@ -219,7 +219,7 @@ export default function TrinityLR1SpecialPage() {
             </div>
 
             <div className="text-center mt-8">
-              <Button size="lg" asChild data-testid="button-get-bundle">
+              <Button size="lg" className="w-80" asChild data-testid="button-get-bundle">
                 <a href="#lead-form">Get Your Quote</a>
               </Button>
             </div>
