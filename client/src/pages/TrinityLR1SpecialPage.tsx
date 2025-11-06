@@ -96,7 +96,7 @@ export default function TrinityLR1SpecialPage() {
           
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col min-h-[500px] sm:min-h-[600px]">
             {/* Top Content */}
-            <div className="text-center space-y-6 pt-12">
+            <div className="text-center space-y-6">
               <Badge variant="default" className="mb-4" data-testid="badge-limited-time">
                 <Clock className="h-3 w-3 mr-1" />
                 LIMITED TIME OFFER
