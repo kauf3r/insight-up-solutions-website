@@ -1,8 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
-import { CheckCircle2, Clock, Shield, TrendingUp, DollarSign, Calendar } from "lucide-react";
+import { CheckCircle2, Clock, Shield, TrendingUp, DollarSign } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -18,22 +18,6 @@ import trinityProBgImage from "@assets/Trinity Pro_1758836912459.jpg";
 export default function TrinityLR1SpecialPage() {
   const { toast } = useToast();
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [daysLeft, setDaysLeft] = useState(0);
-
-  // Countdown to Dec 31, 2025
-  useEffect(() => {
-    const calculateDaysLeft = () => {
-      const deadline = new Date('2025-12-31T23:59:59');
-      const now = new Date();
-      const diff = deadline.getTime() - now.getTime();
-      const days = Math.ceil(diff / (1000 * 60 * 60 * 24));
-      setDaysLeft(days > 0 ? days : 0);
-    };
-    
-    calculateDaysLeft();
-    const interval = setInterval(calculateDaysLeft, 1000 * 60 * 60); // Update every hour
-    return () => clearInterval(interval);
-  }, []);
 
   const form = useForm<InsertBundleLead>({
     resolver: zodResolver(insertBundleLeadSchema),
@@ -78,7 +62,7 @@ export default function TrinityLR1SpecialPage() {
       <Header cartItemCount={0} />
       
       <main>
-        {/* Hero Section with Countdown */}
+        {/* Hero Section */}
         <section className="relative py-16 sm:py-24 overflow-hidden">
           {/* Background Image with 40% opacity */}
           <div 
@@ -94,8 +78,7 @@ export default function TrinityLR1SpecialPage() {
           {/* Gradient overlay for better text readability */}
           <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-primary/10 z-0" />
           
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col min-h-[500px] sm:min-h-[600px]">
-            {/* Top Content */}
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-16">
             <div className="text-center space-y-6">
               <Badge variant="default" className="mb-4" data-testid="badge-limited-time">
                 <Clock className="h-3 w-3 mr-1" />
@@ -108,20 +91,6 @@ export default function TrinityLR1SpecialPage() {
               
               <p className="text-xl sm:text-2xl text-muted-foreground max-w-3xl mx-auto" data-testid="text-hero-subtitle">
                 Purchase Trinity Pro with any payload and unlock exclusive end-of-year savings through December 31, 2025
-              </p>
-            </div>
-
-            {/* Countdown - Pushed to bottom */}
-            <div className="flex flex-col items-center gap-4 mt-auto pt-8">
-              <div className="bg-primary/10 rounded-lg p-6 inline-block">
-                <div className="text-5xl font-bold text-primary text-center" data-testid="text-countdown">
-                  {daysLeft}
-                </div>
-                <div className="text-sm text-muted-foreground mt-1 text-center">Days Until Offer Ends</div>
-              </div>
-              <p className="text-sm text-muted-foreground">
-                <Calendar className="inline h-4 w-4 mr-1" />
-                Offer valid through December 31, 2025
               </p>
             </div>
           </div>
