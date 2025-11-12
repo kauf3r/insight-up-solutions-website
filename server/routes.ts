@@ -143,11 +143,13 @@ export async function registerRoutes(app: Express): Promise<Server> {
       // Send confirmation email via Resend connector
       try {
         console.log("[RESEND] Attempting to get Resend client...");
-        const { client, fromEmail } = await getUncachableResendClient();
-        console.log(`[RESEND] Client obtained, from email: ${fromEmail || "fallback"}`);
+        const { client } = await getUncachableResendClient();
+        console.log("[RESEND] Client obtained");
         
+        // Use Resend's verified test email for now
+        // TODO: Verify insightupsolutions.com domain in Resend dashboard for production
         const emailData = {
-          from: fromEmail || "Insight Up Solutions <onboarding@resend.dev>",
+          from: "Insight Up Solutions <onboarding@resend.dev>",
           to: lead.email,
           subject: "Trinity Pro + LR1 Bundle - Quote Request Received",
           html: `
