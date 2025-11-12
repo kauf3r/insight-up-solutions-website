@@ -70,8 +70,82 @@ export async function registerRoutes(app: Express): Promise<Server> {
     try {
       const validatedData = insertDemoBookingSchema.parse(req.body);
       const booking = await storage.createDemoBooking(validatedData);
+      console.log(`[DEMO BOOKING] Created booking for ${booking.email}`);
+      
+      // Send confirmation email via Resend connector
+      try {
+        const { client } = await getUncachableResendClient();
+        
+        const emailData = {
+          from: "Insight Up Solutions <info@insightupsolutions.com>",
+          to: booking.email,
+          subject: "Demo Booking Confirmed - Insight Up Solutions",
+          html: `
+            <h2>Thank you for booking a demo with Insight Up Solutions!</h2>
+            <p>Hi ${booking.name},</p>
+            <p>We've received your demo booking request and are excited to show you our UAV solutions.</p>
+            <p><strong>Your Details:</strong></p>
+            <p>Name: ${booking.name}</p>
+            <p>Email: ${booking.email}</p>
+            <p>Company: ${booking.company || 'Not provided'}</p>
+            <p>Phone: ${booking.phone || 'Not provided'}</p>
+            <p><strong>Booking Details:</strong></p>
+            <p>Preferred Date: ${booking.preferredDate || 'To be scheduled'}</p>
+            <p>Your Message: ${booking.message || 'None provided'}</p>
+            <p>Our team will reach out within 24 hours to confirm your appointment and discuss your specific needs.</p>
+            <br/>
+            <p>Best regards,<br/>
+            Insight Up Solutions Team<br/>
+            <a href="mailto:info@insightupsolutions.com">info@insightupsolutions.com</a> | +1 (831) 888-7172</p>
+          `
+        };
+        
+        console.log(`[RESEND] Sending demo booking confirmation to ${emailData.to}`);
+        const result = await client.emails.send(emailData);
+        console.log("[RESEND] Demo booking confirmation sent successfully:", result);
+      } catch (emailError: any) {
+        console.error("[RESEND ERROR] Failed to send demo booking confirmation email");
+        console.error("[RESEND ERROR] Error details:", emailError);
+        console.error("[RESEND ERROR] Error message:", emailError?.message);
+      }
+      
+      // Send admin notification email
+      try {
+        const { client } = await getUncachableResendClient();
+        const submittedTime = booking.createdAt 
+          ? new Date(booking.createdAt).toLocaleString('en-US', { timeZone: 'America/Los_Angeles' })
+          : new Date().toLocaleString('en-US', { timeZone: 'America/Los_Angeles' });
+        
+        const adminEmailData = {
+          from: "Insight Up Solutions <info@insightupsolutions.com>",
+          to: "kaufman@airspaceintegration.com",
+          subject: "New Demo Booking Request",
+          html: `
+            <h2>New Demo Booking</h2>
+            <p><strong>Name:</strong> ${booking.name}</p>
+            <p><strong>Email:</strong> ${booking.email}</p>
+            <p><strong>Company:</strong> ${booking.company || 'Not provided'}</p>
+            <p><strong>Phone:</strong> ${booking.phone || 'Not provided'}</p>
+            <p><strong>Preferred Date:</strong> ${booking.preferredDate || 'Not specified'}</p>
+            <p><strong>Message:</strong> ${booking.message || 'None'}</p>
+            <br/>
+            <p><strong>Submitted:</strong> ${submittedTime}</p>
+            <p><a href="https://insightupsolutions.com">View Dashboard</a></p>
+          `
+        };
+        
+        console.log(`[RESEND] Sending demo booking admin notification to ${adminEmailData.to}`);
+        const adminResult = await client.emails.send(adminEmailData);
+        console.log("[RESEND] Demo booking admin notification sent successfully:", adminResult);
+      } catch (adminEmailError: any) {
+        console.error("[RESEND ERROR] Failed to send demo booking admin notification email");
+        console.error("[RESEND ERROR] Error details:", adminEmailError);
+        console.error("[RESEND ERROR] Error message:", adminEmailError?.message);
+      }
+      
       res.status(201).json(booking);
     } catch (error) {
+      console.error("[DEMO BOOKING ERROR]", error);
       res.status(400).json({ error: "Invalid demo booking data" });
     }
   });
@@ -103,8 +177,86 @@ export async function registerRoutes(app: Express): Promise<Server> {
     try {
       const validatedData = insertInquirySchema.parse(req.body);
       const inquiry = await storage.createInquiry(validatedData);
+      console.log(`[INQUIRY] Created inquiry for ${inquiry.email}`);
+      
+      // Send confirmation email via Resend connector
+      try {
+        const { client } = await getUncachableResendClient();
+        
+        const emailData = {
+          from: "Insight Up Solutions <info@insightupsolutions.com>",
+          to: inquiry.email,
+          subject: "Your Inquiry - Insight Up Solutions",
+          html: `
+            <h2>Thank you for contacting Insight Up Solutions!</h2>
+            <p>Hi ${inquiry.name},</p>
+            <p>We've received your inquiry and appreciate your interest in our UAV solutions.</p>
+            <p><strong>Your Details:</strong></p>
+            <p>Name: ${inquiry.name}</p>
+            <p>Email: ${inquiry.email}</p>
+            <p>Company: ${inquiry.company || 'Not provided'}</p>
+            <p>Phone: ${inquiry.phone || 'Not provided'}</p>
+            <p><strong>Inquiry Details:</strong></p>
+            <p>Subject: ${inquiry.subject}</p>
+            <p>Type: ${inquiry.inquiryType}</p>
+            <p>Product Reference: ${inquiry.productId || 'General inquiry'}</p>
+            <p>Your Message: ${inquiry.message || 'None provided'}</p>
+            <p>Our team will respond within 24 hours to address your questions and discuss how we can help.</p>
+            <br/>
+            <p>Best regards,<br/>
+            Insight Up Solutions Team<br/>
+            <a href="mailto:info@insightupsolutions.com">info@insightupsolutions.com</a> | +1 (831) 888-7172</p>
+          `
+        };
+        
+        console.log(`[RESEND] Sending inquiry confirmation to ${emailData.to}`);
+        const result = await client.emails.send(emailData);
+        console.log("[RESEND] Inquiry confirmation sent successfully:", result);
+      } catch (emailError: any) {
+        console.error("[RESEND ERROR] Failed to send inquiry confirmation email");
+        console.error("[RESEND ERROR] Error details:", emailError);
+        console.error("[RESEND ERROR] Error message:", emailError?.message);
+      }
+      
+      // Send admin notification email
+      try {
+        const { client } = await getUncachableResendClient();
+        const submittedTime = inquiry.createdAt 
+          ? new Date(inquiry.createdAt).toLocaleString('en-US', { timeZone: 'America/Los_Angeles' })
+          : new Date().toLocaleString('en-US', { timeZone: 'America/Los_Angeles' });
+        
+        const adminEmailData = {
+          from: "Insight Up Solutions <info@insightupsolutions.com>",
+          to: "kaufman@airspaceintegration.com",
+          subject: "New Contact Inquiry",
+          html: `
+            <h2>New Inquiry Submission</h2>
+            <p><strong>Name:</strong> ${inquiry.name}</p>
+            <p><strong>Email:</strong> ${inquiry.email}</p>
+            <p><strong>Company:</strong> ${inquiry.company || 'Not provided'}</p>
+            <p><strong>Phone:</strong> ${inquiry.phone || 'Not provided'}</p>
+            <p><strong>Subject:</strong> ${inquiry.subject}</p>
+            <p><strong>Type:</strong> ${inquiry.inquiryType}</p>
+            <p><strong>Product ID:</strong> ${inquiry.productId || 'Not specified'}</p>
+            <p><strong>Message:</strong> ${inquiry.message || 'None'}</p>
+            <br/>
+            <p><strong>Submitted:</strong> ${submittedTime}</p>
+            <p><a href="https://insightupsolutions.com">View Dashboard</a></p>
+          `
+        };
+        
+        console.log(`[RESEND] Sending inquiry admin notification to ${adminEmailData.to}`);
+        const adminResult = await client.emails.send(adminEmailData);
+        console.log("[RESEND] Inquiry admin notification sent successfully:", adminResult);
+      } catch (adminEmailError: any) {
+        console.error("[RESEND ERROR] Failed to send inquiry admin notification email");
+        console.error("[RESEND ERROR] Error details:", adminEmailError);
+        console.error("[RESEND ERROR] Error message:", adminEmailError?.message);
+      }
+      
       res.status(201).json(inquiry);
     } catch (error) {
+      console.error("[INQUIRY ERROR]", error);
       res.status(400).json({ error: "Invalid inquiry data" });
     }
   });
@@ -127,8 +279,86 @@ export async function registerRoutes(app: Express): Promise<Server> {
     try {
       const validatedData = insertInquirySchema.parse(req.body);
       const inquiry = await storage.createInquiry(validatedData);
+      console.log(`[CONTACT] Created contact inquiry for ${inquiry.email}`);
+      
+      // Send confirmation email via Resend connector
+      try {
+        const { client } = await getUncachableResendClient();
+        
+        const emailData = {
+          from: "Insight Up Solutions <info@insightupsolutions.com>",
+          to: inquiry.email,
+          subject: "Your Message - Insight Up Solutions",
+          html: `
+            <h2>Thank you for contacting Insight Up Solutions!</h2>
+            <p>Hi ${inquiry.name},</p>
+            <p>We've received your message and appreciate you reaching out to us.</p>
+            <p><strong>Your Details:</strong></p>
+            <p>Name: ${inquiry.name}</p>
+            <p>Email: ${inquiry.email}</p>
+            <p>Company: ${inquiry.company || 'Not provided'}</p>
+            <p>Phone: ${inquiry.phone || 'Not provided'}</p>
+            <p><strong>Message Details:</strong></p>
+            <p>Subject: ${inquiry.subject}</p>
+            <p>Type: ${inquiry.inquiryType}</p>
+            <p>Product Reference: ${inquiry.productId || 'General inquiry'}</p>
+            <p>Your Message: ${inquiry.message || 'None provided'}</p>
+            <p>Our team will respond within 24 hours to address your questions and discuss how we can help.</p>
+            <br/>
+            <p>Best regards,<br/>
+            Insight Up Solutions Team<br/>
+            <a href="mailto:info@insightupsolutions.com">info@insightupsolutions.com</a> | +1 (831) 888-7172</p>
+          `
+        };
+        
+        console.log(`[RESEND] Sending contact confirmation to ${emailData.to}`);
+        const result = await client.emails.send(emailData);
+        console.log("[RESEND] Contact confirmation sent successfully:", result);
+      } catch (emailError: any) {
+        console.error("[RESEND ERROR] Failed to send contact confirmation email");
+        console.error("[RESEND ERROR] Error details:", emailError);
+        console.error("[RESEND ERROR] Error message:", emailError?.message);
+      }
+      
+      // Send admin notification email
+      try {
+        const { client } = await getUncachableResendClient();
+        const submittedTime = inquiry.createdAt 
+          ? new Date(inquiry.createdAt).toLocaleString('en-US', { timeZone: 'America/Los_Angeles' })
+          : new Date().toLocaleString('en-US', { timeZone: 'America/Los_Angeles' });
+        
+        const adminEmailData = {
+          from: "Insight Up Solutions <info@insightupsolutions.com>",
+          to: "kaufman@airspaceintegration.com",
+          subject: "New Contact Form Submission",
+          html: `
+            <h2>New Contact Form Submission</h2>
+            <p><strong>Name:</strong> ${inquiry.name}</p>
+            <p><strong>Email:</strong> ${inquiry.email}</p>
+            <p><strong>Company:</strong> ${inquiry.company || 'Not provided'}</p>
+            <p><strong>Phone:</strong> ${inquiry.phone || 'Not provided'}</p>
+            <p><strong>Subject:</strong> ${inquiry.subject}</p>
+            <p><strong>Type:</strong> ${inquiry.inquiryType}</p>
+            <p><strong>Product ID:</strong> ${inquiry.productId || 'Not specified'}</p>
+            <p><strong>Message:</strong> ${inquiry.message || 'None'}</p>
+            <br/>
+            <p><strong>Submitted:</strong> ${submittedTime}</p>
+            <p><a href="https://insightupsolutions.com">View Dashboard</a></p>
+          `
+        };
+        
+        console.log(`[RESEND] Sending contact admin notification to ${adminEmailData.to}`);
+        const adminResult = await client.emails.send(adminEmailData);
+        console.log("[RESEND] Contact admin notification sent successfully:", adminResult);
+      } catch (adminEmailError: any) {
+        console.error("[RESEND ERROR] Failed to send contact admin notification email");
+        console.error("[RESEND ERROR] Error details:", adminEmailError);
+        console.error("[RESEND ERROR] Error message:", adminEmailError?.message);
+      }
+      
       res.status(201).json(inquiry);
     } catch (error) {
+      console.error("[CONTACT ERROR]", error);
       res.status(400).json({ error: "Invalid contact form data" });
     }
   });
@@ -153,13 +383,19 @@ export async function registerRoutes(app: Express): Promise<Server> {
           html: `
             <h2>Thank you for your interest in the Trinity Pro + LR1 Bundle!</h2>
             <p>Hi ${lead.name},</p>
-            <p>We're excited to share our exclusive Q4 special with you:</p>
+            <p>We've received your quote request for our exclusive Q4 special:</p>
             <ul>
               <li><strong>Trinity Pro Platform:</strong> 10% off</li>
               <li><strong>Sony ILX-LR1 Payload:</strong> 5% off</li>
               <li><strong>TPT Backpack:</strong> 8% off</li>
             </ul>
             <p><strong>Offer valid through December 31, 2025</strong></p>
+            <p><strong>Your Details:</strong></p>
+            <p>Name: ${lead.name}</p>
+            <p>Email: ${lead.email}</p>
+            <p>Company: ${lead.company || 'Not provided'}</p>
+            <p>Phone: ${lead.phone || 'Not provided'}</p>
+            <p>Interest Area: ${lead.interestArea || 'General UAV solutions'}</p>
             <p>Our team will reach out within 24 hours to discuss your specific needs and provide a detailed quote.</p>
             <p>In the meantime, you can learn more about our solutions at <a href="https://insightupsolutions.com">insightupsolutions.com</a>.</p>
             <br/>
