@@ -138,11 +138,15 @@ export async function registerRoutes(app: Express): Promise<Server> {
     try {
       const validatedData = insertBundleLeadSchema.parse(req.body);
       const lead = await storage.createBundleLead(validatedData);
+      console.log(`[BUNDLE LEAD] Created lead for ${lead.email}`);
       
       // Send confirmation email via Resend connector
       try {
+        console.log("[RESEND] Attempting to get Resend client...");
         const { client, fromEmail } = await getUncachableResendClient();
-        await client.emails.send({
+        console.log(`[RESEND] Client obtained, from email: ${fromEmail || "fallback"}`);
+        
+        const emailData = {
           from: fromEmail || "Insight Up Solutions <onboarding@resend.dev>",
           to: lead.email,
           subject: "Trinity Pro + LR1 Bundle - Quote Request Received",
@@ -163,13 +167,21 @@ export async function registerRoutes(app: Express): Promise<Server> {
             Insight Up Solutions Team<br/>
             <a href="mailto:info@insightupsolutions.com">info@insightupsolutions.com</a> | +1 (831) 888-7172</p>
           `
-        });
-      } catch (emailError) {
-        console.error("Failed to send confirmation email:", emailError);
+        };
+        
+        console.log(`[RESEND] Sending email to ${emailData.to} from ${emailData.from}`);
+        const result = await client.emails.send(emailData);
+        console.log("[RESEND] Email sent successfully:", result);
+      } catch (emailError: any) {
+        console.error("[RESEND ERROR] Failed to send confirmation email");
+        console.error("[RESEND ERROR] Error details:", emailError);
+        console.error("[RESEND ERROR] Error message:", emailError?.message);
+        console.error("[RESEND ERROR] Error stack:", emailError?.stack);
       }
       
       res.status(201).json(lead);
     } catch (error) {
+      console.error("[BUNDLE LEAD ERROR]", error);
       res.status(400).json({ error: "Invalid bundle lead data" });
     }
   });
