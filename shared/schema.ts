@@ -43,7 +43,8 @@ export const inquiries = pgTable("inquiries", {
   phone: text("phone"),
   subject: text("subject").notNull(),
   message: text("message").notNull(),
-  inquiryType: text("inquiry_type").notNull(), // product, custom, general
+  inquiryType: text("inquiry_type").notNull(), // product, custom, general, quote
+  industry: text("industry"), // optional industry field for quote requests
   productId: varchar("product_id").references(() => products.id),
   status: text("status").notNull().default("new"), // new, responded, closed
   createdAt: timestamp("created_at").defaultNow(),
