@@ -33,7 +33,7 @@ export default function TrinityLR1SpecialPage() {
 
   const bundleLeadMutation = useMutation({
     mutationFn: async (data: InsertBundleLead) => {
-      return await apiRequest("/api/bundle-leads", "POST", data);
+      return await apiRequest("POST", "/api/bundle-leads", data);
     },
     onSuccess: () => {
       setIsSubmitted(true);
