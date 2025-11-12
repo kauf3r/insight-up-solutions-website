@@ -175,6 +175,11 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
   app.post("/api/inquiries", async (req, res) => {
     try {
+      // Auto-populate subject for quote requests if not provided
+      if (req.body.inquiryType === 'quote' && !req.body.subject) {
+        req.body.subject = `Quote request from ${req.body.name || 'customer'}`;
+      }
+      
       const validatedData = insertInquirySchema.parse(req.body);
       const inquiry = await storage.createInquiry(validatedData);
       console.log(`[INQUIRY] Created inquiry for ${inquiry.email}`);
@@ -183,25 +188,33 @@ export async function registerRoutes(app: Express): Promise<Server> {
       try {
         const { client } = await getUncachableResendClient();
         
+        const isQuote = inquiry.inquiryType === 'quote';
+        const emailSubject = isQuote ? "Quote Request Received - Insight Up Solutions" : "Your Inquiry - Insight Up Solutions";
+        const emailTitle = isQuote ? "Thank you for requesting a quote!" : "Thank you for contacting Insight Up Solutions!";
+        const responseMessage = isQuote 
+          ? "Our team will review your requirements and provide a detailed quote within 24 hours."
+          : "Our team will respond within 24 hours to address your questions and discuss how we can help.";
+        
         const emailData = {
           from: "Insight Up Solutions <info@insightupsolutions.com>",
           to: inquiry.email,
-          subject: "Your Inquiry - Insight Up Solutions",
+          subject: emailSubject,
           html: `
-            <h2>Thank you for contacting Insight Up Solutions!</h2>
+            <h2>${emailTitle}</h2>
             <p>Hi ${inquiry.name},</p>
-            <p>We've received your inquiry and appreciate your interest in our UAV solutions.</p>
+            <p>We've received your ${isQuote ? 'quote request' : 'inquiry'} and appreciate your interest in our UAV solutions.</p>
             <p><strong>Your Details:</strong></p>
             <p>Name: ${inquiry.name}</p>
             <p>Email: ${inquiry.email}</p>
             <p>Company: ${inquiry.company || 'Not provided'}</p>
             <p>Phone: ${inquiry.phone || 'Not provided'}</p>
-            <p><strong>Inquiry Details:</strong></p>
+            ${inquiry.industry ? `<p>Industry: ${inquiry.industry}</p>` : ''}
+            <p><strong>${isQuote ? 'Quote' : 'Inquiry'} Details:</strong></p>
             <p>Subject: ${inquiry.subject}</p>
             <p>Type: ${inquiry.inquiryType}</p>
             <p>Product Reference: ${inquiry.productId || 'General inquiry'}</p>
             <p>Your Message: ${inquiry.message || 'None provided'}</p>
-            <p>Our team will respond within 24 hours to address your questions and discuss how we can help.</p>
+            <p>${responseMessage}</p>
             <br/>
             <p>Best regards,<br/>
             Insight Up Solutions Team<br/>
@@ -225,16 +238,19 @@ export async function registerRoutes(app: Express): Promise<Server> {
           ? new Date(inquiry.createdAt).toLocaleString('en-US', { timeZone: 'America/Los_Angeles' })
           : new Date().toLocaleString('en-US', { timeZone: 'America/Los_Angeles' });
         
+        const adminSubject = inquiry.inquiryType === 'quote' ? "New Quote Request" : "New Contact Inquiry";
+        
         const adminEmailData = {
           from: "Insight Up Solutions <info@insightupsolutions.com>",
           to: "kaufman@airspaceintegration.com",
-          subject: "New Contact Inquiry",
+          subject: adminSubject,
           html: `
-            <h2>New Inquiry Submission</h2>
+            <h2>${inquiry.inquiryType === 'quote' ? 'New Quote Request Submission' : 'New Inquiry Submission'}</h2>
             <p><strong>Name:</strong> ${inquiry.name}</p>
             <p><strong>Email:</strong> ${inquiry.email}</p>
             <p><strong>Company:</strong> ${inquiry.company || 'Not provided'}</p>
             <p><strong>Phone:</strong> ${inquiry.phone || 'Not provided'}</p>
+            ${inquiry.industry ? `<p><strong>Industry:</strong> ${inquiry.industry}</p>` : ''}
             <p><strong>Subject:</strong> ${inquiry.subject}</p>
             <p><strong>Type:</strong> ${inquiry.inquiryType}</p>
             <p><strong>Product ID:</strong> ${inquiry.productId || 'Not specified'}</p>
