@@ -40,7 +40,7 @@ export default function TrinityLR1SpecialPage() {
       form.reset();
       toast({
         title: "Thank you for your interest!",
-        description: "Check your email for the case study and our team will contact you within 24 hours.",
+        description: "Our team will contact you within 24 hours with your custom quote.",
       });
       window.scrollTo({ top: 0, behavior: 'smooth' });
     },
@@ -273,10 +273,10 @@ export default function TrinityLR1SpecialPage() {
             <Card data-testid="card-lead-form">
               <CardHeader className="text-center space-y-4">
                 <CardTitle className="text-2xl sm:text-3xl">
-                  Get Your Custom Quote + Free Case Study
+                  Get Your Custom Quote
                 </CardTitle>
                 <p className="text-muted-foreground">
-                  Download our complete case study and receive a personalized quote for the Trinity Pro + LR1 bundle with Q4 special pricing.
+                  Receive a personalized quote for the Trinity Pro + LR1 bundle with Q4 special pricing.
                 </p>
               </CardHeader>
 
@@ -286,7 +286,7 @@ export default function TrinityLR1SpecialPage() {
                     <CheckCircle2 className="h-16 w-16 text-primary mx-auto" />
                     <h3 className="text-xl font-semibold">Thank You!</h3>
                     <p className="text-muted-foreground">
-                      Check your email for the case study. Our team will contact you within 24 hours with your custom quote.
+                      Our team will contact you within 24 hours with your custom quote.
                     </p>
                   </div>
                 ) : (
@@ -378,7 +378,7 @@ export default function TrinityLR1SpecialPage() {
                         disabled={bundleLeadMutation.isPending}
                         data-testid="button-submit-lead"
                       >
-                        {bundleLeadMutation.isPending ? "Submitting..." : "Get My Quote + Case Study"}
+                        {bundleLeadMutation.isPending ? "Submitting..." : "Get My Quote"}
                       </Button>
 
                       <p className="text-xs text-center text-muted-foreground">

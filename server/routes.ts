@@ -146,7 +146,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
           await resend.emails.send({
             from: "Insight Up Solutions <onboarding@resend.dev>",
             to: lead.email,
-            subject: "Trinity Pro + LR1 Bundle - Your Case Study is Ready!",
+            subject: "Trinity Pro + LR1 Bundle - Quote Request Received",
             html: `
               <h2>Thank you for your interest in the Trinity Pro + LR1 Bundle!</h2>
               <p>Hi ${lead.name},</p>
