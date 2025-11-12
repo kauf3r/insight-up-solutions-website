@@ -169,14 +169,46 @@ export async function registerRoutes(app: Express): Promise<Server> {
           `
         };
         
-        console.log(`[RESEND] Sending email to ${emailData.to} from ${emailData.from}`);
+        console.log(`[RESEND] Sending customer confirmation to ${emailData.to} from ${emailData.from}`);
         const result = await client.emails.send(emailData);
-        console.log("[RESEND] Email sent successfully:", result);
+        console.log("[RESEND] Customer confirmation sent successfully:", result);
       } catch (emailError: any) {
-        console.error("[RESEND ERROR] Failed to send confirmation email");
+        console.error("[RESEND ERROR] Failed to send customer confirmation email");
         console.error("[RESEND ERROR] Error details:", emailError);
         console.error("[RESEND ERROR] Error message:", emailError?.message);
-        console.error("[RESEND ERROR] Error stack:", emailError?.stack);
+      }
+      
+      // Send admin notification email (separate try/catch to ensure API response even if this fails)
+      try {
+        const { client } = await getUncachableResendClient();
+        const submittedTime = lead.createdAt 
+          ? new Date(lead.createdAt).toLocaleString('en-US', { timeZone: 'America/Los_Angeles' })
+          : new Date().toLocaleString('en-US', { timeZone: 'America/Los_Angeles' });
+        
+        const adminEmailData = {
+          from: "Insight Up Solutions <info@insightupsolutions.com>",
+          to: "kaufman@airspaceintegration.com",
+          subject: "New Trinity Pro Bundle Lead",
+          html: `
+            <h2>New Bundle Lead Submission</h2>
+            <p><strong>Name:</strong> ${lead.name}</p>
+            <p><strong>Email:</strong> ${lead.email}</p>
+            <p><strong>Company:</strong> ${lead.company || 'Not provided'}</p>
+            <p><strong>Phone:</strong> ${lead.phone || 'Not provided'}</p>
+            <p><strong>Interest Area:</strong> ${lead.interestArea || 'Not specified'}</p>
+            <br/>
+            <p><strong>Submitted:</strong> ${submittedTime}</p>
+            <p><a href="https://insightupsolutions.com">View Dashboard</a></p>
+          `
+        };
+        
+        console.log(`[RESEND] Sending admin notification to ${adminEmailData.to}`);
+        const adminResult = await client.emails.send(adminEmailData);
+        console.log("[RESEND] Admin notification sent successfully:", adminResult);
+      } catch (adminEmailError: any) {
+        console.error("[RESEND ERROR] Failed to send admin notification email");
+        console.error("[RESEND ERROR] Error details:", adminEmailError);
+        console.error("[RESEND ERROR] Error message:", adminEmailError?.message);
       }
       
       res.status(201).json(lead);
