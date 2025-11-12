@@ -176,11 +176,12 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.post("/api/inquiries", async (req, res) => {
     try {
       // Auto-populate subject for quote requests if not provided
-      if (req.body.inquiryType === 'quote' && !req.body.subject) {
-        req.body.subject = `Quote request from ${req.body.name || 'customer'}`;
+      const inquiryData = { ...req.body };
+      if (!inquiryData.subject && inquiryData.inquiryType === 'quote') {
+        inquiryData.subject = `Quote request from ${inquiryData.name || 'customer'}`;
       }
       
-      const validatedData = insertInquirySchema.parse(req.body);
+      const validatedData = insertInquirySchema.parse(inquiryData);
       const inquiry = await storage.createInquiry(validatedData);
       console.log(`[INQUIRY] Created inquiry for ${inquiry.email}`);
       
