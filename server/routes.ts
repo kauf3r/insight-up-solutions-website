@@ -7,7 +7,7 @@ import {
   insertInquirySchema,
   insertBundleLeadSchema
 } from "@shared/schema";
-import { Resend } from "resend";
+import { getUncachableResendClient } from "./lib/resend";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // Product routes
@@ -139,35 +139,33 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const validatedData = insertBundleLeadSchema.parse(req.body);
       const lead = await storage.createBundleLead(validatedData);
       
-      // Send confirmation email via Resend if API key is configured
-      if (process.env.RESEND_API_KEY) {
-        try {
-          const resend = new Resend(process.env.RESEND_API_KEY);
-          await resend.emails.send({
-            from: "Insight Up Solutions <onboarding@resend.dev>",
-            to: lead.email,
-            subject: "Trinity Pro + LR1 Bundle - Quote Request Received",
-            html: `
-              <h2>Thank you for your interest in the Trinity Pro + LR1 Bundle!</h2>
-              <p>Hi ${lead.name},</p>
-              <p>We're excited to share our exclusive Q4 special with you:</p>
-              <ul>
-                <li><strong>Trinity Pro Platform:</strong> 10% off</li>
-                <li><strong>Sony ILX-LR1 Payload:</strong> 5% off</li>
-                <li><strong>TPT Backpack:</strong> 8% off</li>
-              </ul>
-              <p><strong>Offer valid through December 31, 2025</strong></p>
-              <p>Our team will reach out within 24 hours to discuss your specific needs and provide a detailed quote.</p>
-              <p>In the meantime, you can learn more about our solutions at <a href="https://insightupsolutions.com">insightupsolutions.com</a>.</p>
-              <br/>
-              <p>Best regards,<br/>
-              Insight Up Solutions Team<br/>
-              <a href="mailto:info@insightupsolutions.com">info@insightupsolutions.com</a> | +1 (831) 888-7172</p>
-            `
-          });
-        } catch (emailError) {
-          console.error("Failed to send confirmation email:", emailError);
-        }
+      // Send confirmation email via Resend connector
+      try {
+        const { client, fromEmail } = await getUncachableResendClient();
+        await client.emails.send({
+          from: fromEmail || "Insight Up Solutions <onboarding@resend.dev>",
+          to: lead.email,
+          subject: "Trinity Pro + LR1 Bundle - Quote Request Received",
+          html: `
+            <h2>Thank you for your interest in the Trinity Pro + LR1 Bundle!</h2>
+            <p>Hi ${lead.name},</p>
+            <p>We're excited to share our exclusive Q4 special with you:</p>
+            <ul>
+              <li><strong>Trinity Pro Platform:</strong> 10% off</li>
+              <li><strong>Sony ILX-LR1 Payload:</strong> 5% off</li>
+              <li><strong>TPT Backpack:</strong> 8% off</li>
+            </ul>
+            <p><strong>Offer valid through December 31, 2025</strong></p>
+            <p>Our team will reach out within 24 hours to discuss your specific needs and provide a detailed quote.</p>
+            <p>In the meantime, you can learn more about our solutions at <a href="https://insightupsolutions.com">insightupsolutions.com</a>.</p>
+            <br/>
+            <p>Best regards,<br/>
+            Insight Up Solutions Team<br/>
+            <a href="mailto:info@insightupsolutions.com">info@insightupsolutions.com</a> | +1 (831) 888-7172</p>
+          `
+        });
+      } catch (emailError) {
+        console.error("Failed to send confirmation email:", emailError);
       }
       
       res.status(201).json(lead);
