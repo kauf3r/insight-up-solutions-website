@@ -143,7 +143,7 @@ export class DatabaseStorage implements IStorage {
   }
 
   async updateInquiryStatus(id: string, status: string): Promise<Inquiry | undefined> {
-    const result = await db.update(inquiries).set({ status }).where(eq(inquiries.id, status)).returning();
+    const result = await db.update(inquiries).set({ status }).where(eq(inquiries.id, id)).returning();
     return result[0];
   }
 
