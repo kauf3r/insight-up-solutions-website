@@ -1,5 +1,4 @@
 import type { Express } from "express";
-import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { 
   insertProductSchema, 
@@ -10,7 +9,7 @@ import {
 import { getResendClient } from "./lib/resend";
 import { escapeHtml } from "./lib/html";
 
-export async function registerRoutes(app: Express): Promise<Server> {
+export function registerRoutes(app: Express): void {
   // Product routes
   app.get("/api/products", async (req, res) => {
     try {
@@ -480,8 +479,4 @@ export async function registerRoutes(app: Express): Promise<Server> {
       res.status(500).json({ error: "Failed to fetch bundle leads" });
     }
   });
-
-  const httpServer = createServer(app);
-
-  return httpServer;
 }
