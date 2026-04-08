@@ -8,6 +8,7 @@ import {
   insertBundleLeadSchema
 } from "@shared/schema";
 import { getUncachableResendClient } from "./lib/resend";
+import { escapeHtml } from "./lib/html";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // Product routes
@@ -82,16 +83,16 @@ export async function registerRoutes(app: Express): Promise<Server> {
           subject: "Demo Booking Confirmed - Insight Up Solutions",
           html: `
             <h2>Thank you for booking a demo with Insight Up Solutions!</h2>
-            <p>Hi ${booking.name},</p>
+            <p>Hi ${escapeHtml(booking.name)},</p>
             <p>We've received your demo booking request and are excited to show you our UAV solutions.</p>
             <p><strong>Your Details:</strong></p>
-            <p>Name: ${booking.name}</p>
-            <p>Email: ${booking.email}</p>
-            <p>Company: ${booking.company || 'Not provided'}</p>
-            <p>Phone: ${booking.phone || 'Not provided'}</p>
+            <p>Name: ${escapeHtml(booking.name)}</p>
+            <p>Email: ${escapeHtml(booking.email)}</p>
+            <p>Company: ${escapeHtml(booking.company || 'Not provided')}</p>
+            <p>Phone: ${escapeHtml(booking.phone || 'Not provided')}</p>
             <p><strong>Booking Details:</strong></p>
-            <p>Preferred Date: ${booking.preferredDate || 'To be scheduled'}</p>
-            <p>Your Message: ${booking.message || 'None provided'}</p>
+            <p>Preferred Date: ${escapeHtml(booking.preferredDate || 'To be scheduled')}</p>
+            <p>Your Message: ${escapeHtml(booking.message || 'None provided')}</p>
             <p>Our team will reach out within 24 hours to confirm your appointment and discuss your specific needs.</p>
             <br/>
             <p>Best regards,<br/>
@@ -122,12 +123,12 @@ export async function registerRoutes(app: Express): Promise<Server> {
           subject: "New Demo Booking Request",
           html: `
             <h2>New Demo Booking</h2>
-            <p><strong>Name:</strong> ${booking.name}</p>
-            <p><strong>Email:</strong> ${booking.email}</p>
-            <p><strong>Company:</strong> ${booking.company || 'Not provided'}</p>
-            <p><strong>Phone:</strong> ${booking.phone || 'Not provided'}</p>
-            <p><strong>Preferred Date:</strong> ${booking.preferredDate || 'Not specified'}</p>
-            <p><strong>Message:</strong> ${booking.message || 'None'}</p>
+            <p><strong>Name:</strong> ${escapeHtml(booking.name)}</p>
+            <p><strong>Email:</strong> ${escapeHtml(booking.email)}</p>
+            <p><strong>Company:</strong> ${escapeHtml(booking.company || 'Not provided')}</p>
+            <p><strong>Phone:</strong> ${escapeHtml(booking.phone || 'Not provided')}</p>
+            <p><strong>Preferred Date:</strong> ${escapeHtml(booking.preferredDate || 'Not specified')}</p>
+            <p><strong>Message:</strong> ${escapeHtml(booking.message || 'None')}</p>
             <br/>
             <p><strong>Submitted:</strong> ${submittedTime}</p>
             <p><a href="https://insightupsolutions.com">View Dashboard</a></p>
@@ -202,19 +203,19 @@ export async function registerRoutes(app: Express): Promise<Server> {
           subject: emailSubject,
           html: `
             <h2>${emailTitle}</h2>
-            <p>Hi ${inquiry.name},</p>
+            <p>Hi ${escapeHtml(inquiry.name)},</p>
             <p>We've received your ${isQuote ? 'quote request' : 'inquiry'} and appreciate your interest in our UAV solutions.</p>
             <p><strong>Your Details:</strong></p>
-            <p>Name: ${inquiry.name}</p>
-            <p>Email: ${inquiry.email}</p>
-            <p>Company: ${inquiry.company || 'Not provided'}</p>
-            <p>Phone: ${inquiry.phone || 'Not provided'}</p>
-            ${inquiry.industry ? `<p>Industry: ${inquiry.industry}</p>` : ''}
+            <p>Name: ${escapeHtml(inquiry.name)}</p>
+            <p>Email: ${escapeHtml(inquiry.email)}</p>
+            <p>Company: ${escapeHtml(inquiry.company || 'Not provided')}</p>
+            <p>Phone: ${escapeHtml(inquiry.phone || 'Not provided')}</p>
+            ${inquiry.industry ? `<p>Industry: ${escapeHtml(inquiry.industry)}</p>` : ''}
             <p><strong>${isQuote ? 'Quote' : 'Inquiry'} Details:</strong></p>
-            <p>Subject: ${inquiry.subject}</p>
-            <p>Type: ${inquiry.inquiryType}</p>
-            <p>Product Reference: ${inquiry.productId || 'General inquiry'}</p>
-            <p>Your Message: ${inquiry.message || 'None provided'}</p>
+            <p>Subject: ${escapeHtml(inquiry.subject)}</p>
+            <p>Type: ${escapeHtml(inquiry.inquiryType)}</p>
+            <p>Product Reference: ${escapeHtml(inquiry.productId || 'General inquiry')}</p>
+            <p>Your Message: ${escapeHtml(inquiry.message || 'None provided')}</p>
             <p>${responseMessage}</p>
             <br/>
             <p>Best regards,<br/>
@@ -247,15 +248,15 @@ export async function registerRoutes(app: Express): Promise<Server> {
           subject: adminSubject,
           html: `
             <h2>${inquiry.inquiryType === 'quote' ? 'New Quote Request Submission' : 'New Inquiry Submission'}</h2>
-            <p><strong>Name:</strong> ${inquiry.name}</p>
-            <p><strong>Email:</strong> ${inquiry.email}</p>
-            <p><strong>Company:</strong> ${inquiry.company || 'Not provided'}</p>
-            <p><strong>Phone:</strong> ${inquiry.phone || 'Not provided'}</p>
-            ${inquiry.industry ? `<p><strong>Industry:</strong> ${inquiry.industry}</p>` : ''}
-            <p><strong>Subject:</strong> ${inquiry.subject}</p>
-            <p><strong>Type:</strong> ${inquiry.inquiryType}</p>
-            <p><strong>Product ID:</strong> ${inquiry.productId || 'Not specified'}</p>
-            <p><strong>Message:</strong> ${inquiry.message || 'None'}</p>
+            <p><strong>Name:</strong> ${escapeHtml(inquiry.name)}</p>
+            <p><strong>Email:</strong> ${escapeHtml(inquiry.email)}</p>
+            <p><strong>Company:</strong> ${escapeHtml(inquiry.company || 'Not provided')}</p>
+            <p><strong>Phone:</strong> ${escapeHtml(inquiry.phone || 'Not provided')}</p>
+            ${inquiry.industry ? `<p><strong>Industry:</strong> ${escapeHtml(inquiry.industry)}</p>` : ''}
+            <p><strong>Subject:</strong> ${escapeHtml(inquiry.subject)}</p>
+            <p><strong>Type:</strong> ${escapeHtml(inquiry.inquiryType)}</p>
+            <p><strong>Product ID:</strong> ${escapeHtml(inquiry.productId || 'Not specified')}</p>
+            <p><strong>Message:</strong> ${escapeHtml(inquiry.message || 'None')}</p>
             <br/>
             <p><strong>Submitted:</strong> ${submittedTime}</p>
             <p><a href="https://insightupsolutions.com">View Dashboard</a></p>
@@ -308,18 +309,18 @@ export async function registerRoutes(app: Express): Promise<Server> {
           subject: "Your Message - Insight Up Solutions",
           html: `
             <h2>Thank you for contacting Insight Up Solutions!</h2>
-            <p>Hi ${inquiry.name},</p>
+            <p>Hi ${escapeHtml(inquiry.name)},</p>
             <p>We've received your message and appreciate you reaching out to us.</p>
             <p><strong>Your Details:</strong></p>
-            <p>Name: ${inquiry.name}</p>
-            <p>Email: ${inquiry.email}</p>
-            <p>Company: ${inquiry.company || 'Not provided'}</p>
-            <p>Phone: ${inquiry.phone || 'Not provided'}</p>
+            <p>Name: ${escapeHtml(inquiry.name)}</p>
+            <p>Email: ${escapeHtml(inquiry.email)}</p>
+            <p>Company: ${escapeHtml(inquiry.company || 'Not provided')}</p>
+            <p>Phone: ${escapeHtml(inquiry.phone || 'Not provided')}</p>
             <p><strong>Message Details:</strong></p>
-            <p>Subject: ${inquiry.subject}</p>
-            <p>Type: ${inquiry.inquiryType}</p>
-            <p>Product Reference: ${inquiry.productId || 'General inquiry'}</p>
-            <p>Your Message: ${inquiry.message || 'None provided'}</p>
+            <p>Subject: ${escapeHtml(inquiry.subject)}</p>
+            <p>Type: ${escapeHtml(inquiry.inquiryType)}</p>
+            <p>Product Reference: ${escapeHtml(inquiry.productId || 'General inquiry')}</p>
+            <p>Your Message: ${escapeHtml(inquiry.message || 'None provided')}</p>
             <p>Our team will respond within 24 hours to address your questions and discuss how we can help.</p>
             <br/>
             <p>Best regards,<br/>
@@ -350,14 +351,14 @@ export async function registerRoutes(app: Express): Promise<Server> {
           subject: "New Contact Form Submission",
           html: `
             <h2>New Contact Form Submission</h2>
-            <p><strong>Name:</strong> ${inquiry.name}</p>
-            <p><strong>Email:</strong> ${inquiry.email}</p>
-            <p><strong>Company:</strong> ${inquiry.company || 'Not provided'}</p>
-            <p><strong>Phone:</strong> ${inquiry.phone || 'Not provided'}</p>
-            <p><strong>Subject:</strong> ${inquiry.subject}</p>
-            <p><strong>Type:</strong> ${inquiry.inquiryType}</p>
-            <p><strong>Product ID:</strong> ${inquiry.productId || 'Not specified'}</p>
-            <p><strong>Message:</strong> ${inquiry.message || 'None'}</p>
+            <p><strong>Name:</strong> ${escapeHtml(inquiry.name)}</p>
+            <p><strong>Email:</strong> ${escapeHtml(inquiry.email)}</p>
+            <p><strong>Company:</strong> ${escapeHtml(inquiry.company || 'Not provided')}</p>
+            <p><strong>Phone:</strong> ${escapeHtml(inquiry.phone || 'Not provided')}</p>
+            <p><strong>Subject:</strong> ${escapeHtml(inquiry.subject)}</p>
+            <p><strong>Type:</strong> ${escapeHtml(inquiry.inquiryType)}</p>
+            <p><strong>Product ID:</strong> ${escapeHtml(inquiry.productId || 'Not specified')}</p>
+            <p><strong>Message:</strong> ${escapeHtml(inquiry.message || 'None')}</p>
             <br/>
             <p><strong>Submitted:</strong> ${submittedTime}</p>
             <p><a href="https://insightupsolutions.com">View Dashboard</a></p>
@@ -399,7 +400,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
           subject: "Trinity Pro + LR1 Bundle - Quote Request Received",
           html: `
             <h2>Thank you for your interest in the Trinity Pro + LR1 Bundle!</h2>
-            <p>Hi ${lead.name},</p>
+            <p>Hi ${escapeHtml(lead.name)},</p>
             <p>We've received your quote request for our exclusive Q4 special:</p>
             <ul>
               <li><strong>Trinity Pro Platform:</strong> 10% off</li>
@@ -408,11 +409,11 @@ export async function registerRoutes(app: Express): Promise<Server> {
             </ul>
             <p><strong>Offer valid through December 31, 2025</strong></p>
             <p><strong>Your Details:</strong></p>
-            <p>Name: ${lead.name}</p>
-            <p>Email: ${lead.email}</p>
-            <p>Company: ${lead.company || 'Not provided'}</p>
-            <p>Phone: ${lead.phone || 'Not provided'}</p>
-            <p>Interest Area: ${lead.interestArea || 'General UAV solutions'}</p>
+            <p>Name: ${escapeHtml(lead.name)}</p>
+            <p>Email: ${escapeHtml(lead.email)}</p>
+            <p>Company: ${escapeHtml(lead.company || 'Not provided')}</p>
+            <p>Phone: ${escapeHtml(lead.phone || 'Not provided')}</p>
+            <p>Interest Area: ${escapeHtml(lead.interestArea || 'General UAV solutions')}</p>
             <p>Our team will reach out within 24 hours to discuss your specific needs and provide a detailed quote.</p>
             <p>In the meantime, you can learn more about our solutions at <a href="https://insightupsolutions.com">insightupsolutions.com</a>.</p>
             <br/>
@@ -444,11 +445,11 @@ export async function registerRoutes(app: Express): Promise<Server> {
           subject: "New Trinity Pro Bundle Lead",
           html: `
             <h2>New Bundle Lead Submission</h2>
-            <p><strong>Name:</strong> ${lead.name}</p>
-            <p><strong>Email:</strong> ${lead.email}</p>
-            <p><strong>Company:</strong> ${lead.company || 'Not provided'}</p>
-            <p><strong>Phone:</strong> ${lead.phone || 'Not provided'}</p>
-            <p><strong>Interest Area:</strong> ${lead.interestArea || 'Not specified'}</p>
+            <p><strong>Name:</strong> ${escapeHtml(lead.name)}</p>
+            <p><strong>Email:</strong> ${escapeHtml(lead.email)}</p>
+            <p><strong>Company:</strong> ${escapeHtml(lead.company || 'Not provided')}</p>
+            <p><strong>Phone:</strong> ${escapeHtml(lead.phone || 'Not provided')}</p>
+            <p><strong>Interest Area:</strong> ${escapeHtml(lead.interestArea || 'Not specified')}</p>
             <br/>
             <p><strong>Submitted:</strong> ${submittedTime}</p>
             <p><a href="https://insightupsolutions.com">View Dashboard</a></p>
