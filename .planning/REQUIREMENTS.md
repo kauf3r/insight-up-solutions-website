@@ -7,11 +7,11 @@
 
 ### Replit Removal
 
-- [ ] **REPL-01**: Replit Vite plugins removed from vite.config.ts (runtime-error-modal, cartographer)
-- [ ] **REPL-02**: Replit dev banner script removed from client/index.html
-- [ ] **REPL-03**: .replit and replit.md files deleted
-- [ ] **REPL-04**: Replit devDependencies removed from package.json
-- [ ] **REPL-05**: Dead code removed (server/db.ts — unused WebSocket driver, apps/ — stale Next.js artifact)
+- [x] **REPL-01**: Replit Vite plugins removed from vite.config.ts (runtime-error-modal, cartographer)
+- [x] **REPL-02**: Replit dev banner script removed from client/index.html
+- [x] **REPL-03**: .replit and replit.md files deleted
+- [x] **REPL-04**: Replit devDependencies removed from package.json
+- [x] **REPL-05**: Dead code removed (server/db.ts — unused WebSocket driver, apps/ — stale Next.js artifact)
 
 ### Vercel Infrastructure
 
@@ -19,7 +19,7 @@
 - [ ] **VRCL-02**: vercel.json configured with API rewrite (/api/* -> serverless function)
 - [ ] **VRCL-03**: vercel.json configured with SPA catch-all rewrite for client-side routing
 - [ ] **VRCL-04**: Build command produces correct Vite output in dist/public/
-- [ ] **VRCL-05**: Path alias @shared resolves in serverless function bundle (esbuild --alias or relative imports)
+- [x] **VRCL-05**: Path alias @shared resolves in serverless function bundle (esbuild --alias or relative imports)
 - [ ] **VRCL-06**: Environment variables set on Vercel (DATABASE_URL, RESEND_API_KEY)
 - [ ] **VRCL-07**: Video streaming Express middleware removed (Vercel CDN handles range requests natively)
 
@@ -32,8 +32,8 @@
 
 ### Critical Bug Fixes
 
-- [ ] **FIX-01**: updateInquiryStatus WHERE clause fixed (uses id instead of status)
-- [ ] **FIX-02**: XSS vulnerability fixed — user input escaped in email HTML templates
+- [x] **FIX-01**: updateInquiryStatus WHERE clause fixed (uses id instead of status)
+- [x] **FIX-02**: XSS vulnerability fixed — user input escaped in email HTML templates
 
 ### Local Development
 
@@ -84,24 +84,24 @@
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| REPL-01 | Phase 1 | Pending |
-| REPL-02 | Phase 1 | Pending |
-| REPL-03 | Phase 1 | Pending |
-| REPL-04 | Phase 1 | Pending |
-| REPL-05 | Phase 1 | Pending |
+| REPL-01 | Phase 1 | Complete |
+| REPL-02 | Phase 1 | Complete |
+| REPL-03 | Phase 1 | Complete |
+| REPL-04 | Phase 1 | Complete |
+| REPL-05 | Phase 1 | Complete |
 | VRCL-01 | Phase 1 | Pending |
 | VRCL-02 | Phase 1 | Pending |
 | VRCL-03 | Phase 1 | Pending |
 | VRCL-04 | Phase 1 | Pending |
-| VRCL-05 | Phase 1 | Pending |
+| VRCL-05 | Phase 1 | Complete |
 | VRCL-06 | Phase 1 | Pending |
 | VRCL-07 | Phase 1 | Pending |
 | MAIL-01 | Phase 1 | Pending |
 | MAIL-02 | Phase 2 | Pending |
 | MAIL-03 | Phase 2 | Pending |
 | MAIL-04 | Phase 2 | Pending |
-| FIX-01 | Phase 1 | Pending |
-| FIX-02 | Phase 1 | Pending |
+| FIX-01 | Phase 1 | Complete |
+| FIX-02 | Phase 1 | Complete |
 | DEV-01 | Phase 1 | Pending |
 | DEV-02 | Phase 1 | Pending |
 | PROD-01 | Phase 1 | Pending |
