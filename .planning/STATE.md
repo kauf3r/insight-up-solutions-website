@@ -4,12 +4,12 @@ milestone: v1.0
 milestone_name: milestone
 current_plan: 3 of 3
 status: executing
-last_updated: "2026-04-08T23:15:55.151Z"
+last_updated: "2026-04-08T23:41:18.435Z"
 progress:
   total_phases: 2
-  completed_phases: 0
+  completed_phases: 1
   total_plans: 3
-  completed_plans: 2
+  completed_plans: 3
 ---
 
 # Project State
@@ -25,7 +25,7 @@ See: .planning/PROJECT.md (updated 2026-04-08)
 
 **Phase:** 1 — Migrate to Vercel
 **Current Plan:** 3 of 3
-**Status:** Executing Phase 01 — Plans 01-02 complete, Plan 03 (Vercel Config) next
+**Status:** Executing Phase 01 — Plans 01-02 complete, Plan 03 Tasks 3.1-3.2 done, Tasks 3.3-3.4 awaiting user action
 **Goal:** Codebase freed from Replit, deployed to Vercel preview URL with working API, forms, and emails
 
 ## Progress
@@ -54,6 +54,8 @@ See: .planning/PROJECT.md (updated 2026-04-08)
 | 2026-04-08 | Resend client cached at module level | API key stable (unlike Replit rotating tokens) |
 | 2026-04-08 | fromEmail centralized in getResendClient | Single source of truth, was hardcoded 8 times |
 | 2026-04-08 | Video middleware removed from index.ts | Vercel CDN handles range requests natively |
+| 2026-04-08 | Node.js builtins for handler types instead of @vercel/node | Fewer assumptions, Express expects standard HTTP types |
+| 2026-04-08 | framework: null in vercel.json | Prevents Vercel from auto-detecting as Next.js |
 
 ## Performance Metrics
 
@@ -61,6 +63,7 @@ See: .planning/PROJECT.md (updated 2026-04-08)
 |------|----------|-------|-------|
 | 01-01 Cleanup | 495s | 9 | 10 |
 | 01-02 Restructure | 272s | 6 | 5 |
+| 01-03 Vercel Config | 51s | 2 | 2 |
 
 ---
-*Last updated: 2026-04-08 after plan 01-02 completion*
+*Last updated: 2026-04-08 after plan 01-03 (partial — Tasks 3.1-3.2 complete)*

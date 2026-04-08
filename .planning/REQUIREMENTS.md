@@ -15,9 +15,9 @@
 
 ### Vercel Infrastructure
 
-- [ ] **VRCL-01**: Serverless entry point created (api/index.ts) exporting Express app
-- [ ] **VRCL-02**: vercel.json configured with API rewrite (/api/* -> serverless function)
-- [ ] **VRCL-03**: vercel.json configured with SPA catch-all rewrite for client-side routing
+- [x] **VRCL-01**: Serverless entry point created (api/index.ts) exporting Express app
+- [x] **VRCL-02**: vercel.json configured with API rewrite (/api/* -> serverless function)
+- [x] **VRCL-03**: vercel.json configured with SPA catch-all rewrite for client-side routing
 - [ ] **VRCL-04**: Build command produces correct Vite output in dist/public/
 - [x] **VRCL-05**: Path alias @shared resolves in serverless function bundle (esbuild --alias or relative imports)
 - [ ] **VRCL-06**: Environment variables set on Vercel (DATABASE_URL, RESEND_API_KEY)
@@ -89,9 +89,9 @@
 | REPL-03 | Phase 1 | Complete |
 | REPL-04 | Phase 1 | Complete |
 | REPL-05 | Phase 1 | Complete |
-| VRCL-01 | Phase 1 | Pending |
-| VRCL-02 | Phase 1 | Pending |
-| VRCL-03 | Phase 1 | Pending |
+| VRCL-01 | Phase 1 | Complete |
+| VRCL-02 | Phase 1 | Complete |
+| VRCL-03 | Phase 1 | Complete |
 | VRCL-04 | Phase 1 | Pending |
 | VRCL-05 | Phase 1 | Complete |
 | VRCL-06 | Phase 1 | Pending |
