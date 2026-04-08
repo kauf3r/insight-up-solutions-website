@@ -10,14 +10,14 @@ See: .planning/PROJECT.md (updated 2026-04-08)
 ## Current Phase
 
 **Phase:** 1 — Migrate to Vercel
-**Status:** Not Started
+**Status:** Planned (3 plans, 3 waves)
 **Goal:** Codebase freed from Replit, deployed to Vercel preview URL with working API, forms, and emails
 
 ## Progress
 
 | Phase | Status | Requirements |
 |-------|--------|--------------|
-| 1 — Migrate to Vercel | Not Started | 18 reqs |
+| 1 — Migrate to Vercel | Planned | 18 reqs |
 | 2 — Ship to Production | Not Started | 8 reqs |
 
 ## Context
