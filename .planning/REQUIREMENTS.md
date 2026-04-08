@@ -84,38 +84,38 @@
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| REPL-01 | — | Pending |
-| REPL-02 | — | Pending |
-| REPL-03 | — | Pending |
-| REPL-04 | — | Pending |
-| REPL-05 | — | Pending |
-| VRCL-01 | — | Pending |
-| VRCL-02 | — | Pending |
-| VRCL-03 | — | Pending |
-| VRCL-04 | — | Pending |
-| VRCL-05 | — | Pending |
-| VRCL-06 | — | Pending |
-| VRCL-07 | — | Pending |
-| MAIL-01 | — | Pending |
-| MAIL-02 | — | Pending |
-| MAIL-03 | — | Pending |
-| MAIL-04 | — | Pending |
-| FIX-01 | — | Pending |
-| FIX-02 | — | Pending |
-| DEV-01 | — | Pending |
-| DEV-02 | — | Pending |
-| PROD-01 | — | Pending |
-| PROD-02 | — | Pending |
-| PROD-03 | — | Pending |
-| PROD-04 | — | Pending |
-| PROD-05 | — | Pending |
-| PROD-06 | — | Pending |
+| REPL-01 | Phase 1 | Pending |
+| REPL-02 | Phase 1 | Pending |
+| REPL-03 | Phase 1 | Pending |
+| REPL-04 | Phase 1 | Pending |
+| REPL-05 | Phase 1 | Pending |
+| VRCL-01 | Phase 1 | Pending |
+| VRCL-02 | Phase 1 | Pending |
+| VRCL-03 | Phase 1 | Pending |
+| VRCL-04 | Phase 1 | Pending |
+| VRCL-05 | Phase 1 | Pending |
+| VRCL-06 | Phase 1 | Pending |
+| VRCL-07 | Phase 1 | Pending |
+| MAIL-01 | Phase 1 | Pending |
+| MAIL-02 | Phase 2 | Pending |
+| MAIL-03 | Phase 2 | Pending |
+| MAIL-04 | Phase 2 | Pending |
+| FIX-01 | Phase 1 | Pending |
+| FIX-02 | Phase 1 | Pending |
+| DEV-01 | Phase 1 | Pending |
+| DEV-02 | Phase 1 | Pending |
+| PROD-01 | Phase 1 | Pending |
+| PROD-02 | Phase 2 | Pending |
+| PROD-03 | Phase 2 | Pending |
+| PROD-04 | Phase 2 | Pending |
+| PROD-05 | Phase 2 | Pending |
+| PROD-06 | Phase 2 | Pending |
 
 **Coverage:**
 - v1 requirements: 26 total
-- Mapped to phases: 0
-- Unmapped: 26
+- Mapped to phases: 26
+- Unmapped: 0
 
 ---
 *Requirements defined: 2026-04-08*
-*Last updated: 2026-04-08 after initial definition*
+*Last updated: 2026-04-08 after roadmap creation*
