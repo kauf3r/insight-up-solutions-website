@@ -7,7 +7,7 @@ import {
   insertInquirySchema,
   insertBundleLeadSchema
 } from "../shared/schema";
-import { getUncachableResendClient } from "./lib/resend";
+import { getResendClient } from "./lib/resend";
 import { escapeHtml } from "./lib/html";
 
 export async function registerRoutes(app: Express): Promise<Server> {
@@ -75,10 +75,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
       
       // Send confirmation email via Resend connector
       try {
-        const { client } = await getUncachableResendClient();
+        const { client, fromEmail } = getResendClient();
         
         const emailData = {
-          from: "Insight Up Solutions <info@insightupsolutions.com>",
+          from: fromEmail,
           to: booking.email,
           subject: "Demo Booking Confirmed - Insight Up Solutions",
           html: `
@@ -112,13 +112,13 @@ export async function registerRoutes(app: Express): Promise<Server> {
       
       // Send admin notification email
       try {
-        const { client } = await getUncachableResendClient();
+        const { client, fromEmail } = getResendClient();
         const submittedTime = booking.createdAt 
           ? new Date(booking.createdAt).toLocaleString('en-US', { timeZone: 'America/Los_Angeles' })
           : new Date().toLocaleString('en-US', { timeZone: 'America/Los_Angeles' });
         
         const adminEmailData = {
-          from: "Insight Up Solutions <info@insightupsolutions.com>",
+          from: fromEmail,
           to: "kaufman@airspaceintegration.com",
           subject: "New Demo Booking Request",
           html: `
@@ -188,7 +188,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       
       // Send confirmation email via Resend connector
       try {
-        const { client } = await getUncachableResendClient();
+        const { client, fromEmail } = getResendClient();
         
         const isQuote = inquiry.inquiryType === 'quote';
         const emailSubject = isQuote ? "Quote Request Received - Insight Up Solutions" : "Your Inquiry - Insight Up Solutions";
@@ -198,7 +198,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
           : "Our team will respond within 24 hours to address your questions and discuss how we can help.";
         
         const emailData = {
-          from: "Insight Up Solutions <info@insightupsolutions.com>",
+          from: fromEmail,
           to: inquiry.email,
           subject: emailSubject,
           html: `
@@ -235,7 +235,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       
       // Send admin notification email
       try {
-        const { client } = await getUncachableResendClient();
+        const { client, fromEmail } = getResendClient();
         const submittedTime = inquiry.createdAt 
           ? new Date(inquiry.createdAt).toLocaleString('en-US', { timeZone: 'America/Los_Angeles' })
           : new Date().toLocaleString('en-US', { timeZone: 'America/Los_Angeles' });
@@ -243,7 +243,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         const adminSubject = inquiry.inquiryType === 'quote' ? "New Quote Request" : "New Contact Inquiry";
         
         const adminEmailData = {
-          from: "Insight Up Solutions <info@insightupsolutions.com>",
+          from: fromEmail,
           to: "kaufman@airspaceintegration.com",
           subject: adminSubject,
           html: `
@@ -301,10 +301,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
       
       // Send confirmation email via Resend connector
       try {
-        const { client } = await getUncachableResendClient();
+        const { client, fromEmail } = getResendClient();
         
         const emailData = {
-          from: "Insight Up Solutions <info@insightupsolutions.com>",
+          from: fromEmail,
           to: inquiry.email,
           subject: "Your Message - Insight Up Solutions",
           html: `
@@ -340,13 +340,13 @@ export async function registerRoutes(app: Express): Promise<Server> {
       
       // Send admin notification email
       try {
-        const { client } = await getUncachableResendClient();
+        const { client, fromEmail } = getResendClient();
         const submittedTime = inquiry.createdAt 
           ? new Date(inquiry.createdAt).toLocaleString('en-US', { timeZone: 'America/Los_Angeles' })
           : new Date().toLocaleString('en-US', { timeZone: 'America/Los_Angeles' });
         
         const adminEmailData = {
-          from: "Insight Up Solutions <info@insightupsolutions.com>",
+          from: fromEmail,
           to: "kaufman@airspaceintegration.com",
           subject: "New Contact Form Submission",
           html: `
@@ -391,11 +391,11 @@ export async function registerRoutes(app: Express): Promise<Server> {
       // Send confirmation email via Resend connector
       try {
         console.log("[RESEND] Attempting to get Resend client...");
-        const { client } = await getUncachableResendClient();
+        const { client, fromEmail } = getResendClient();
         console.log("[RESEND] Client obtained");
         
         const emailData = {
-          from: "Insight Up Solutions <info@insightupsolutions.com>",
+          from: fromEmail,
           to: lead.email,
           subject: "Trinity Pro + LR1 Bundle - Quote Request Received",
           html: `
@@ -434,13 +434,13 @@ export async function registerRoutes(app: Express): Promise<Server> {
       
       // Send admin notification email (separate try/catch to ensure API response even if this fails)
       try {
-        const { client } = await getUncachableResendClient();
+        const { client, fromEmail } = getResendClient();
         const submittedTime = lead.createdAt 
           ? new Date(lead.createdAt).toLocaleString('en-US', { timeZone: 'America/Los_Angeles' })
           : new Date().toLocaleString('en-US', { timeZone: 'America/Los_Angeles' });
         
         const adminEmailData = {
-          from: "Insight Up Solutions <info@insightupsolutions.com>",
+          from: fromEmail,
           to: "kaufman@airspaceintegration.com",
           subject: "New Trinity Pro Bundle Lead",
           html: `
