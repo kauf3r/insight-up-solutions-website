@@ -40,7 +40,7 @@ Strip all Replit-specific code, restructure the Express server for Vercel server
 - **D-10:** Delete: `.replit`, `replit.md`, `apps/` (stale Next.js artifact), `server/db.ts` (dead WebSocket driver), `index.html` (old prototype in root).
 - **D-11:** Remove from vite.config.ts: `@replit/vite-plugin-runtime-error-modal`, `@replit/vite-plugin-cartographer` conditional block.
 - **D-12:** Remove from client/index.html: Replit dev banner script (lines 20-21).
-- **D-13:** Remove from package.json devDeps: `@replit/vite-plugin-cartographer`, `@replit/vite-plugin-runtime-error-modal`. Add devDep: `@vercel/node`.
+- **D-13:** Remove from package.json devDeps: `@replit/vite-plugin-cartographer`, `@replit/vite-plugin-runtime-error-modal`. (`@vercel/node` NOT needed — api/index.ts uses Node.js builtins.)
 - **D-14:** Remove video streaming middleware from server (Vercel CDN handles range requests for static .mp4 files natively).
 
 ### Bug Fix

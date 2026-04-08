@@ -89,7 +89,7 @@ rm .replit replit.md
 </acceptance_criteria>
 </task>
 
-<task id="1.4" name="Remove Replit devDeps, add @vercel/node">
+<task id="1.4" name="Remove Replit devDeps">
 <read_first>
 - package.json (devDependencies section)
 </read_first>
@@ -97,13 +97,12 @@ rm .replit replit.md
 1. Remove from devDependencies:
    - `"@replit/vite-plugin-cartographer": "^0.4.1"`
    - `"@replit/vite-plugin-runtime-error-modal": "^0.0.3"`
-2. Add to devDependencies:
-   - `"@vercel/node": "^5.0.0"`
-3. Run `npm install`
+2. Run `npm install`
+
+Note: `@vercel/node` is NOT needed — api/index.ts uses Node.js builtins (`IncomingMessage`/`ServerResponse`).
 </action>
 <acceptance_criteria>
 - `grep '@replit' package.json` returns no results
-- `grep '@vercel/node' package.json` returns a match
 - `npm install` exits 0
 </acceptance_criteria>
 </task>
@@ -157,7 +156,8 @@ The bug: `status` (e.g. "approved") was being used as the ID filter instead of t
 <action>
 1. Create `server/lib/html.ts`:
 ```typescript
-export function escapeHtml(str: string): string {
+export function escapeHtml(str: string | null | undefined): string {
+  if (!str) return "";
   return str
     .replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")

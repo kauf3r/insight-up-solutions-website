@@ -20,33 +20,33 @@ Create the Vercel serverless entry point, configure routing/build in vercel.json
 
 <task id="3.1" name="Create api/index.ts serverless entry point">
 <read_first>
-- server/index.ts (verify it exports `app` and `appReady`)
+- server/index.ts (verify it exports `app` directly — routes registered synchronously at import time)
 </read_first>
 <action>
 1. Create `api/` directory at project root
 2. Create `api/index.ts`:
 
 ```typescript
-import type { VercelRequest, VercelResponse } from "@vercel/node";
-import { app, appReady } from "../server/index";
+import type { IncomingMessage, ServerResponse } from "http";
+import { app } from "../server/index";
 
-export default async function handler(req: VercelRequest, res: VercelResponse) {
-  await appReady;
+export default function handler(req: IncomingMessage, res: ServerResponse) {
   app(req, res);
 }
 ```
 
 Design notes:
-- `await appReady` ensures routes are registered before handling the first request (cold start)
+- No `async`, no `await`, no `appReady` — routes are registered synchronously at import time
+- Uses Node.js builtins (`IncomingMessage`/`ServerResponse`) instead of `@vercel/node` types — fewer assumptions about Vercel's type extensions, Express expects standard Node.js HTTP types
 - `app(req, res)` delegates to Express — Express is a function that accepts (req, res)
 - Default export is what Vercel expects for serverless functions
-- `@vercel/node` types installed in Plan 01 Task 1.4
+- 4 lines total
 </action>
 <acceptance_criteria>
 - `api/index.ts` exists
-- `grep 'export default' api/index.ts` returns a match
-- `grep 'appReady' api/index.ts` returns a match
+- `grep 'export default function handler' api/index.ts` returns a match
 - `grep 'app(req, res)' api/index.ts` returns a match
+- `grep 'appReady\|async\|await' api/index.ts` returns no results
 - `npx tsc --noEmit` passes
 </acceptance_criteria>
 </task>
@@ -162,7 +162,7 @@ vercel deploy
 
 ## must_haves
 
-- api/index.ts exports default handler that awaits appReady then delegates to Express app
+- api/index.ts exports synchronous default handler that delegates to Express app (no async, no appReady)
 - vercel.json has API rewrite before SPA catch-all
 - vercel.json buildCommand is `npm run build`, outputDirectory is `dist/public`
 - DATABASE_URL and RESEND_API_KEY set on Vercel
