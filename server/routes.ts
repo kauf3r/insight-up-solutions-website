@@ -6,7 +6,7 @@ import {
   insertDemoBookingSchema, 
   insertInquirySchema,
   insertBundleLeadSchema
-} from "@shared/schema";
+} from "../shared/schema";
 import { getUncachableResendClient } from "./lib/resend";
 import { escapeHtml } from "./lib/html";
 

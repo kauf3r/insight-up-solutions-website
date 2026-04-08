@@ -1,5 +1,5 @@
 import { storage } from "./storage";
-import type { InsertProduct } from "@shared/schema";
+import type { InsertProduct } from "../shared/schema";
 
 const seedProducts: InsertProduct[] = [
   {
