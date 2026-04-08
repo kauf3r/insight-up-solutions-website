@@ -21,11 +21,11 @@
 - [ ] **VRCL-04**: Build command produces correct Vite output in dist/public/
 - [x] **VRCL-05**: Path alias @shared resolves in serverless function bundle (esbuild --alias or relative imports)
 - [ ] **VRCL-06**: Environment variables set on Vercel (DATABASE_URL, RESEND_API_KEY)
-- [ ] **VRCL-07**: Video streaming Express middleware removed (Vercel CDN handles range requests natively)
+- [x] **VRCL-07**: Video streaming Express middleware removed (Vercel CDN handles range requests natively)
 
 ### Email Integration
 
-- [ ] **MAIL-01**: Resend connector rewritten to use RESEND_API_KEY env var directly (no Replit connector)
+- [x] **MAIL-01**: Resend connector rewritten to use RESEND_API_KEY env var directly (no Replit connector)
 - [ ] **MAIL-02**: Demo booking confirmation emails work on Vercel
 - [ ] **MAIL-03**: Quote/inquiry confirmation emails work on Vercel
 - [ ] **MAIL-04**: Admin notification emails delivered on Vercel
@@ -37,8 +37,8 @@
 
 ### Local Development
 
-- [ ] **DEV-01**: Local dev entry point created (server/dev.ts) that runs Express with Vite middleware
-- [ ] **DEV-02**: npm run dev works after migration
+- [x] **DEV-01**: Local dev entry point created (server/dev.ts) that runs Express with Vite middleware
+- [x] **DEV-02**: npm run dev works after migration
 
 ### Production Deployment
 
@@ -95,15 +95,15 @@
 | VRCL-04 | Phase 1 | Pending |
 | VRCL-05 | Phase 1 | Complete |
 | VRCL-06 | Phase 1 | Pending |
-| VRCL-07 | Phase 1 | Pending |
-| MAIL-01 | Phase 1 | Pending |
+| VRCL-07 | Phase 1 | Complete |
+| MAIL-01 | Phase 1 | Complete |
 | MAIL-02 | Phase 2 | Pending |
 | MAIL-03 | Phase 2 | Pending |
 | MAIL-04 | Phase 2 | Pending |
 | FIX-01 | Phase 1 | Complete |
 | FIX-02 | Phase 1 | Complete |
-| DEV-01 | Phase 1 | Pending |
-| DEV-02 | Phase 1 | Pending |
+| DEV-01 | Phase 1 | Complete |
+| DEV-02 | Phase 1 | Complete |
 | PROD-01 | Phase 1 | Pending |
 | PROD-02 | Phase 2 | Pending |
 | PROD-03 | Phase 2 | Pending |

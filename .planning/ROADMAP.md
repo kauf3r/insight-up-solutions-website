@@ -9,7 +9,7 @@
 
 | # | Phase | Goal | Requirements | Plans |
 |---|-------|------|--------------|-------|
-| 1 | Migrate to Vercel | Codebase freed from Replit, deployed to Vercel preview URL with working API, forms, and emails | REPL-01..05, VRCL-01..07, MAIL-01, FIX-01, FIX-02, DEV-01, DEV-02, PROD-01 | 3 (cleanup, restructure, deploy) |
+| 1 | Migrate to Vercel | 2/3 | In Progress|  |
 | 2 | Ship to Production | Site live at insightupsolutions.com with full functionality verified | MAIL-02..04, PROD-02..06 | — |
 
 ## Phase 1: Migrate to Vercel
