@@ -1,13 +1,13 @@
 import type { Express } from "express";
-import { storage } from "./storage";
+import { storage } from "./storage.js";
 import { 
   insertProductSchema, 
   insertDemoBookingSchema, 
   insertInquirySchema,
   insertBundleLeadSchema
-} from "../shared/schema";
-import { getResendClient } from "./lib/resend";
-import { escapeHtml } from "./lib/html";
+} from "../shared/schema.js";
+import { getResendClient } from "./lib/resend.js";
+import { escapeHtml } from "./lib/html.js";
 
 export function registerRoutes(app: Express): void {
   // Product routes

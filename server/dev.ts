@@ -1,6 +1,6 @@
-import { app } from "./index";
-import { setupVite, log } from "./vite";
-import { seedDatabase } from "./seed";
+import { app } from "./index.js";
+import { setupVite, log } from "./vite.js";
+import { seedDatabase } from "./seed.js";
 import { createServer } from "http";
 
 (async () => {
