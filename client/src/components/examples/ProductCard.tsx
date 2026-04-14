@@ -7,6 +7,7 @@ export default function ProductCardExample() {
     <div className="max-w-sm">
       <ProductCard
         id="trinity-pro"
+        slug="trinity-pro"
         name="Trinity Pro UAV Platform"
         category="UAV Platform"
         description="Professional-grade UAV platform designed for mission-critical applications in surveying, agriculture, and public safety."
