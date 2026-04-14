@@ -21,7 +21,7 @@ export default function ProductsPage() {
             title="All Products"
             subtitle="Complete range of UAV solutions"
             showViewAll={false}
-            maxProducts={20}
+            maxProducts={30}
             dataTestIdPrefix="all-products"
           />
         </div>

@@ -18,6 +18,8 @@ const emlidReachRS3 = '/emlid_reach_rs3.webp';
 const emlidScanningKit = '/emlid_scanning_kit.webp';
 const dragonfishStandard = '/stock_images/autel_dragonfish_uav_43757464.jpg';
 const dragonfishPro = '/stock_images/autel_dragonfish_uav_49fa43f2.jpg';
+const narmaAF100 = '/narma-af100.jpg';
+const zingZScan = '/zing-z-scan.png';
 
 // Image mapping for products
 const imageMap: Record<string, string> = {
@@ -36,6 +38,8 @@ const imageMap: Record<string, string> = {
   "Autel Dragonfish Standard": dragonfishStandard,
   "Autel Dragonfish Pro": dragonfishPro,
   "TPT Backpack - Trinity Pro Transport Case": productImage1,
+  "NARMA AF100 Autonomous VTOL Platform": narmaAF100,
+  "Zing Z-SCAN Drone Detection System": zingZScan,
 };
 
 // Format price as currency

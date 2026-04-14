@@ -386,6 +386,60 @@ const seedProducts: InsertProduct[] = [
       "Secure payload compartments"
     ],
     isAvailable: "true"
+  },
+  {
+    name: "NARMA AF100 Autonomous VTOL Platform",
+    slug: "narma-af100",
+    description: "Next-generation electric dual tilt-rotor eVTOL drone for autonomous patrol, security, and emergency response missions. Deployable from moving vehicles or fixed docking stations with no runway infrastructure required.",
+    category: "UAV Platform",
+    price: null,
+    imageUrl: null,
+    specifications: JSON.stringify([
+      "Drone Type: Electric dual tilt-rotor eVTOL",
+      "Max Speed: ~90 km/h",
+      "Flight Range: Up to ~30 km (patrol configuration)",
+      "Payload Capacity: Up to ~6.9 kg (AED variant)",
+      "Camera: 4K UHD with digital zoom and gimbal stabilization",
+      "Takeoff/Landing: Vertical, from vehicles or fixed stations",
+      "Weather: High wind resistance for all-condition operation"
+    ]),
+    features: [
+      "Autonomous VTOL operations",
+      "Vehicle-mounted rapid deployment",
+      "Real-time live video streaming",
+      "PATROL variant: security & infrastructure monitoring",
+      "AED variant: emergency medical delivery",
+      "Integrates with Z-SCAN for full airspace awareness"
+    ],
+    isAvailable: "true"
+  },
+  {
+    name: "Zing Z-SCAN Drone Detection System",
+    slug: "zing-z-scan",
+    description: "Real-time drone detection and airspace intelligence system for law enforcement, corrections, and critical infrastructure. Identifies, tracks, and logs drone activity via Remote ID and RF sensing, delivering continuous low-altitude airspace awareness.",
+    category: "AirSpace Management",
+    price: null,
+    imageUrl: null,
+    specifications: JSON.stringify([
+      "Detection Range: Up to 2 miles (environment-dependent)",
+      "Detection Accuracy: ±1 meter range, ±1° bearing",
+      "Supported Frequencies: 2.4 GHz, 5.8 GHz + additional",
+      "Detection Modes: Passive RF + active scanning",
+      "Supported Protocols: Wi-Fi, Bluetooth, DJI, Parrot Remote ID",
+      "Operating Temperature: -20°C to 50°C (-4°F to 122°F)",
+      "Base Unit Dimensions: 30 × 20 × 10 cm",
+      "Compliance: FCC, CE",
+      "Warranty: 2 years limited (extended plans available)"
+    ]),
+    features: [
+      "Real-time Remote ID detection (Bluetooth + Wi-Fi)",
+      "Cloud-based command center with live map",
+      "Multi-sensor network, scalable single-site → statewide",
+      "SMS + dashboard alerts with whitelisting",
+      "API integration with existing security systems",
+      "Subscription service model (turnkey install)"
+    ],
+    isAvailable: "true"
   }
 ];
 

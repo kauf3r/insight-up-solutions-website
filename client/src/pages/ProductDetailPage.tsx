@@ -25,6 +25,8 @@ const emlidReachRS3 = '/emlid_reach_rs3.webp';
 const emlidScanningKit = '/emlid_scanning_kit.webp';
 const dragonfishStandard = '/stock_images/autel_dragonfish_uav_43757464.jpg';
 const dragonfishPro = '/stock_images/autel_dragonfish_uav_49fa43f2.jpg';
+const narmaAF100 = '/narma-af100.jpg';
+const zingZScan = '/zing-z-scan.png';
 
 const imageMap: Record<string, string> = {
   "Quantum Systems Trinity Pro UAV Platform": productImage1,
@@ -41,6 +43,8 @@ const imageMap: Record<string, string> = {
   "Emlid Reach RX": emlidReachRX,
   "Autel Dragonfish Standard": dragonfishStandard,
   "Autel Dragonfish Pro": dragonfishPro,
+  "NARMA AF100 Autonomous VTOL Platform": narmaAF100,
+  "Zing Z-SCAN Drone Detection System": zingZScan,
 };
 
 export default function ProductDetailPage() {
