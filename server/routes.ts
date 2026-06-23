@@ -6,7 +6,7 @@ import {
   insertInquirySchema,
   insertBundleLeadSchema
 } from "../shared/schema.js";
-import { getResendClient } from "./lib/resend.js";
+import { getResendClient, sendEmailWithRetry } from "./lib/resend.js";
 import { escapeHtml } from "./lib/html.js";
 
 export function registerRoutes(app: Express): void {
@@ -100,9 +100,9 @@ export function registerRoutes(app: Express): void {
           `
         };
         
-        console.log(`[RESEND] Sending demo booking confirmation to ${emailData.to}`);
-        const result = await client.emails.send(emailData);
-        console.log("[RESEND] Demo booking confirmation sent successfully:", result);
+        if (await sendEmailWithRetry(client, emailData, { label: "demo booking confirmation" })) {
+          console.log("[RESEND] Demo booking confirmation sent");
+        }
       } catch (emailError: any) {
         console.error("[RESEND ERROR] Failed to send demo booking confirmation email");
         console.error("[RESEND ERROR] Error details:", emailError);
@@ -134,9 +134,9 @@ export function registerRoutes(app: Express): void {
           `
         };
         
-        console.log(`[RESEND] Sending demo booking admin notification to ${adminEmailData.to}`);
-        const adminResult = await client.emails.send(adminEmailData);
-        console.log("[RESEND] Demo booking admin notification sent successfully:", adminResult);
+        if (await sendEmailWithRetry(client, adminEmailData, { label: "demo booking admin notification" })) {
+          console.log("[RESEND] Demo booking admin notification sent");
+        }
       } catch (adminEmailError: any) {
         console.error("[RESEND ERROR] Failed to send demo booking admin notification email");
         console.error("[RESEND ERROR] Error details:", adminEmailError);
@@ -223,9 +223,9 @@ export function registerRoutes(app: Express): void {
           `
         };
         
-        console.log(`[RESEND] Sending inquiry confirmation to ${emailData.to}`);
-        const result = await client.emails.send(emailData);
-        console.log("[RESEND] Inquiry confirmation sent successfully:", result);
+        if (await sendEmailWithRetry(client, emailData, { label: "inquiry confirmation" })) {
+          console.log("[RESEND] Inquiry confirmation sent");
+        }
       } catch (emailError: any) {
         console.error("[RESEND ERROR] Failed to send inquiry confirmation email");
         console.error("[RESEND ERROR] Error details:", emailError);
@@ -262,9 +262,9 @@ export function registerRoutes(app: Express): void {
           `
         };
         
-        console.log(`[RESEND] Sending inquiry admin notification to ${adminEmailData.to}`);
-        const adminResult = await client.emails.send(adminEmailData);
-        console.log("[RESEND] Inquiry admin notification sent successfully:", adminResult);
+        if (await sendEmailWithRetry(client, adminEmailData, { label: "inquiry admin notification" })) {
+          console.log("[RESEND] Inquiry admin notification sent");
+        }
       } catch (adminEmailError: any) {
         console.error("[RESEND ERROR] Failed to send inquiry admin notification email");
         console.error("[RESEND ERROR] Error details:", adminEmailError);
@@ -328,9 +328,9 @@ export function registerRoutes(app: Express): void {
           `
         };
         
-        console.log(`[RESEND] Sending contact confirmation to ${emailData.to}`);
-        const result = await client.emails.send(emailData);
-        console.log("[RESEND] Contact confirmation sent successfully:", result);
+        if (await sendEmailWithRetry(client, emailData, { label: "contact confirmation" })) {
+          console.log("[RESEND] Contact confirmation sent");
+        }
       } catch (emailError: any) {
         console.error("[RESEND ERROR] Failed to send contact confirmation email");
         console.error("[RESEND ERROR] Error details:", emailError);
@@ -364,9 +364,9 @@ export function registerRoutes(app: Express): void {
           `
         };
         
-        console.log(`[RESEND] Sending contact admin notification to ${adminEmailData.to}`);
-        const adminResult = await client.emails.send(adminEmailData);
-        console.log("[RESEND] Contact admin notification sent successfully:", adminResult);
+        if (await sendEmailWithRetry(client, adminEmailData, { label: "contact admin notification" })) {
+          console.log("[RESEND] Contact admin notification sent");
+        }
       } catch (adminEmailError: any) {
         console.error("[RESEND ERROR] Failed to send contact admin notification email");
         console.error("[RESEND ERROR] Error details:", adminEmailError);
@@ -422,9 +422,9 @@ export function registerRoutes(app: Express): void {
           `
         };
         
-        console.log(`[RESEND] Sending customer confirmation to ${emailData.to} from ${emailData.from}`);
-        const result = await client.emails.send(emailData);
-        console.log("[RESEND] Customer confirmation sent successfully:", result);
+        if (await sendEmailWithRetry(client, emailData, { label: "bundle customer confirmation" })) {
+          console.log("[RESEND] Bundle customer confirmation sent");
+        }
       } catch (emailError: any) {
         console.error("[RESEND ERROR] Failed to send customer confirmation email");
         console.error("[RESEND ERROR] Error details:", emailError);
@@ -455,9 +455,9 @@ export function registerRoutes(app: Express): void {
           `
         };
         
-        console.log(`[RESEND] Sending admin notification to ${adminEmailData.to}`);
-        const adminResult = await client.emails.send(adminEmailData);
-        console.log("[RESEND] Admin notification sent successfully:", adminResult);
+        if (await sendEmailWithRetry(client, adminEmailData, { label: "bundle admin notification" })) {
+          console.log("[RESEND] Bundle admin notification sent");
+        }
       } catch (adminEmailError: any) {
         console.error("[RESEND ERROR] Failed to send admin notification email");
         console.error("[RESEND ERROR] Error details:", adminEmailError);
