@@ -2,7 +2,7 @@
 
 ## What This Is
 
-E-commerce and lead generation website for Insight Up Solutions, a professional UAV systems company. The site showcases drone platforms (Trinity Pro, payloads, GNSS equipment), captures demo bookings, quote requests, contact inquiries, and bundle leads via forms with email notifications. Currently deployed on Replit — migrating to Vercel.
+E-commerce and lead generation website for Insight Up Solutions, a professional UAV systems company. The site showcases drone platforms (Trinity Pro, payloads, GNSS equipment), captures demo bookings, quote requests, contact inquiries, and bundle leads via forms with email notifications. Deployed on Vercel, live at insightupsolutions.com (migrated off Replit in v1.0).
 
 ## Core Value
 
@@ -25,19 +25,25 @@ The site must serve product pages and capture leads (demo bookings, quotes, cont
 - ✓ Product seeding (idempotent, 17 UAV products) — existing
 - ✓ Mobile-responsive design — existing
 
+<!-- Shipped in v1.0 Vercel Migration -->
+
+- ✓ Migrated Express API to Vercel serverless (single function wrapping Express) — v1.0
+- ✓ Replaced Replit Resend connector with direct API key — v1.0
+- ✓ Removed Replit plugins from Vite config and client HTML — v1.0
+- ✓ Configured Vercel routing (API rewrite + SPA fallback) — v1.0
+- ✓ Connected insightupsolutions.com domain with SSL — v1.0
+- ✓ Fixed `updateInquiryStatus` WHERE clause bug — v1.0
+- ✓ Fixed XSS in email HTML templates (input escaped) — v1.0
+- ✓ Set Vercel env vars (DATABASE_URL, RESEND_API_KEY) — v1.0
+- ✓ Static assets (video range-streaming, images) verified via Vercel CDN — v1.0
+
 ### Active
 
-<!-- Migration scope: deploy to Vercel + critical fixes -->
+<!-- v1.1 candidates discovered during v1.0 ship -->
 
-- [ ] Migrate Express API to Vercel Serverless Functions
-- [ ] Replace Replit-specific Resend connector with direct API key
-- [ ] Remove Replit plugins from Vite config and client HTML
-- [ ] Configure Vercel routing (API + SPA fallback)
-- [ ] Connect insightupsolutions.com domain to Vercel
-- [ ] Fix `updateInquiryStatus` bug (uses `status` instead of `id` in WHERE clause)
-- [ ] Fix XSS vulnerability in email HTML templates (unescaped user input)
-- [ ] Set up Vercel environment variables (DATABASE_URL, RESEND_API_KEY)
-- [ ] Verify static asset serving (video, images) works via Vercel CDN
+- [ ] Retry-with-backoff on Resend 429/5xx so a burst can't silently drop a lead notification (currently logged-and-swallowed)
+- [ ] Confirm/fix Vercel auto-deploy from `main` (v1.0 push did not auto-deploy; deployed manually)
+- [ ] v2 backlog remains in scope candidates: security headers, www↔apex redirect, CSP, form rate limiting (see archived v1.0-REQUIREMENTS.md "v2 Requirements")
 
 ### Out of Scope
 
@@ -50,8 +56,9 @@ The site must serve product pages and capture leads (demo bookings, quotes, cont
 
 ## Context
 
-- **Current deployment**: Replit (autoscale target)
-- **Target deployment**: Vercel (static + serverless)
+- **Current State (v1.0 shipped 2026-06-22):** Live in production on Vercel at https://insightupsolutions.com (SSL). Prod deploy `dpl_D4CEvqZyM5cTqcUHei8oQQxCTqV7`, commit `feb34ab`. All 26 v1 requirements verified. Stack: Vite React SPA + Express-on-Vercel-serverless, Neon Postgres, Resend email (domain verified). No test framework; gates are `tsc` + `vite build` + live E2E.
+- **Current deployment**: Vercel (static + serverless) — migrated off Replit
+- **Prior deployment**: Replit (autoscale target) — retired
 - **Database**: Neon Postgres (stays as-is, no migration needed)
 - **Email**: Resend (need to get API key from dashboard, currently accessed via Replit connector)
 - **Domain**: insightupsolutions.com (will point to Vercel)
@@ -72,10 +79,12 @@ Key architectural change: monolithic Express server → Vite static build + Expr
 
 | Decision | Rationale | Outcome |
 |----------|-----------|---------|
-| Keep existing Neon DB | Real data exists, Neon is already serverless-compatible | — Pending |
-| Single serverless function wrapping Express | Minimal code change vs rewriting individual API functions | — Pending |
-| Migration + critical fixes scope | Fixes are cheap since we're touching those files anyway | — Pending |
-| Defer email template cleanup | Works as-is, not blocking migration | — Pending |
+| Keep existing Neon DB | Real data exists, Neon is already serverless-compatible | ✓ Good — 17 products + leads served in prod, no migration needed |
+| Single serverless function wrapping Express | Minimal code change vs rewriting individual API functions | ✓ Good — all routes work in prod on one function |
+| Migration + critical fixes scope | Fixes are cheap since we're touching those files anyway | ✓ Good — `updateInquiryStatus` + XSS fixed in-flight |
+| Defer email template cleanup | Works as-is, not blocking migration | ⚠️ Revisit — inline templates fine, but swallow-without-retry sends can silently drop notifications (v1.1) |
+| Deliver Phase 2 directly (no GSD plan rounds) | Ops/deploy/verify phase, no code changes | ✓ Good — verified 8/8 reqs live |
+| Verify on prod `.vercel.app` before attaching domain | Verify-before-public-go-live | ✓ Good |
 
 ## Evolution
 
@@ -95,4 +104,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-04-08 after initialization*
+*Last updated: 2026-06-22 after v1.0 Vercel Migration milestone*
