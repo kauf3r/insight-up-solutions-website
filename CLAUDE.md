@@ -1,299 +1,128 @@
-<!-- GSD:project-start source:PROJECT.md -->
-## Project
+# insight-up-solutions — Operating Manual
 
-**Insight Up Solutions — Vercel Migration**
+Business website for Insight Up Solutions (Andy Kaufman's consulting company): a UAV-systems lead-gen and product-showcase site (Quantum Systems Trinity Pro, payloads, GNSS gear) plus an emerging **AI Workflow Audit** consulting offer (`/ai-workflow-audit`, $1,500 fixed / 1-week — PR #2). Stack: Express 4 + React 18 SPA (Vite 5, wouter, TanStack Query, react-hook-form + zod, Radix/shadcn-style UI, Tailwind 3), Drizzle ORM + Neon Postgres, Resend for email, TypeScript strict, **npm** (package-lock.json). NOT Next.js. Live at **insightupsolutions.com** on Vercel (project `insight-up-solutions`, production branch `main`, auto-deploy via Git — verified reconnected 2026-06-22). GitHub: `kauf3r/insight-up-solutions-website`.
 
-E-commerce and lead generation website for Insight Up Solutions, a professional UAV systems company. The site showcases drone platforms (Trinity Pro, payloads, GNSS equipment), captures demo bookings, quote requests, contact inquiries, and bundle leads via forms with email notifications. Currently deployed on Replit — migrating to Vercel.
+This file is the operating manual. When it conflicts with your defaults, this file wins.
 
-**Core Value:** The site must serve product pages and capture leads (demo bookings, quotes, contact forms) with email notifications to both the customer and admin. If anything else breaks, these must work.
+## The Gates (non-negotiable)
 
-### Constraints
+1. **After every change:** `npm run check` (tsc over the whole repo) and `npm run build` (vite). Both verified green on main as of 2026-07-07. These are the ONLY automated gates.
+2. **There are no tests and no CI workflows.** No test framework in dependencies, no `.github/workflows/`. The only check on PRs is GitGuardian secret scanning. A "green" PR means *no leaked secrets*, nothing more. You and the local gates are the entire safety net.
+3. **Never push to `main` directly.** Branch off `origin/main`, PR via `gh pr create`, merge only after Andy's go-ahead. Merging to `main` triggers a production deploy (auto-deploy is live).
+4. **The business-content rules below are gates, not suggestions.** Naming a client, publishing pricing, or inventing an impact number is a production incident even if tsc is green.
+5. **Real lead data lives in the Neon DB.** Never `npm run db:push` or delete rows without showing Andy the target and getting explicit approval. Test leads must be labeled and deleted by ID afterward (zero residue — precedent: 2026-06-22 handoff).
 
-- **Database**: Keep existing Neon DB — real lead data exists, no re-creation
-- **Email**: RESEND_API_KEY must be obtained from Resend dashboard before email testing
-- **Static assets**: Video file (~1.7MB) and product images must work via Vercel CDN
-- **Path aliases**: `@shared` and `@` must resolve in both Vite build and Vercel's esbuild bundler
-- **Local dev**: Must still work after migration (new dev entry point needed)
-<!-- GSD:project-end -->
+## Business-Content Rules (highest stakes in this repo)
 
-<!-- GSD:stack-start source:codebase/STACK.md -->
-## Technology Stack
+- **ASI is never named publicly.** AirSpace Integration (the UAS test range client) is anonymized as *"an FAA-designated UAS test range on the California coast"* in all site copy and case-study material until ASI explicitly approves being named. See the gate block at the top of `docs/business/case-study-uas-test-range-DRAFT.md`.
+- **Case-study drafts in `docs/business/` never ship with pages.** They carry `DRAFT — DO NOT SEND` gates (Gate 1: Andy approves copy; Gate 2: client approves attribution). Do not import, link, or copy their content into `client/` until both gates clear.
+- **Never estimate impact figures.** Numbers marked `[ask Andy]` stay unfilled or get cut. No invented "hours saved" or ROI claims anywhere on the site.
+- **Lead-gen CTAs use the contact form.** No calendar/Calendly link exists. Offer pages CTA into a form that POSTs `/api/contact` with a distinguishing `inquiryType` (precedent: `AIWorkflowAuditPage` uses `inquiryType: "ai-workflow-audit"`).
+- **Pricing and public-facing copy changes → stop and ask Andy** (see Escalation).
 
-## Languages
-- TypeScript 5.6.3 - Full-stack application (client and server)
-- JavaScript - Configuration files and build tools
-## Runtime
-- Node.js 20 - Specified in `.replit` configuration
-- PostgreSQL 16 - Database runtime
-- npm - Version management via `package-lock.json`
-- Lockfile: Present (`package-lock.json`)
-## Frameworks
-- Express 4.21.2 - REST API server (`server/index.ts`, `server/routes.ts`)
-- React 18.3.1 - Frontend UI framework
-- Vite 5.4.19 - Frontend build tool and dev server
-- Next.js - Not used; project uses Express + React instead
-- No test framework detected in dependencies
-- Vite 5.4.19 - Frontend bundler and dev server
-- esbuild 0.25.0 - Backend bundle compilation
-- tsx 4.19.1 - TypeScript execution for Node.js
-- Tailwind CSS 3.4.17 - Utility-first CSS styling
-## Key Dependencies
-- `drizzle-orm` 0.39.1 - ORM for type-safe database queries (`server/db.ts`, `shared/schema.ts`)
-- `@neondatabase/serverless` 0.10.4 - PostgreSQL driver (serverless Neon compatibility)
-- `zod` 3.24.2 - Schema validation for API requests
-- `drizzle-zod` 0.7.0 - Integration between Drizzle and Zod for schema inference
-- `@tanstack/react-query` 5.60.5 - Server state management for API interactions (`client/src/lib/queryClient.ts`)
-- `react-hook-form` 7.55.0 - Form state management
-- `@hookform/resolvers` 3.10.0 - Integration with Zod validation
-- `wouter` 3.3.5 - Lightweight client-side router (`client/src/App.tsx`)
-- `@radix-ui/*` 1.1+/1.2+ - Unstyled accessible component primitives (18+ individual packages)
-- `class-variance-authority` 0.7.1 - CSS class composition utility
-- `clsx` 2.1.1 - Conditional className utility
-- `lucide-react` 0.453.0 - Icon library
-- `react-icons` 5.4.0 - Additional icon library
-- `embla-carousel-react` 8.6.0 - Carousel component
-- `tailwind-merge` 2.6.0 - Merge Tailwind CSS classes intelligently
-- `tailwindcss-animate` 1.0.7 - Animation utilities for Tailwind
-- `framer-motion` 11.13.1 - Animation library
-- `recharts` 2.15.2 - React charting library
-- `date-fns` 3.6.0 - Date utility library
-- `resend` 6.4.2 - Email service SDK
-- `stripe` 18.5.0 - Payment processing SDK (Node.js)
-- `@stripe/stripe-js` 7.9.0 - Stripe JavaScript SDK
-- `@stripe/react-stripe-js` 4.0.2 - React wrapper for Stripe.js
-- `passport` 0.7.0 - Authentication middleware (configured but may not be actively used)
-- `passport-local` 1.0.0 - Local strategy for Passport
-- `express-session` 1.18.1 - Session management
-- `connect-pg-simple` 10.0.0 - PostgreSQL session store
-- `memorystore` 1.6.7 - In-memory session store
-- `ws` 8.18.0 - WebSocket library (for Neon serverless compatibility)
-- `input-otp` 1.4.2 - OTP input component
-- `vaul` 1.1.2 - Drawer/sheet component
-- `next-themes` 0.4.6 - Theme management (currently set to dark mode via Tailwind)
-- `@neondatabase/serverless` 0.10.4 - Serverless PostgreSQL client
-## Configuration
-- `.env` file required (not versioned)
-- Required variables:
-- `vite.config.ts` - Frontend bundler configuration
-- `tsconfig.json` - TypeScript compiler options
-- `tailwind.config.ts` - Tailwind CSS configuration
-- `postcss.config.js` - PostCSS configuration (minimal)
-- `drizzle.config.ts` - ORM configuration
-- `.replit` - Replit deployment configuration
-## Platform Requirements
-- Node.js 20+
-- PostgreSQL 16 (local or remote via Neon)
-- npm or yarn
-- Replit environment (for email connector integration)
-- Node.js 20 runtime
-- PostgreSQL 16 database (Neon Serverless recommended)
-- Replit deployment platform (required for Resend email connector)
-- Port 5000 accessible (mapped to external port 80)
-## Build & Run Commands
-<!-- GSD:stack-end -->
+## Architecture Map
 
-<!-- GSD:conventions-start source:CONVENTIONS.md -->
-## Conventions
+| Layer | Where | Notes |
+|---|---|---|
+| SPA routes | `client/src/App.tsx` | wouter `<Switch>`; 15 routes incl. `/quote`, `/demo`, `/contact`, `/trinity-lr1-special`, `/ai-workflow-audit` (PR #2); fallback → `not-found` |
+| Pages | `client/src/pages/` | PascalCase `*Page.tsx`; offer/landing precedents: `TrinityLR1SpecialPage`, `AIWorkflowAuditPage` |
+| Nav | `client/src/components/Header.tsx` | nav items array — new pages need an entry here too |
+| SEO | `client/src/components/SEO.tsx` | client-side `useEffect` sets title/meta/OG per page — every page renders `<SEO/>` |
+| Forms | `client/src/components/{DemoBookingForm,InquiryForm}.tsx` + page-local forms | react-hook-form + `zodResolver`, mutations via `apiRequest` from `client/src/lib/queryClient.ts` |
+| Express app | `server/index.ts` | exports `app` (no `.listen`); JSON body parsing, `/api` request logging, 4-arg error handler |
+| Local dev entry | `server/dev.ts` | `npm run dev` → tsx, port 5000; **calls `seedDatabase()` on startup** then mounts Vite middleware |
+| Vercel entry | `api/index.ts` | thin wrapper: default export delegates to `app`; no seeding in prod |
+| API routes | `server/routes.ts` | all endpoints; validation via shared zod insert schemas |
+| Storage layer | `server/storage.ts` | `IStorage` interface + `DatabaseStorage` (Drizzle + `@neondatabase/serverless`); routes never call Drizzle directly; reads `DATABASE_URL` |
+| Email | `server/lib/resend.ts` | `getResendClient()` (from: `info@insightupsolutions.com`) + `sendEmailWithRetry()` — backoff+jitter on 429/5xx, max 4 attempts, **never throws**, returns boolean |
+| XSS escape | `server/lib/html.ts` | `escapeHtml()` — mandatory for every interpolation into email HTML |
+| DB schema | `shared/schema.ts` | Drizzle tables (`users`, `products`, `demoBookings`, `inquiries`, `bundleLeads`) + zod insert schemas + types — single source of truth for client AND server |
+| Seed data | `server/seed.ts` | 17 products; idempotent by slug (skips existing) but inserts into whatever `DATABASE_URL` points at |
+| Deploy config | `vercel.json` | `@vercel/node` build for `api/index.ts` + static build to `dist/public`; rewrites: `/api/(.*)` → serverless fn FIRST, then `/(.*)`→`index.html` (SPA deep links) |
+| Path aliases | `tsconfig.json` / `vite.config.ts` | `@/*`→`client/src/`, `@shared/*`→`shared/`, `@assets/*`→`attached_assets/` |
+| Design system | `design_guidelines.md` | light-mode, Inter, deep technical blue primary, minimal animation — "clean technical", no marketing hype |
 
-## Naming Patterns
-- React components: PascalCase (e.g., `ProductGrid.tsx`, `QuotePage.tsx`, `PartnershipsSection.tsx`)
-- UI library components: lowercase with hyphens (e.g., `card.tsx`, `alert-dialog.tsx`, `input-otp.tsx`)
-- Server files: camelCase (e.g., `index.ts`, `routes.ts`, `storage.ts`, `resend.ts`)
-- Utility/lib files: camelCase (e.g., `queryClient.ts`, `utils.ts`)
-- camelCase (e.g., `formatPrice()`, `throwIfResNotOk()`, `getUncachableResendClient()`)
-- React components are named with PascalCase: `default function ProductGrid()`, `export default function QuotePage()`
-- Event handlers prefixed with "on" or descriptive verb: `onClick`, `onSuccess`, `onError`, `handleSubmit`
-- camelCase (e.g., `apiProducts`, `formattedKey`, `displayProducts`)
-- Type/interface suffixes: `Props`, `FormData`, `Schema` (e.g., `ProductGridProps`, `QuoteFormData`)
-- Constants in UPPER_SNAKE_CASE when truly constant across code (e.g., `DATABASE_URL`)
-- State variables follow camelCase: `isLoading`, `error`, `submitted`
-- Interfaces: PascalCase (e.g., `IStorage`, `Partner`, `ProductGridProps`)
-- Type unions: Inferred from context (e.g., `UnauthorizedBehavior = "returnNull" | "throw"`)
-- Database types imported with capitalized names: `Product`, `User`, `DemoBooking`, `Inquiry`, `BundleLead`
-## Code Style
-- No explicit formatter detected (no ESLint, Prettier, or Biome config)
-- Indentation: 2 spaces (observed in all files)
-- Line length: Files vary but generally keep lines under 100 characters
-- Semicolons: Used consistently throughout
-- Quote style: Double quotes for strings (observed in imports, JSX, and object literals)
-- Not detected in configuration files
-- Code follows TypeScript strict mode: `"strict": true` in `tsconfig.json`
-- Type safety is enforced: explicit type annotations on function parameters and returns
-- Type imports use explicit `import type` syntax: `import type { Express } from "express"`
-- Path aliases used: `@/` for client source, `@shared/` for shared modules, `@assets/` for assets
-- Relative imports used for local server modules (e.g., `./routes`, `./storage`)
-## Import Organization
-- `@/*` → `./client/src/*` (client components, pages, utilities)
-- `@shared/*` → `./shared/*` (shared schemas, types)
-- `@assets/*` → `./attached_assets/*` (static assets)
-## Error Handling
-- Try-catch blocks for async operations: Seen in routes and API handlers
-- Error propagation in fetch calls: `throwIfResNotOk()` function validates response status before processing
-- Catch blocks often log errors before responding: `catch (error) { res.status(500).json({ error: "..." }) }`
-- Promise rejections caught in mutation handlers: `onError: (error) => { console.error(...) }`
-- Form validation errors handled via react-hook-form + zod: Schema validation before API submission
-## Logging
-- Categorized log messages with prefixes: `[DEMO BOOKING]`, `[RESEND]`, `[RESEND ERROR]`, `[INQUIRY]`
-- Used for tracking operations: `console.log(`[DEMO BOOKING] Created booking for ${booking.email}`)`
-- Used for debugging email operations: Multiple logs track email send attempts and failures
-- Error logs with structured context: `console.error("[RESEND ERROR] Failed to send...", error)`
-- Client-side logging minimal: Only in error handlers and mutation callbacks
-## Comments
-- TODO comments for unfinished work: `// TODO: Replace with real partner data when available` (in `PartnershipsSection.tsx`)
-- Inline comments for complex logic: Very minimal use observed
-- Comments explaining business logic: Seen in routes explaining auto-population and email workflows
-- Comments above code sections explaining purpose: `// Video streaming middleware with range request support`
-- No JSDoc/TSDoc patterns detected in the codebase
-- Types and interfaces defined inline with minimal documentation
-- Component props documented via TypeScript interfaces
-## Function Design
-- Functions generally keep business logic focused
-- Route handlers average 20-30 lines for simple CRUD, up to 80+ lines for complex operations with side effects
-- Utility functions are small and single-purpose: `formatPrice()` is 5 lines, `cn()` is 3 lines
-- Explicit typed parameters: `async function registerRoutes(app: Express): Promise<Server>`
-- Destructuring common in React components: `{ title = "...", showViewAll = true, ... }`
-- Default values provided in function signatures
-- Explicit return types specified: `Promise<Product[]>`, `Promise<User | undefined>`
-- Functions that modify state return the modified entity: `createProduct()` returns the created Product
-- API handlers return JSON or redirect via `res.json()`, `res.status().json()`
-- Query handlers use React Query's mutation pattern: return Promise that resolves to API response
-## Module Design
-- Default exports for page components: `export default function QuotePage()`
-- Named exports for utilities: `export async function apiRequest()`, `export const queryClient`
-- Named exports for components: `export { storage }`
-- Service classes instantiated and exported: `export const storage = new DatabaseStorage()`
-- Storage layer uses interface pattern: `interface IStorage` defines contract, `class DatabaseStorage implements IStorage`
-- Enables abstraction and testability
-- Clean separation between data access and business logic
-- `index.ts`: Express app setup, middleware, server listening
-- `routes.ts`: API endpoints, request handling, validation
-- `storage.ts`: Data access layer, database operations
-- `lib/resend.ts`: External service client management
-- `App.tsx`: Router and top-level providers
-- `pages/`: Page components (QuotePage, ProductsPage, etc.)
-- `components/`: Reusable components (ProductGrid, PartnershipsSection, etc.)
-- `components/ui/`: Shadcn UI primitive components
-- `lib/`: Utilities (queryClient, utils, hooks)
-- `hooks/`: Custom React hooks (use-toast)
-<!-- GSD:conventions-end -->
+### API surface (verified from `server/routes.ts`)
 
-<!-- GSD:architecture-start source:ARCHITECTURE.md -->
-## Architecture
+- `GET/POST /api/products`, `GET /api/products/:id` (tries slug, then UUID), `GET /api/products/category/:category`
+- `GET/POST /api/demo-bookings`, `PATCH /api/demo-bookings/:id/status`
+- `GET/POST /api/inquiries` (auto-populates `subject` for `inquiryType: 'quote'`), `PATCH /api/inquiries/:id/status`
+- `POST /api/contact` — alias for inquiries (same `insertInquirySchema` → `createInquiry`), different email copy
+- `POST/GET /api/bundle-leads` (Trinity Pro + LR1 bundle landing page)
 
-## Pattern Overview
-- Single Node.js/Express process serves both `/api/*` routes and static HTML client
-- Client is React SPA built with Vite, served through Express in dev/prod
-- Shared TypeScript schema and types between client and server via `@shared` path alias
-- Database access abstraction layer (`storage`) decouples routes from Drizzle ORM
-- Client uses TanStack Query for server-state management and form-based mutations
-## Layers
-- Purpose: Render interactive UI, collect form data, display product/solution information
-- Location: `client/src/`
-- Contains: React components, pages, hooks, utilities for rendering
-- Depends on: TanStack Query (server-state), Wouter (routing), Radix UI (components), Zod (validation)
-- Used by: End users via browser
-- Purpose: Route-specific page logic and composition
-- Location: `client/src/pages/`
-- Contains: Page components (HomePage, ProductDetailPage, SolutionsPage, DemoPage, etc.)
-- Depends on: Components, hooks, shared schema
-- Used by: App.tsx router (Wouter)
-- Purpose: Reusable UI components and feature-specific components
-- Location: `client/src/components/`
-- Contains: UI primitives (`ui/`), feature components (DemoBookingForm, InquiryForm, ProductGrid, etc.)
-- Depends on: Radix UI, React, Zod for validation
-- Used by: Pages and other components
-- Purpose: HTTP endpoint definitions, request validation, response formatting
-- Location: `server/routes.ts`
-- Contains: Express route handlers for `/api/*` paths (products, demo-bookings, inquiries, contact, bundle-leads)
-- Depends on: Storage layer, Resend (email), Zod validation schemas
-- Used by: Express app, client via fetch
-- Purpose: Abstracts all database operations from routes
-- Location: `server/storage.ts`
-- Contains: DatabaseStorage class implementing IStorage interface
-- Depends on: Drizzle ORM, shared schema, Neon serverless database
-- Used by: routes.ts
-- Purpose: Single source of truth for data structure definitions
-- Location: `shared/schema.ts`
-- Contains: Drizzle table definitions (users, products, demoBookings, inquiries, bundleLeads), Zod insert schemas, TypeScript type exports
-- Depends on: Drizzle ORM, Zod
-- Used by: Both client (validation, types) and server (validation, types, database)
-- Purpose: Server setup, middleware, development vs production asset serving
-- Location: `server/index.ts`, `server/vite.ts`
-- Contains: Express app initialization, video streaming, request logging, Vite middleware setup, static file serving
-- Depends on: Express, Vite (dev), database seeding
-- Used by: Node.js runtime
-## Data Flow
-- **Server State:** TanStack Query (queryClient with staleTime: Infinity, no refetch on window focus)
-- **Client State:** React hooks (useState in components like DemoBookingForm)
-- **Form State:** React Hook Form with Zod resolver for validation
-- **UI State:** Component-level (toasts, modals, loading states)
-- **Cache:** TanStack Query instance in `client/src/lib/queryClient.ts`
-## Key Abstractions
-- Purpose: Defines contract for data access operations
-- Examples: `server/storage.ts` implements DatabaseStorage class
-- Pattern: All database operations go through this interface; routes never call Drizzle directly
-- Purpose: Share validation rules between client and server
-- Examples: insertDemoBookingSchema, insertInquirySchema, insertProductSchema in `shared/schema.ts`
-- Pattern: Zod schemas defined in shared, used with `zodResolver` in forms and route validation
-- Purpose: Abstracts email sending with caching logic
-- Examples: `server/lib/resend.ts` provides getUncachableResendClient()
-- Pattern: Routes call this function when email confirmation needed; returns Resend client instance
-- Purpose: Simplify imports across client and shared code
-- Examples: `@/*` → `client/src/`, `@shared/*` → `shared/`
-- Pattern: Defined in `tsconfig.json`, enables import { Product } from "@shared/schema"
-## Entry Points
-- Location: `server/index.ts`
-- Triggers: `npm run dev` or `npm start` (via esbuild in production)
-- Responsibilities: Initialize Express, seed database, register routes, set up Vite (dev) or static serving (prod), listen on PORT
-- Location: `client/src/main.tsx`
-- Triggers: Browser loads `index.html`
-- Responsibilities: Mount React app to DOM root element
-- Location: `client/src/App.tsx`
-- Triggers: App component renders
-- Responsibilities: Initialize QueryClientProvider, TooltipProvider, Toaster, define Wouter Switch with route definitions
-## Error Handling
-- Routes wrap database calls in try-catch, return 500 with error message on failure
-- Client `apiRequest` function checks response status and throws if not ok
-- Client mutations use onError handler to show destructive toast to user
-- Server error middleware (in index.ts) catches unhandled errors and returns 500 JSON response
-- Drizzle operations throw on constraint violations (e.g., duplicate slug); routes catch and return 400
-## Cross-Cutting Concerns
-- Server: console.log with `[CONTEXT]` prefix (e.g., `[DEMO BOOKING]`, `[RESEND]`, `[INQUIRY]`)
-- Request logging middleware in `server/index.ts` logs all `/api` requests with method, path, status, duration, and response JSON
-- Client: console.error for catch blocks in form submissions
-- All user input validated twice: once on client (React Hook Form + Zod), once on server (routes + Zod)
-- Zod schemas in `shared/schema.ts` are source of truth
-- Insert schemas omit auto-generated fields (id, createdAt, status)
-- No authentication currently implemented
-- Routes are public; any client can POST to `/api/demo-bookings`, `/api/inquiries`, etc.
-- Admin email notifications go to hardcoded address (`kaufman@airspaceintegration.com`)
-- Neon serverless PostgreSQL via `@neondatabase/serverless` with WebSocket support
-- Drizzle ORM for type-safe queries
-- Migrations managed via drizzle-kit (`npm run db:push`)
-- Schema defined once in `shared/schema.ts`, used by both Drizzle and Zod
-- Special `*.mp4` route in `server/index.ts` handles range requests (HTTP 206)
-- Supports pause/resume in HTML5 video players
-- Respects dev/prod paths (client/public vs dist/public)
-<!-- GSD:architecture-end -->
+Every lead-capture POST sends **two emails** (customer confirmation + admin notification to the hardcoded `kaufman@airspaceintegration.com`), each in its **own try/catch** via `sendEmailWithRetry` — an email failure must never turn the 201 into a 500. Lead capture is the core value of this site; if anything else breaks, forms + emails must still work.
 
-<!-- GSD:workflow-start source:GSD defaults -->
-## GSD Workflow Enforcement
+**No auth exists.** All routes are public, including the GET list endpoints that return lead data — a known gap, not a pattern to extend. Do not add new endpoints that expose lead/PII data.
 
-Before using Edit, Write, or other file-changing tools, start work through a GSD command so planning artifacts and execution context stay in sync.
+## Mistakes a Weaker Model Will Make Here
 
-Use these entry points:
-- `/gsd:quick` for small fixes, doc updates, and ad-hoc tasks
-- `/gsd:debug` for investigation and bug fixing
-- `/gsd:execute-phase` for planned phase work
+1. **Naming the client.** Writes "AirSpace Integration" into site copy or the case study. → Rule: ASI is anonymized as "an FAA-designated UAS test range on the California coast" everywhere public until ASI approves. Both gates in the case-study draft header must clear first.
+2. **The invented booking link.** Adds a "Book a call" Calendly/calendar CTA. None exists. → Rule: CTAs submit the contact form (`POST /api/contact`) with a distinguishing `inquiryType`, mirroring `AIWorkflowAuditPage`.
+3. **The green-check trust fall.** Sees PR checks pass and assumes tests/build ran. Only GitGuardian runs on PRs. → Rule: run `npm run check && npm run build` locally before every push, no exceptions.
+4. **The half-registered page.** Creates `pages/NewPage.tsx` and calls it done. → Rule: a page ships as route in `App.tsx` (wouter, not react-router) + nav entry in `Header.tsx` + `<SEO/>` with real title/description, all in one PR. Verify the deep link survives a hard refresh (the `vercel.json` SPA rewrite handles it — don't reorder the rewrites; `/api` must stay first).
+5. **The unescaped email.** Interpolates user input into email HTML directly. This was a real XSS, fixed in `0332171`. → Rule: every `${...}` inside email HTML goes through `escapeHtml()` from `server/lib/html.ts`.
+6. **The throwing email path.** Lets a Resend failure propagate and fail the API response, or calls `client.emails.send` bare. → Rule: emails go through `sendEmailWithRetry` inside their own try/catch; the lead is already in the DB — always return 201.
+7. **The inquiryType enum assumption.** Treats `inquiryType` as a checked enum. It's a plain `text` column; values in the wild: `general`, `quote`, `demo`, `product`, `custom`, `ai-workflow-audit`. → Rule: grep `client/src` for existing `inquiryType:` values before adding one; pick a distinct slug so admin-email triage works.
+8. **The casual db:push.** Runs `npm run db:push` (drizzle-kit push, no migration files exist) against prod Neon, where real lead data lives. → Rule: show Andy the target `DATABASE_URL` host and get approval first. Same for any row deletion.
+9. **The dev-server seed surprise.** Runs `npm run dev` with prod credentials in `.env` — `server/dev.ts` calls `seedDatabase()` on startup. It's idempotent by slug, but it will insert any missing seed products into that DB. → Rule: know which DB `.env` points at before starting dev.
+10. **The Next.js reflex.** Reaches for `app/` routing, server components, `next/image`, API route files. → Rule: this is an Express + Vite SPA. Server code lives in `server/`, one serverless entry at `api/index.ts`, client routing is wouter.
+11. **The fabricated metric.** Fills a `[ask Andy]` placeholder with a plausible number to make copy flow. → Rule: real data from Andy or cut the line. Never estimate impact figures.
+12. **The single-spot admin-email fix.** Changes the admin notification address in one route. It's hardcoded in 4 handlers in `server/routes.ts`. → Rule: when changing any repeated value (admin email, phone `+1 (831) 888-7172`, `info@insightupsolutions.com`), grep the whole repo and fix every instance.
+13. **The attached_assets excavation.** Treats `attached_assets/` (screenshots, pasted PRDs, promo PDFs) as authoritative docs. It's a Replit-era junk drawer that images are served from via `@assets`. → Rule: business truth lives in `docs/business/` and Andy; don't cite or "clean up" `attached_assets` without asking.
+14. **The npm/pnpm mixup.** Runs `pnpm install` (Andy's other repos use pnpm). This repo is npm with `package-lock.json`. → Rule: npm only; don't introduce a second lockfile.
 
-Do not make direct repo edits outside a GSD workflow unless the user explicitly asks to bypass it.
-<!-- GSD:workflow-end -->
+## Quality Bar Per Deliverable
 
+**Any code change:**
+- [ ] `npm run check` and `npm run build` output shown, both clean
+- [ ] No new `any` or `@ts-expect-error` without a one-line justification
+- [ ] Matches the nearest neighbor's idiom (read a sibling page/route first)
 
+**New or changed page:**
+- [ ] Route in `App.tsx` + nav in `Header.tsx` + `<SEO/>` with unique title/description
+- [ ] Uses existing UI primitives (`client/src/components/ui/`), Tailwind spacing units 2/4/6/8/12/16, light-mode palette per `design_guidelines.md`
+- [ ] Any form posts to an existing endpoint with a distinct `inquiryType`; success/error toasts wired via the mutation pattern (copy `ContactPage`)
+- [ ] Business-content rules checked: no client names, no invented numbers, no calendar links, CTA → contact form
 
-<!-- GSD:profile-start -->
-## Developer Profile
+**Copy change (public-facing):**
+- [ ] Andy approved the exact wording before merge (pricing, claims, client references — always; minor typo fixes — use judgment, say what changed)
+- [ ] ASI anonymization intact; no `[ask Andy]` placeholder shipped
 
-> Profile not yet configured. Run `/gsd:profile-user` to generate your developer profile.
-> This section is managed by `generate-claude-profile` -- do not edit manually.
-<!-- GSD:profile-end -->
+**API/email change:**
+- [ ] Zod validation via shared schema; 400 invalid input, 404 not-found, 500 generic — match neighbors
+- [ ] All email HTML interpolations escaped; sends via `sendEmailWithRetry` in isolated try/catch; 201 returned even if email fails
+- [ ] Both email paths (customer + admin) updated together; exercised at least once with output shown (labeled test lead, then deleted by ID)
+
+**Schema change:**
+- [ ] `shared/schema.ts` updated (tables + insert schema + types together); every consumer grepped (`routes.ts`, `storage.ts`, forms)
+- [ ] `db:push` target shown to Andy before running; existing lead data preserved
+
+**PR:**
+- [ ] Branch cut from `origin/main`; conventional commit messages
+- [ ] `docs/business/` drafts and `.planning/` never mixed into code PRs
+- [ ] Merge = production deploy; after merge, confirm a `src=git` deployment appears (`vercel list`) and spot-check the live page
+
+## When Uncertain — Escalation Rules
+
+**Resolve yourself, in order:**
+1. Nearest precedent in the repo — grep for the most recently shipped similar thing (`AIWorkflowAuditPage` for offer pages, `ContactPage` for forms, `routes.ts` handlers for endpoints) and copy its shape
+2. `docs/handoffs/` (most recent first) — session decisions and verified deploy/DB facts live here
+3. `.planning/STATE.md` + `docs/business/` for milestone context and business framing
+4. `design_guidelines.md` for visual decisions
+
+**Stop and ask Andy (one concise question with your recommended default):**
+- Any public-facing copy or pricing change — the site IS the business
+- Naming any client, publishing a case study, or filling an impact figure
+- Anything touching production DB rows (`db:push`, deletes, backfills)
+- Merging to `main` (it deploys), and anything about PR #2 (`feat/ai-workflow-audit-offer`) — that branch is Andy's to merge
+- Adding auth, rate limiting, or security headers (known v2 backlog — don't freelance it)
+
+**Failure protocol:** if `check`/`build` fail inexplicably, `rm -rf node_modules && npm install` before debugging code. If still red after 2 focused attempts, stop and report the exact output — never ship around a red gate.
+
+## Environment Notes
+
+- Required env: `DATABASE_URL` (Neon, throws at `drizzle.config.ts`/`storage.ts` without it), `RESEND_API_KEY` (email sends fail without it — API still returns 201). `.env` is not versioned; `.env.local` holds Vercel OIDC only.
+- Local dev: `npm run dev` → port 5000 (seeds DB on start — see Mistake 9). Prod deploys build `dist/public` + one serverless function.
+- Resend domain `insightupsolutions.com` is verified/sending-enabled. Known limit: ~2 req/s — burst form submissions can rate-limit; `sendEmailWithRetry` exists precisely because a swallowed 429 once dropped an admin notification.
+- Admin notifications go to `kaufman@airspaceintegration.com` (Andy's ASI work address, hardcoded ×4 in `routes.ts`).
+- Repo lives at `~/Desktop/Projects/insight-up-solutions` (iCloud root — slated to migrate to `~/dev`).
