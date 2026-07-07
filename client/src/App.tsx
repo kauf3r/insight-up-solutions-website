@@ -17,6 +17,7 @@ import ProductsPage from "@/pages/ProductsPage";
 import ProductDetailPage from "@/pages/ProductDetailPage";
 import ContactPage from "@/pages/ContactPage";
 import TrinityLR1SpecialPage from "@/pages/TrinityLR1SpecialPage";
+import AIWorkflowAuditPage from "@/pages/AIWorkflowAuditPage";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -36,6 +37,7 @@ function Router() {
       <Route path="/products/:id" component={ProductDetailPage} />
       <Route path="/contact" component={ContactPage} />
       <Route path="/trinity-lr1-special" component={TrinityLR1SpecialPage} />
+      <Route path="/ai-workflow-audit" component={AIWorkflowAuditPage} />
       {/* Fallback to 404 */}
       <Route component={NotFound} />
     </Switch>
