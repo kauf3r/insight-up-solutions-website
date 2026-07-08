@@ -126,3 +126,11 @@ Every lead-capture POST sends **two emails** (customer confirmation + admin noti
 - Resend domain `insightupsolutions.com` is verified/sending-enabled. Known limit: ~2 req/s — burst form submissions can rate-limit; `sendEmailWithRetry` exists precisely because a swallowed 429 once dropped an admin notification.
 - Admin notifications go to `kaufman@airspaceintegration.com` (Andy's ASI work address, hardcoded ×4 in `routes.ts`).
 - Repo lives at `~/Desktop/Projects/insight-up-solutions` (iCloud root — slated to migrate to `~/dev`).
+
+## Knowledge (AndyOS KB)
+
+Andy's cross-business knowledge base (~4,800 pages: land investing, UAS/ASI, AI tooling, clients, content, personal ops) lives at `~/dev/claude-life-os/LLM-context/` and is queryable from this repo via the `claude-life-os-kb` MCP server (registered in `.mcp.json`).
+
+- Before work touching Andy's businesses, clients, positioning, or past decisions, check the KB: `kb_search` (free keyword search), `kb_lookup` (free page fetch), `kb_query` (paid synthesized answer with `[[source:...]]` citations), `kb_status` (index health).
+- Ground business-context claims in KB pages; keep the citations. Public-facing copy still goes through Andy (see escalation rules) — the KB informs drafts, it doesn't approve them.
+- The KB is read-only from this repo — never write into `claude-life-os/LLM-context/`. New knowledge enters through the claude-life-os ingest pipeline.
