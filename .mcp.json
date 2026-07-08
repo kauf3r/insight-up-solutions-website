@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "claude-life-os-kb": {
+      "command": "node",
+      "args": ["/Users/andykaufman/dev/claude-life-os/src/mcp/kb-mcp-server.js"]
+    }
+  }
+}
