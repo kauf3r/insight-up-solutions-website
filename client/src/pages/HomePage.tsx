@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
 import TrinityPlatformSection from "@/components/TrinityPlatformSection";
+import ZScanSpotlightSection from "@/components/ZScanSpotlightSection";
 import ProductGrid from "@/components/ProductGrid";
 import SolutionsSection from "@/components/SolutionsSection";
 import Footer from "@/components/Footer";
@@ -13,6 +14,7 @@ export default function HomePage() {
       <Header cartItemCount={0} />
       <main>
         <HeroSection />
+        <ZScanSpotlightSection />
         <TrinityPlatformSection />
         <ProductGrid 
           title="Trinity Platform Payloads"
