@@ -19,6 +19,7 @@ export default function Header({ cartItemCount = 0 }: HeaderProps) {
     { label: "Solutions", href: "/solutions" },
     { label: "Products", href: "https://insightupsolutions.com/products", external: true },
     { label: "Training", href: "/training" },
+    { label: "Twister", href: "/twister" },
     { label: "AI Audit", href: "/ai-workflow-audit" },
   ];
 
