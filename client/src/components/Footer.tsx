@@ -12,6 +12,7 @@ export default function Footer() {
         { label: "Trinity Pro Platform", href: "/products/trinity-pro" },
         { label: "Sony ILX-LR1", href: "/products/sony-ilx-lr1" },
         { label: "Qube 640", href: "/products/qube-640-lidar" },
+        { label: "Zing Z-SCAN", href: "/products/zing-z-scan" },
       ]
     },
     {
