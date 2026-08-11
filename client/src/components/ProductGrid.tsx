@@ -19,7 +19,7 @@ const emlidScanningKit = '/emlid_scanning_kit.webp';
 const dragonfishStandard = '/stock_images/autel_dragonfish_uav_43757464.jpg';
 const dragonfishPro = '/stock_images/autel_dragonfish_uav_49fa43f2.jpg';
 const narmaAF100 = '/narma-af100.jpg';
-const zingZScan = '/zing-z-scan.png';
+const zingZScan = '/zing-z-scan-card.png';
 
 // Image mapping for products
 const imageMap: Record<string, string> = {

@@ -1,6 +1,6 @@
 import ProductCard from "./ProductCard";
 
-const zingZScan = '/zing-z-scan.png';
+const zingZScanBanner = '/zing-z-scan-banner.png';
 
 export default function ZScanSpotlightSection() {
   const zScan = {
@@ -9,7 +9,7 @@ export default function ZScanSpotlightSection() {
     name: "Zing Z-SCAN Drone Detection System",
     category: "AirSpace Management",
     description: "Real-time drone detection and airspace intelligence system for law enforcement, corrections, and critical infrastructure. Identifies, tracks, and logs drone activity via Remote ID and RF sensing, delivering continuous low-altitude airspace awareness.",
-    image: zingZScan,
+    image: zingZScanBanner,
     price: "Contact for Pricing",
     specifications: [
       "Detection Range: Up to 2 miles (environment-dependent)",
