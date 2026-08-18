@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { apiRequest } from "@/lib/queryClient";
+import { useSpamGuard } from "@/lib/spam-guard";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -27,6 +28,7 @@ type QuoteFormData = z.infer<typeof quoteSchema>;
 
 export default function QuotePage() {
   const [submitted, setSubmitted] = useState(false);
+  const { guardPayload, honeypotField } = useSpamGuard();
 
   const form = useForm<QuoteFormData>({
     resolver: zodResolver(quoteSchema),
@@ -46,6 +48,7 @@ export default function QuotePage() {
         ...data,
         inquiryType: "quote",
         // subject will be auto-populated by backend
+        ...guardPayload(),
       };
       return await apiRequest("POST", "/api/inquiries", payload);
     },
@@ -122,6 +125,7 @@ export default function QuotePage() {
             <CardContent className="space-y-6">
               <Form {...form}>
                 <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-6">
+                  {honeypotField}
                   <div className="grid md:grid-cols-2 gap-4">
                     <FormField
                       control={form.control}

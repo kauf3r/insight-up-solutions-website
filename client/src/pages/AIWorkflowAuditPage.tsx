@@ -13,6 +13,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
+import { useSpamGuard } from "@/lib/spam-guard";
 import {
   Form,
   FormControl,
@@ -45,6 +46,7 @@ type AuditInquiryData = z.infer<typeof auditInquirySchema>;
 export default function AIWorkflowAuditPage() {
   const { toast } = useToast();
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const { guardPayload, honeypotField } = useSpamGuard();
 
   const form = useForm<AuditInquiryData>({
     resolver: zodResolver(auditInquirySchema),
@@ -63,6 +65,7 @@ export default function AIWorkflowAuditPage() {
         ...data,
         subject: `AI Workflow Audit — ${data.company}`,
         inquiryType: "ai-workflow-audit",
+        ...guardPayload(),
       });
     },
     onSuccess: () => {
@@ -389,6 +392,7 @@ export default function AIWorkflowAuditPage() {
 
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                {honeypotField}
                 <FormField
                   control={form.control}
                   name="name"
