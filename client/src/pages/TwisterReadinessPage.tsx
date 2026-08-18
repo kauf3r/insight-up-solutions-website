@@ -33,6 +33,7 @@ import {
 } from "@/components/ui/accordion";
 import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
+import { useSpamGuard } from "@/lib/spam-guard";
 import {
   Form,
   FormControl,
@@ -483,6 +484,7 @@ interface LeadCaptureFormProps {
 
 function LeadCaptureForm({ answers, result, onSuccess }: LeadCaptureFormProps) {
   const { toast } = useToast();
+  const { guardPayload, honeypotField } = useSpamGuard();
 
   const form = useForm<LeadFormData>({
     resolver: zodResolver(leadSchema),
@@ -496,6 +498,7 @@ function LeadCaptureForm({ answers, result, onSuccess }: LeadCaptureFormProps) {
         subject: `Twister Readiness — ${data.company} (score ${result.score})`,
         message: buildLeadMessage(answers, result),
         inquiryType: "twister-readiness",
+        ...guardPayload(),
       });
     },
     onSuccess: () => {
@@ -523,6 +526,7 @@ function LeadCaptureForm({ answers, result, onSuccess }: LeadCaptureFormProps) {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+        {honeypotField}
         <FormField
           control={form.control}
           name="name"

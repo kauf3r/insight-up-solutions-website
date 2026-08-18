@@ -12,12 +12,14 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
+import { useSpamGuard } from "@/lib/spam-guard";
 import { insertBundleLeadSchema, type InsertBundleLead } from "@shared/schema";
 import trinityProBgImage from "@assets/Trinity Pro_1758836912459.jpg";
 
 export default function TrinityLR1SpecialPage() {
   const { toast } = useToast();
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const { guardPayload, honeypotField } = useSpamGuard();
 
   const form = useForm<InsertBundleLead>({
     resolver: zodResolver(insertBundleLeadSchema),
@@ -33,7 +35,7 @@ export default function TrinityLR1SpecialPage() {
 
   const bundleLeadMutation = useMutation({
     mutationFn: async (data: InsertBundleLead) => {
-      return await apiRequest("POST", "/api/bundle-leads", data);
+      return await apiRequest("POST", "/api/bundle-leads", { ...data, ...guardPayload() });
     },
     onSuccess: () => {
       setIsSubmitted(true);
@@ -292,6 +294,7 @@ export default function TrinityLR1SpecialPage() {
                 ) : (
                   <Form {...form}>
                     <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                      {honeypotField}
                       <div className="grid md:grid-cols-2 gap-4">
                         <FormField
                           control={form.control}
