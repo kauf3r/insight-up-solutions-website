@@ -10,6 +10,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { insertDemoBookingSchema, type InsertDemoBooking } from "@shared/schema";
 import { apiRequest } from "@/lib/queryClient";
+import { useSpamGuard } from "@/lib/spam-guard";
 
 interface DemoBookingFormProps {
   title?: string;
@@ -22,6 +23,7 @@ export default function DemoBookingForm({
 }: DemoBookingFormProps) {
   const { toast } = useToast();
   const queryClient = useQueryClient();
+  const { guardPayload, honeypotField } = useSpamGuard();
 
   const form = useForm<InsertDemoBooking>({
     resolver: zodResolver(insertDemoBookingSchema),
@@ -37,7 +39,7 @@ export default function DemoBookingForm({
 
   const createDemoBookingMutation = useMutation({
     mutationFn: async (data: InsertDemoBooking) => {
-      return await apiRequest("POST", "/api/demo-bookings", data);
+      return await apiRequest("POST", "/api/demo-bookings", { ...data, ...guardPayload() });
     },
     onSuccess: () => {
       toast({
@@ -75,6 +77,7 @@ export default function DemoBookingForm({
       <CardContent className="space-y-6">
         <Form {...form}>
           <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-6">
+            {honeypotField}
             <div className="grid md:grid-cols-2 gap-4">
               <FormField
                 control={form.control}

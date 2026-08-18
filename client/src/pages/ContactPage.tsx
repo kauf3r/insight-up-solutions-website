@@ -11,6 +11,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
+import { useSpamGuard } from "@/lib/spam-guard";
 import {
   Form,
   FormControl,
@@ -34,6 +35,7 @@ type ContactFormData = z.infer<typeof contactFormSchema>;
 export default function ContactPage() {
   const { toast } = useToast();
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const { guardPayload, honeypotField } = useSpamGuard();
 
   const form = useForm<ContactFormData>({
     resolver: zodResolver(contactFormSchema),
@@ -52,6 +54,7 @@ export default function ContactPage() {
       return await apiRequest("POST", "/api/contact", {
         ...data,
         inquiryType: "general",
+        ...guardPayload(),
       });
     },
     onSuccess: () => {
@@ -180,6 +183,7 @@ export default function ContactPage() {
 
               <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                  {honeypotField}
                   <FormField
                     control={form.control}
                     name="name"

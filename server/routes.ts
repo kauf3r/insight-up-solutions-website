@@ -8,6 +8,7 @@ import {
 } from "../shared/schema.js";
 import { getResendClient, sendEmailWithRetry } from "./lib/resend.js";
 import { escapeHtml } from "./lib/html.js";
+import { getSpamReason } from "./lib/spam.js";
 
 export function registerRoutes(app: Express): void {
   // Product routes
@@ -68,6 +69,11 @@ export function registerRoutes(app: Express): void {
 
   app.post("/api/demo-bookings", async (req, res) => {
     try {
+      const spamReason = getSpamReason(req.body);
+      if (spamReason) {
+        console.warn(`[SPAM BLOCKED] /api/demo-bookings — ${spamReason}`);
+        return res.status(201).json({ status: "received" });
+      }
       const validatedData = insertDemoBookingSchema.parse(req.body);
       const booking = await storage.createDemoBooking(validatedData);
       console.log(`[DEMO BOOKING] Created booking for ${booking.email}`);
@@ -175,6 +181,11 @@ export function registerRoutes(app: Express): void {
 
   app.post("/api/inquiries", async (req, res) => {
     try {
+      const spamReason = getSpamReason(req.body);
+      if (spamReason) {
+        console.warn(`[SPAM BLOCKED] /api/inquiries — ${spamReason}`);
+        return res.status(201).json({ status: "received" });
+      }
       // Auto-populate subject for quote requests if not provided
       const inquiryData = { ...req.body };
       if (!inquiryData.subject && inquiryData.inquiryType === 'quote') {
@@ -294,6 +305,11 @@ export function registerRoutes(app: Express): void {
   // Contact form route (alias for inquiries)
   app.post("/api/contact", async (req, res) => {
     try {
+      const spamReason = getSpamReason(req.body);
+      if (spamReason) {
+        console.warn(`[SPAM BLOCKED] /api/contact — ${spamReason}`);
+        return res.status(201).json({ status: "received" });
+      }
       const validatedData = insertInquirySchema.parse(req.body);
       const inquiry = await storage.createInquiry(validatedData);
       console.log(`[CONTACT] Created contact inquiry for ${inquiry.email}`);
@@ -383,6 +399,11 @@ export function registerRoutes(app: Express): void {
   // Bundle leads route with Resend integration
   app.post("/api/bundle-leads", async (req, res) => {
     try {
+      const spamReason = getSpamReason(req.body);
+      if (spamReason) {
+        console.warn(`[SPAM BLOCKED] /api/bundle-leads — ${spamReason}`);
+        return res.status(201).json({ status: "received" });
+      }
       const validatedData = insertBundleLeadSchema.parse(req.body);
       const lead = await storage.createBundleLead(validatedData);
       console.log(`[BUNDLE LEAD] Created lead for ${lead.email}`);
