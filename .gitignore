@@ -6,3 +6,7 @@ vite.config.ts.*
 *.tar.gz
 .vercel
 .env*.local
+
+# planning and handoff notes stay local (public repo)
+.planning/
+docs/handoffs/
